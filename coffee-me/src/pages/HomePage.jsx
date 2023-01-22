@@ -1,7 +1,7 @@
-export  const HomePage = () => {
+export const HomePage = () => {
     
     return (
-        <div class="wrapper">
+        <div className="wrapper">
             <h1>Home</h1>
         </div>
     )

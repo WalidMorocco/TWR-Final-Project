@@ -4,6 +4,7 @@ import {createRoot} from 'react-dom/client'
 import './index.css';
 import App from './App';
 import HomePage from './pages/HomePage';
+import UserLocation from './pages/UserLocation';
 import reportWebVitals from './reportWebVitals';
 
 // Create root element
@@ -15,6 +16,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App/>}>
         <Route index element={<HomePage />} />
+        <Route path="/location" element={<UserLocation />} />
       </Route>
     </Routes>
   </BrowserRouter>
