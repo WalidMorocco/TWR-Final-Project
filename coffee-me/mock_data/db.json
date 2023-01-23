@@ -1,0 +1,1611 @@
+{
+  "places": {
+    "html_attributions": [],
+    "next_page_token": "ARywPAIVNmbsKhR5YUxP7COjDFrEWiRve0hnIErt3PNWB5E4uytyVROS-rwkj4FItDrauloTyUtx0rzPP574MQGl8NVdSBDF9IhTtYXL3QzfGnUvf4JDEy2merh32foZ4nUzhmRdP4LTG38eHbLdOUluzisXGNDdWk9nfIkaSdmGN5WgtvsroQl5xei5FQwcMa5D19oO4juHQmNZSBAFhHWLhrzc1Ea4C9jIO0v2YMZQCW0Rqk60kGMLfmQvprnLglrlmlEUumQXEA5SBatw22_f97vmcojtbekh9WtzixYM-T52ZfqKeDGUWNg9-CsMwCfxpC-WBc-SADwSYJlPflh23Iwvqdbal-bTgmx1z6lqdO9v5DXrPEBnWDPFFZFCXYsd44fSsvm3RQmjtq6ncXivtZD7CgnsxgQTgr8kkjlQmFeKwDV48s4d",
+    "results": [
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6619418,
+            "lng": -71.4949197
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6632962802915,
+              "lng": -71.49368651970849
+            },
+            "southwest": {
+              "lat": 41.6605983197085,
+              "lng": -71.4963844802915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Panera Bread",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 3024,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/109991162653066415885\"\u003eJeremiah Suave Richardson\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAIpb6mVHvGRuthp3qZyBLzoVdm0PTzXkkl-nxrfFFl7Nxsztv3B4NdxwPoHDK11BdT0RxlyIinx3NxnPNI-LltEBgDW1g2q-v1buN1U-EPMltKOlkzqG5uomSng7-JfnkDI9LG65xrpFCPY9DXmZ_VI5YRHTO32QBvMxmMNwrqqwHVJ",
+            "width": 4032
+          }
+        ],
+        "place_id": "ChIJu9_pqUxL5IkRfzkQNSB5YK0",
+        "plus_code": {
+          "compound_code": "MG64+Q2 East Greenwich, RI, USA",
+          "global_code": "87HCMG64+Q2"
+        },
+        "price_level": 2,
+        "rating": 3.9,
+        "reference": "ChIJu9_pqUxL5IkRfzkQNSB5YK0",
+        "scope": "GOOGLE",
+        "types": [
+          "cafe",
+          "bakery",
+          "meal_takeaway",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 366,
+        "vicinity": "1000 Division Street, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6630833,
+            "lng": -71.5435111
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6643988802915,
+              "lng": -71.54212006970849
+            },
+            "southwest": {
+              "lat": 41.6617009197085,
+              "lng": -71.54481803029149
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/gas_station-71.png",
+        "icon_background_color": "#909CE1",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/gas_pinlet",
+        "name": "Cumberland Farms",
+        "opening_hours": {
+          "open_now": true
+        },
+        "photos": [
+          {
+            "height": 4032,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102195073938062126377\"\u003eJuanita Hernandez\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAJFBoUq3ctfnLXv5zCNYjyuWoUcrdTswhP7AdIs1B5dbEi-8SEP06utLoCQ1EDc37TOzqwV1WDGEboegwZ66XhEJRYpjklOM0kHu92AuNPlSyLquOBAtVVwINh-1ilySqKm6FUgyWgelYMe3xJRyoL5UmH7jjgNkGxWk9BA6ap4wej0",
+            "width": 1908
+          }
+        ],
+        "place_id": "ChIJ6_xnpTa15YkRO5Q-9DrUTNI",
+        "plus_code": {
+          "compound_code": "MF74+6H Coventry, RI, USA",
+          "global_code": "87HCMF74+6H"
+        },
+        "price_level": 1,
+        "rating": 4.1,
+        "reference": "ChIJ6_xnpTa15YkRO5Q-9DrUTNI",
+        "scope": "GOOGLE",
+        "types": [
+          "gas_station",
+          "convenience_store",
+          "cafe",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 23,
+        "vicinity": "2293 New London Turnpike, Coventry"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6609487,
+            "lng": -71.5449086
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6623427302915,
+              "lng": -71.54364216970849
+            },
+            "southwest": {
+              "lat": 41.6596447697085,
+              "lng": -71.54634013029151
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+        "name": "McDonald's",
+        "opening_hours": {
+          "open_now": true
+        },
+        "photos": [
+          {
+            "height": 4032,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/110369602302467625107\"\u003ebrian miller\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPALpMpAGFKnEUQZoS5gAJp2RRaBVQ0ipqJi8c7tGgkp5tujiBqpSckwFeU_l7T4jTJ1uZOm-MIB-LJuVYaWx_UvnpOTM0gi5dzssaqYavE1gZb5ZA66JGG3sGMVV-fuJ7XTRqNaHYlCh4IoXVUn5TRyng--ZemttrrmwdGrdGQaQ2dpN",
+            "width": 3024
+          }
+        ],
+        "place_id": "ChIJY7_s6Ta15YkRPRs2Hh4Gb5c",
+        "plus_code": {
+          "compound_code": "MF64+92 East Greenwich, RI, USA",
+          "global_code": "87HCMF64+92"
+        },
+        "price_level": 1,
+        "rating": 3.3,
+        "reference": "ChIJY7_s6Ta15YkRPRs2Hh4Gb5c",
+        "scope": "GOOGLE",
+        "types": [
+          "cafe",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 1167,
+        "vicinity": "2500 New London Turnpike, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.65923,
+            "lng": -71.450357
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6605630802915,
+              "lng": -71.44891111970848
+            },
+            "southwest": {
+              "lat": 41.6578651197085,
+              "lng": -71.45160908029149
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Raise the Bar Nutrition",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 3024,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102658309030641856048\"\u003eVin Ortez\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPALAsTGcDqJqhOUoxDnjaUuNbe0ea9jbu5pE1Dla2HeEA8pGX78Gb9o1Ft070klDI3bK42hP6R7MdYdsYNiszM-AksRykR1tL23cHxklmzjnM1quPzykU_GUPe1pIW64IP1GCdNNn_abgx9xeuFOw2rVtce5-G8sLXExKntSKQqceug1",
+            "width": 4032
+          }
+        ],
+        "place_id": "ChIJGXwdD8lM5IkRavgQ-GEiY48",
+        "plus_code": {
+          "compound_code": "MG5X+MV East Greenwich, RI, USA",
+          "global_code": "87HCMG5X+MV"
+        },
+        "price_level": 1,
+        "rating": 4.6,
+        "reference": "ChIJGXwdD8lM5IkRavgQ-GEiY48",
+        "scope": "GOOGLE",
+        "types": ["bar", "cafe", "point_of_interest", "food", "establishment"],
+        "user_ratings_total": 103,
+        "vicinity": "333 Main Street, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6596379,
+            "lng": -71.45014350000001
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6609726302915,
+              "lng": -71.4487373197085
+            },
+            "southwest": {
+              "lat": 41.6582746697085,
+              "lng": -71.45143528029151
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "The Nook Coffee House",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 960,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/116792723955666652787\"\u003eThe Nook Coffee House\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAIJukR6xKORTbqBKVcRvw-B5li4bEkHsxgFacRHXPKwNo5TuxyiUZaFLjf9yfCxiF3vuXsfRrDAxUDyubNRG8Ns56z2cNKJLsZmQF3Dmxp03UUNO9xfpnKcwcWvOQ1Y7_mE3LRcSobxt7HXm8ijHIMKojLZQrT4HHJe6Pkks_vsiJP2",
+            "width": 960
+          }
+        ],
+        "place_id": "ChIJH81xBMlM5IkRcs5RHTE5hv0",
+        "plus_code": {
+          "compound_code": "MG5X+VW East Greenwich, RI, USA",
+          "global_code": "87HCMG5X+VW"
+        },
+        "price_level": 1,
+        "rating": 4.8,
+        "reference": "ChIJH81xBMlM5IkRcs5RHTE5hv0",
+        "scope": "GOOGLE",
+        "types": [
+          "cafe",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 187,
+        "vicinity": "307 Main Street, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6624079,
+            "lng": -71.49568479999999
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6637737302915,
+              "lng": -71.49441326970849
+            },
+            "southwest": {
+              "lat": 41.6610757697085,
+              "lng": -71.49711123029151
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+        "name": "McDonald's",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 3024,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/117586175417619384020\"\u003eRobert Dorris\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPALL14CT1Jqhw5OlXKAqaYsJLae3fNZgM-RnIV__utfwpR9HRsKl9AY5aFiu0zeHNLmz_j8WME3hX434sKSAsHcjWDc_CYtuA-uzGjsvhp8e-MltmHuC4Xe3mfykVTTjYWnTa0hrdSyCVNSV3H8f-sPEpha9IzgODozpw2KNUhxJG6Lh",
+            "width": 4032
+          }
+        ],
+        "place_id": "ChIJu9_pqUxL5IkRI1W96XyMOn0",
+        "plus_code": {
+          "compound_code": "MG63+XP East Greenwich, RI, USA",
+          "global_code": "87HCMG63+XP"
+        },
+        "price_level": 1,
+        "rating": 3.6,
+        "reference": "ChIJu9_pqUxL5IkRI1W96XyMOn0",
+        "scope": "GOOGLE",
+        "types": [
+          "cafe",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 769,
+        "vicinity": "1000 Division Street, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.66313669999999,
+            "lng": -71.49877769999999
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.66448763029149,
+              "lng": -71.49728651970848
+            },
+            "southwest": {
+              "lat": 41.6617896697085,
+              "lng": -71.4999844802915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Dunkin'",
+        "opening_hours": {
+          "open_now": true
+        },
+        "photos": [
+          {
+            "height": 1944,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/101151371454835021721\"\u003eJeffrey Resch\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAKWKnCLKwjNOsz-y9o7XfAEsHhLnOXTlF0vcE8j2nf3oaTTTnUnhxw-fJ8rp8_KhibuQ8vdmAB2i3oMWyJ97Zg9QJXkTjd-eyINEv4hOX1wPfydxEmJWnRZKLjqZ6KutAl6E-Tia6touQU2ZCrh3Hpd3ntvHhy1_S16vfxnXws_N-xF",
+            "width": 2592
+          }
+        ],
+        "place_id": "ChIJ41yj-UpL5IkR_eOBD9YggWE",
+        "plus_code": {
+          "compound_code": "MG72+7F East Greenwich, RI, USA",
+          "global_code": "87HCMG72+7F"
+        },
+        "price_level": 1,
+        "rating": 4.1,
+        "reference": "ChIJ41yj-UpL5IkR_eOBD9YggWE",
+        "scope": "GOOGLE",
+        "types": [
+          "bakery",
+          "cafe",
+          "meal_takeaway",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 553,
+        "vicinity": "1239 Division Road, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.66217509999999,
+            "lng": -71.5432541
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.66359103029149,
+              "lng": -71.54199841970849
+            },
+            "southwest": {
+              "lat": 41.66089306970849,
+              "lng": -71.5446963802915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Dunkin'",
+        "opening_hours": {
+          "open_now": true
+        },
+        "photos": [
+          {
+            "height": 800,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/101532807008837891621\"\u003eDunkin&#39;\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAKmfwRPk4lCwxy_HCNrWSC-qfK0xvOmB4tUbjoVnYZuFZXmaSKo6hpzER9IuDAuOp_Q3bLco0b_yzPnv_xS5Tbguf2pgAs4sy6DPzzjy2fAWKGUEwmdANHtz7NmSktMwn4SzA8mYnnkSETqdJyr-1fPvQ-9ALScWyvtkdwlTe1fLNNI",
+            "width": 1143
+          }
+        ],
+        "place_id": "ChIJ6YBAlTO15YkRsSLWvZqhkSE",
+        "plus_code": {
+          "compound_code": "MF64+VM Coventry, RI, USA",
+          "global_code": "87HCMF64+VM"
+        },
+        "price_level": 1,
+        "rating": 4.2,
+        "reference": "ChIJ6YBAlTO15YkRsSLWvZqhkSE",
+        "scope": "GOOGLE",
+        "types": [
+          "bakery",
+          "cafe",
+          "meal_takeaway",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 157,
+        "vicinity": "2285 New London Turnpike, Coventry"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6626136,
+            "lng": -71.4498703
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6639537302915,
+              "lng": -71.44863546970849
+            },
+            "southwest": {
+              "lat": 41.6612557697085,
+              "lng": -71.4513334302915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Simon Says Cafe & Deli",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 1536,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/105871994524063546695\"\u003ekwanpirom yimyang\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPALnE4esUMvYyUi2HhaBr0r7WIXrAz5w4lUIZwUEkfaRFR1hjzBLoyY5mfZeHbfZryS3e5InPkwfGDrPilJB7Cnr3lPXWS2_wsvs8gXvMANwxGVs3qcImHT93c52eJZnNoqA9B2lJqCySLSxaMfYFX5sHIw37zVufhBDrRylhRvpgUbs",
+            "width": 2048
+          }
+        ],
+        "place_id": "ChIJ1dwIJsZM5IkRfWu76qJScBI",
+        "plus_code": {
+          "compound_code": "MH72+23 East Greenwich, RI, USA",
+          "global_code": "87HCMH72+23"
+        },
+        "price_level": 1,
+        "rating": 4.6,
+        "reference": "ChIJ1dwIJsZM5IkRfWu76qJScBI",
+        "scope": "GOOGLE",
+        "types": [
+          "cafe",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 63,
+        "vicinity": "96 Main Street, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6388645,
+            "lng": -71.46949579999999
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.64025618029149,
+              "lng": -71.46815521970848
+            },
+            "southwest": {
+              "lat": 41.6375582197085,
+              "lng": -71.4708531802915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Felicia's Coffee",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 2252,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/116513014671876879289\"\u003eShaun Hunter\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAJVRN9q1zhldyLF_lUeqIo_INTcTvx4g_mELpfbBOFbplioAU_nj83D7urgX36A-plqHd1gUcoJpH2TvsJiT3eGuNL2TsRg97zgPQgcW0s15z7WSazL_GGzheiv-pAD_C9VMy9EAZQ-bESbSZebJQZt286S9X3VTvNwb09Ie0jle3J8",
+            "width": 4000
+          }
+        ],
+        "place_id": "ChIJBZO1s12z5YkRqoyRXOheAKo",
+        "plus_code": {
+          "compound_code": "JGQJ+G6 East Greenwich, RI, USA",
+          "global_code": "87HCJGQJ+G6"
+        },
+        "price_level": 2,
+        "rating": 4.5,
+        "reference": "ChIJBZO1s12z5YkRqoyRXOheAKo",
+        "scope": "GOOGLE",
+        "types": [
+          "cafe",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 422,
+        "vicinity": "5757 Post Road, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6853843,
+            "lng": -71.50620910000001
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.68663183029149,
+              "lng": -71.50479126970849
+            },
+            "southwest": {
+              "lat": 41.68393386970849,
+              "lng": -71.5074892302915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/gas_station-71.png",
+        "icon_background_color": "#909CE1",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/gas_pinlet",
+        "name": "Cumberland Farms",
+        "opening_hours": {
+          "open_now": true
+        },
+        "photos": [
+          {
+            "height": 3024,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/101820066344520135765\"\u003eJosue Anax\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAKIDfaCasSTQONrV5EAt77a9Jz1HwOlI9yOiC28HLpuybrsA4XWPhuFBzVzDCEfN0a4dxeYyI2cfSacoaexhaE2EzIEuVupwC_vT6RZo-mvp2se4sRdElzOWuVbZ34vhoCGWtGPYo-yE4MtFBG8E6HlZJXicDr35HThxIbGCvVmIZUf",
+            "width": 4032
+          }
+        ],
+        "place_id": "ChIJHY5CERRL5IkRMogBYdShk4Y",
+        "plus_code": {
+          "compound_code": "MFPV+5G West Warwick, RI, USA",
+          "global_code": "87HCMFPV+5G"
+        },
+        "price_level": 1,
+        "rating": 3.5,
+        "reference": "ChIJHY5CERRL5IkRMogBYdShk4Y",
+        "scope": "GOOGLE",
+        "types": [
+          "gas_station",
+          "convenience_store",
+          "cafe",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 29,
+        "vicinity": "278 Cowesett Avenue, West Warwick"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6634784,
+            "lng": -71.49481829999999
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6648467302915,
+              "lng": -71.49345446970848
+            },
+            "southwest": {
+              "lat": 41.66214876970851,
+              "lng": -71.4961524302915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Starbucks",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 2112,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/105720400819944886066\"\u003eRichard Hunter\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAL_K7L9j06Ju8bWdZDWTvZxIs9Ne0wjFOqImXFbCA5d8yIu2xvaVQqhal-8AaAKN2Jrq_VRrJ5lN6ZCB2yR1xJQT5yLlWJiDvkIkwdOUB01RoBcvo3sS4hTXwXz_9y3N4rlGE0sfqsNh4gYqHzyW8NCNkaKNhhuUFj8s07S2LCYJi96",
+            "width": 4608
+          }
+        ],
+        "place_id": "ChIJEQtHzsFL5IkRrTjQG5aljEY",
+        "plus_code": {
+          "compound_code": "MG74+93 East Greenwich, RI, USA",
+          "global_code": "87HCMG74+93"
+        },
+        "price_level": 2,
+        "rating": 4.2,
+        "reference": "ChIJEQtHzsFL5IkRrTjQG5aljEY",
+        "scope": "GOOGLE",
+        "types": [
+          "cafe",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 165,
+        "vicinity": "1191 Division Street, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.656725,
+            "lng": -71.45283959999999
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6581406302915,
+              "lng": -71.45146576970848
+            },
+            "southwest": {
+              "lat": 41.6554426697085,
+              "lng": -71.4541637302915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Starbucks",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 2118,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/113827525966664684839\"\u003eWil Snodgrass\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPALLJvJcnsb_WrpeXOxv67nUO1955BVL05z8MVuZyQy8FBtpsdmWwOjM4oE0UXlrPL7Uz49JVZEAEaIGHS73NPM3i6NGNM90hSFkJgQmkRWfy1HSrUX9Dtpc_Wffz7JFPxtofazcO7lqc_EuKLzzc03XCZGynXoTHyMdvp7e9WwYFco3",
+            "width": 3766
+          }
+        ],
+        "place_id": "ChIJRXy5cspM5IkRi5cBN_zBQ_Q",
+        "plus_code": {
+          "compound_code": "MG4W+MV East Greenwich, RI, USA",
+          "global_code": "87HCMG4W+MV"
+        },
+        "price_level": 2,
+        "rating": 4.3,
+        "reference": "ChIJRXy5cspM5IkRi5cBN_zBQ_Q",
+        "scope": "GOOGLE",
+        "types": [
+          "cafe",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 169,
+        "vicinity": "Commons SC, 555 Main Street, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6843017,
+            "lng": -71.50637689999999
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6856398802915,
+              "lng": -71.50499801970849
+            },
+            "southwest": {
+              "lat": 41.6829419197085,
+              "lng": -71.5076959802915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Coffee House",
+        "place_id": "ChIJDWTgLxRL5IkRrsCnjpGbbNw",
+        "plus_code": {
+          "compound_code": "MFMV+PC West Warwick, RI, USA",
+          "global_code": "87HCMFMV+PC"
+        },
+        "reference": "ChIJDWTgLxRL5IkRrsCnjpGbbNw",
+        "scope": "GOOGLE",
+        "types": ["cafe", "point_of_interest", "food", "establishment"],
+        "vicinity": "289 Cowesett Avenue, West Warwick"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6845215,
+            "lng": -71.50740879999999
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6859267302915,
+              "lng": -71.5059699697085
+            },
+            "southwest": {
+              "lat": 41.6832287697085,
+              "lng": -71.50866793029151
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Dunkin'",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 800,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/103235462106246988628\"\u003eDunkin&#39;\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAIspQa85c4DZDgfAEJGrr1KhexuxsWXjkO89ZHE9-1QTfj0wWX2eHa93UnG_cqafufcdQTbOlHI1uB6Vhvp5BubBhH7zi9_Cid8tgNnLGQjiMna6Y86PxTj_M1aD_hTqquchUkdNJUkgg9Q9ZUL9wHZx7TzFxGO6paU-P8vhCkW61it",
+            "width": 1143
+          }
+        ],
+        "place_id": "ChIJJTJLgxZL5IkRGVDqfc82Kkk",
+        "plus_code": {
+          "compound_code": "MFMV+R2 West Warwick, RI, USA",
+          "global_code": "87HCMFMV+R2"
+        },
+        "price_level": 1,
+        "rating": 3.8,
+        "reference": "ChIJJTJLgxZL5IkRGVDqfc82Kkk",
+        "scope": "GOOGLE",
+        "types": [
+          "bakery",
+          "cafe",
+          "meal_takeaway",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 216,
+        "vicinity": "275 Cowesett Avenue #3, West Warwick"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6829916,
+            "lng": -71.52556079999999
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6843557802915,
+              "lng": -71.5241536197085
+            },
+            "southwest": {
+              "lat": 41.68165781970851,
+              "lng": -71.52685158029151
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Fresh Homemade Donuts",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 3024,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/110770048380034828743\"\u003eLeeta Law\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAJgjIxQ8SgVj0ZNjbL6Zc7QgaMTsl-nXFq2yqdh1ibiaxu2Z86AjC0acqmApQ97Bnz8YvRQn83lFO_E3nAtKeMGZU9iB45Pm-C5Z_hUqqW99ohRmjZVWutQZhTzjFNuuBn5nZ5_UwJgY5PWq4E0_dR9NxVTEXnb14hDl0lf9yVqYL6l",
+            "width": 4032
+          }
+        ],
+        "place_id": "ChIJKxNV7qpL5IkRX9hwxYAjfns",
+        "plus_code": {
+          "compound_code": "MFMF+5Q West Warwick, RI, USA",
+          "global_code": "87HCMFMF+5Q"
+        },
+        "price_level": 1,
+        "rating": 4.7,
+        "reference": "ChIJKxNV7qpL5IkRX9hwxYAjfns",
+        "scope": "GOOGLE",
+        "types": ["cafe", "point_of_interest", "food", "establishment"],
+        "user_ratings_total": 356,
+        "vicinity": "1745 Main Street, West Warwick"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.702909,
+            "lng": -71.496804
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.7042259302915,
+              "lng": -71.49545401970849
+            },
+            "southwest": {
+              "lat": 41.7015279697085,
+              "lng": -71.4981519802915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Starbucks",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 3456,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102046222220358529812\"\u003eRaymond Turrisi\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAKapuTbLyoSF7uV7fuv358Xf8NYC6YDQLovKCckmn68DhXTQa-bIexFD7UUoCKfX4eiwA2OU2JW8keI8vIBRkq1ImdEPYMPzFbrWO7h3SeebZH9fXkCMH7PTjXW5orLq6pd0R7oVu7lkNfbU1g_3kKIsJcaQWHPi_HNK5SocdV4VuHB",
+            "width": 4608
+          }
+        ],
+        "place_id": "ChIJ-XyxuJ5L5IkRXfDvGtn9rkM",
+        "plus_code": {
+          "compound_code": "PG33+57 Warwick, RI, USA",
+          "global_code": "87HCPG33+57"
+        },
+        "price_level": 2,
+        "rating": 4.1,
+        "reference": "ChIJ-XyxuJ5L5IkRXfDvGtn9rkM",
+        "scope": "GOOGLE",
+        "types": [
+          "cafe",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 619,
+        "vicinity": "25 Pace Boulevard, Warwick"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6410586,
+            "lng": -71.46880299999999
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6423056302915,
+              "lng": -71.4672467697085
+            },
+            "southwest": {
+              "lat": 41.6396076697085,
+              "lng": -71.4699447302915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/gas_station-71.png",
+        "icon_background_color": "#909CE1",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/gas_pinlet",
+        "name": "Cumberland Farms",
+        "opening_hours": {
+          "open_now": true
+        },
+        "place_id": "ChIJhdV0fFyz5YkR6WLU7GRBiXU",
+        "plus_code": {
+          "compound_code": "JGRJ+CF East Greenwich, RI, USA",
+          "global_code": "87HCJGRJ+CF"
+        },
+        "price_level": 1,
+        "rating": 3.8,
+        "reference": "ChIJhdV0fFyz5YkR6WLU7GRBiXU",
+        "scope": "GOOGLE",
+        "types": [
+          "gas_station",
+          "convenience_store",
+          "cafe",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 13,
+        "vicinity": "5687 Post Road, East Greenwich"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.6960038,
+            "lng": -71.5027839
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6975645802915,
+              "lng": -71.50087214999999
+            },
+            "southwest": {
+              "lat": 41.6948666197085,
+              "lng": -71.50385755000003
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/gas_station-71.png",
+        "icon_background_color": "#909CE1",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/gas_pinlet",
+        "name": "Cumberland Farms",
+        "opening_hours": {
+          "open_now": true
+        },
+        "photos": [
+          {
+            "height": 2448,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/115518259115338127900\"\u003eChris Palmer\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAJVV_QIe3m_8EshAM23PmPW9hoqR5yp7KlQk65E9mRK-q_UivLeFeRQZtT8VimBoxSd8xU6a7JnbWuKjJZULr2Zv2utBSipBA9wy_vFgy2WGE1QUupSWT4Hr-9sYiHsSsIqcOgu7yY77wNyXUpljcHfZd3ix2Adb88EB-_yW775Boln",
+            "width": 3264
+          }
+        ],
+        "place_id": "ChIJl0wGagtL5IkRVpR1yx9azC4",
+        "plus_code": {
+          "compound_code": "MFWW+CV West Warwick, RI, USA",
+          "global_code": "87HCMFWW+CV"
+        },
+        "price_level": 1,
+        "rating": 3.6,
+        "reference": "ChIJl0wGagtL5IkRVpR1yx9azC4",
+        "scope": "GOOGLE",
+        "types": [
+          "gas_station",
+          "convenience_store",
+          "cafe",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 23,
+        "vicinity": "295 Legris Avenue, West Warwick"
+      },
+      {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+          "location": {
+            "lat": 41.62551209999999,
+            "lng": -71.4927763
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.62685428029149,
+              "lng": -71.4914809697085
+            },
+            "southwest": {
+              "lat": 41.6241563197085,
+              "lng": -71.49417893029153
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "name": "Dunkin'",
+        "opening_hours": {
+          "open_now": false
+        },
+        "photos": [
+          {
+            "height": 800,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/100834489554795509910\"\u003eDunkin&#39;\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPALS-NDOZpszSMReVogGQpVaWQHA55ir-a0AHyFXMewWVs0glo9k3zHA8-xHXFLIPieyg8ogC6srwhCL4SxHRmYMpjt_cAMUiw3QI_M0wFUzj6w_suprAYSlyQ_lgoUgVvOU28cPkh6b0z9X6J1UW6m0cqExJmUQP9Fu2tujXTz1v9kQ",
+            "width": 1143
+          }
+        ],
+        "place_id": "ChIJn5tF04605YkRUKkcH5cSZ-Y",
+        "plus_code": {
+          "compound_code": "JGG4+6V East Greenwich, RI, USA",
+          "global_code": "87HCJGG4+6V"
+        },
+        "price_level": 1,
+        "rating": 4.1,
+        "reference": "ChIJn5tF04605YkRUKkcH5cSZ-Y",
+        "scope": "GOOGLE",
+        "types": [
+          "bakery",
+          "cafe",
+          "meal_takeaway",
+          "restaurant",
+          "point_of_interest",
+          "food",
+          "store",
+          "establishment"
+        ],
+        "user_ratings_total": 126,
+        "vicinity": "2611 South County Trail, East Greenwich"
+      }
+    ],
+    "status": "OK"
+  },
+  "details/ChIJu9_pqUxL5IkRfzkQNSB5YK0": [
+    {
+      "html_attributions": [],
+      "result": {
+        "address_components": [
+          {
+            "long_name": "1000",
+            "short_name": "1000",
+            "types": ["street_number"]
+          },
+          {
+            "long_name": "Division Street",
+            "short_name": "Division St",
+            "types": ["route"]
+          },
+          {
+            "long_name": "East Greenwich",
+            "short_name": "East Greenwich",
+            "types": ["locality", "political"]
+          },
+          {
+            "long_name": "Kent County",
+            "short_name": "Kent County",
+            "types": ["administrative_area_level_2", "political"]
+          },
+          {
+            "long_name": "Rhode Island",
+            "short_name": "RI",
+            "types": ["administrative_area_level_1", "political"]
+          },
+          {
+            "long_name": "United States",
+            "short_name": "US",
+            "types": ["country", "political"]
+          },
+          {
+            "long_name": "02818",
+            "short_name": "02818",
+            "types": ["postal_code"]
+          }
+        ],
+        "adr_address": "\u003cspan class=\"street-address\"\u003e1000 Division St\u003c/span\u003e, \u003cspan class=\"locality\"\u003eEast Greenwich\u003c/span\u003e, \u003cspan class=\"region\"\u003eRI\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e02818\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eUSA\u003c/span\u003e",
+        "business_status": "OPERATIONAL",
+        "curbside_pickup": false,
+        "current_opening_hours": {
+          "open_now": false,
+          "periods": [
+            {
+              "close": {
+                "date": "2023-01-22",
+                "day": 0,
+                "time": "2000"
+              },
+              "open": {
+                "date": "2023-01-22",
+                "day": 0,
+                "time": "0800"
+              }
+            },
+            {
+              "close": {
+                "date": "2023-01-23",
+                "day": 1,
+                "time": "2000"
+              },
+              "open": {
+                "date": "2023-01-23",
+                "day": 1,
+                "time": "0700"
+              }
+            },
+            {
+              "close": {
+                "date": "2023-01-24",
+                "day": 2,
+                "time": "2000"
+              },
+              "open": {
+                "date": "2023-01-24",
+                "day": 2,
+                "time": "0700"
+              }
+            },
+            {
+              "close": {
+                "date": "2023-01-25",
+                "day": 3,
+                "time": "2000"
+              },
+              "open": {
+                "date": "2023-01-25",
+                "day": 3,
+                "time": "0700"
+              }
+            },
+            {
+              "close": {
+                "date": "2023-01-26",
+                "day": 4,
+                "time": "2000"
+              },
+              "open": {
+                "date": "2023-01-26",
+                "day": 4,
+                "time": "0700"
+              }
+            },
+            {
+              "close": {
+                "date": "2023-01-27",
+                "day": 5,
+                "time": "2000"
+              },
+              "open": {
+                "date": "2023-01-27",
+                "day": 5,
+                "time": "0700"
+              }
+            },
+            {
+              "close": {
+                "date": "2023-01-28",
+                "day": 6,
+                "time": "2000"
+              },
+              "open": {
+                "date": "2023-01-28",
+                "day": 6,
+                "time": "0700"
+              }
+            }
+          ],
+          "weekday_text": [
+            "Monday: 7:00 AM – 8:00 PM",
+            "Tuesday: 7:00 AM – 8:00 PM",
+            "Wednesday: 7:00 AM – 8:00 PM",
+            "Thursday: 7:00 AM – 8:00 PM",
+            "Friday: 7:00 AM – 8:00 PM",
+            "Saturday: 7:00 AM – 8:00 PM",
+            "Sunday: 8:00 AM – 8:00 PM"
+          ]
+        },
+        "delivery": true,
+        "dine_in": true,
+        "editorial_summary": {
+          "language": "en",
+          "overview": "Counter-serve bakery/cafe chain serving sandwiches, salads & more, known for its bread & free WiFi."
+        },
+        "formatted_address": "1000 Division St, East Greenwich, RI 02818, USA",
+        "formatted_phone_number": "(401) 541-9088",
+        "geometry": {
+          "location": {
+            "lat": 41.6619418,
+            "lng": -71.4949197
+          },
+          "viewport": {
+            "northeast": {
+              "lat": 41.6632962802915,
+              "lng": -71.49368651970849
+            },
+            "southwest": {
+              "lat": 41.6605983197085,
+              "lng": -71.4963844802915
+            }
+          }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+        "icon_background_color": "#FF9E67",
+        "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+        "international_phone_number": "+1 401-541-9088",
+        "name": "Panera Bread",
+        "opening_hours": {
+          "open_now": false,
+          "periods": [
+            {
+              "close": {
+                "day": 0,
+                "time": "2000"
+              },
+              "open": {
+                "day": 0,
+                "time": "0800"
+              }
+            },
+            {
+              "close": {
+                "day": 1,
+                "time": "2000"
+              },
+              "open": {
+                "day": 1,
+                "time": "0700"
+              }
+            },
+            {
+              "close": {
+                "day": 2,
+                "time": "2000"
+              },
+              "open": {
+                "day": 2,
+                "time": "0700"
+              }
+            },
+            {
+              "close": {
+                "day": 3,
+                "time": "2000"
+              },
+              "open": {
+                "day": 3,
+                "time": "0700"
+              }
+            },
+            {
+              "close": {
+                "day": 4,
+                "time": "2000"
+              },
+              "open": {
+                "day": 4,
+                "time": "0700"
+              }
+            },
+            {
+              "close": {
+                "day": 5,
+                "time": "2000"
+              },
+              "open": {
+                "day": 5,
+                "time": "0700"
+              }
+            },
+            {
+              "close": {
+                "day": 6,
+                "time": "2000"
+              },
+              "open": {
+                "day": 6,
+                "time": "0700"
+              }
+            }
+          ],
+          "weekday_text": [
+            "Monday: 7:00 AM – 8:00 PM",
+            "Tuesday: 7:00 AM – 8:00 PM",
+            "Wednesday: 7:00 AM – 8:00 PM",
+            "Thursday: 7:00 AM – 8:00 PM",
+            "Friday: 7:00 AM – 8:00 PM",
+            "Saturday: 7:00 AM – 8:00 PM",
+            "Sunday: 8:00 AM – 8:00 PM"
+          ]
+        },
+        "photos": [
+          {
+            "height": 3024,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/109991162653066415885\"\u003eJeremiah Suave Richardson\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAK39_o4ksUhOh2A6JLlr2aMfxri9prEwYSe7MwJ78EYqRncaDsycWnvIJ1yCT0iHo6orVnQm8J7unGHIvrxf_cQCYznuvAg5Sx_cCrw3x004lrDuISgW0SWDHS7P64uB2EmyWrVV8KphsW_0vCBSee-8n37qNoeg-A-LwXUAAk9p9qk",
+            "width": 4032
+          },
+          {
+            "height": 1192,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102547989320314778212\"\u003ePanera Bread\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPALJAM0gIHG9n_GOzWknFtU3j1xmeW09adds1ls-YW6rUxqsAapsbfa-NpINoBUgHTJpApNwspuZskTl4WI4ZpNWERwllXjhxoz49j7nWpsz3tU_Vdn9X4Nx8UQsgW8n03Ussf8rBBdZ-vjc9b9jCbbrBoFpGLN1cCS_wIgf1fTHZjjO",
+            "width": 2119
+          },
+          {
+            "height": 606,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102547989320314778212\"\u003ePanera Bread\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAKqt9T-O43E-ZASM0GQhXjz04iuVySiIWgwACd0W-MrEeEzoq3wNk7wQehtiW01FoBxGPGhwXGvazaFML9Uv_evDvtW9_1JEdVY-ljHeXGqb6DUqR-EZnakOUg1YX0P2gbIn2R1xMc8pniSfde7Jewkj2FWpsB8Qh7KX2nwEQGudRF8",
+            "width": 602
+          },
+          {
+            "height": 606,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102547989320314778212\"\u003ePanera Bread\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAL7sGdczvStPW5G6ReHRAp0Owlfz1tuazhxvkYZ7eFuBGZnkU1Kj6y6H0-1dhAWYhWDz9EZLp8rbUgJblPwPUQttdp1gs0hSZmRBuHBoJ1VC_w6qWpBM4q7hqawqY6f_EkxGc-mMH1QRtVnv_Wjc2X4rhCbDMzLDOtq9E-E0BCZk1Hj",
+            "width": 602
+          },
+          {
+            "height": 606,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102547989320314778212\"\u003ePanera Bread\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAKQQomzPuo_jmw9uvcD-YlRmupp8sP_4rK96LSjjIWC854YRMnUrNyHjP6JM8jwQUGGnibZupaxSI6ELwt11Wj8u4qxtI5HjQjkYQBSFI3GW3haZ_-PNjwh-GbPc06_oTakKEPl91oQ601evbe-vLtRiQFCfPNvJYU-JHWwlkrXy76v",
+            "width": 602
+          },
+          {
+            "height": 606,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102547989320314778212\"\u003ePanera Bread\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAIX8LvJMCm6o1dQVM-UKkWbf9FqWUb-C-60CL7YLJyvKXSwpqdWjh5CUYkHf_8Bd2-8iR3T5shUUEUFEk0VIVETMkxvlrvOEaoLfQ0vhqlQ5R7_vt-pu_eKZSkHA6ckaAPfRb4_8gdpiVbHey76HCjzGQBg_YH-S5vbXAEG6WbP1B5d",
+            "width": 602
+          },
+          {
+            "height": 606,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102547989320314778212\"\u003ePanera Bread\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAKKromtY1NA9FfrKkNXFxi6KxuURi2kmz-owXkLZkWW6RPgHwZ9BVvwlO70t_tskNC7fBN068Jxh2y9r5y8mkOOC6k7PQ8wWchoLlS4fPS9fy4DTGp1IRU_SGDG5XMydiCG1DzQnki5Dez79p_YJ0_WFvlnlBq8pB1EzWkBtyVaaVVh",
+            "width": 602
+          },
+          {
+            "height": 606,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102547989320314778212\"\u003ePanera Bread\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPALVVOfgvdYAbysJcOR3Dlriw3mhwysEEXAezXQK_TcMOL6p0tmw_WnJ9m59hE_LHma6zm7ll2y4OokLQi9Yl6_vSvhBNyCq0BGJuRZ0-lYZ9uYRS0OoJ0BKy3mVw-A05l3r1MIbY-u4Pi4X5BWMLFYczAWkcozLYif0rH3plBvBMINV",
+            "width": 602
+          },
+          {
+            "height": 606,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102547989320314778212\"\u003ePanera Bread\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAIha6hRpAd8a4jysI57mbg5QMzBVa1qGTzY6RGnuEzePj1cfsryMxrZt96WKcQ72xmfUbU6xVnPf2xtDUUnSpU8RWOsBo5App7wPeJco_p_njg68NzWOCYU0Qf5wH8sKy2mSXrNruZTYU5fMCValcDSviUHtGXrFVNBAkLXblTDAIe8",
+            "width": 602
+          },
+          {
+            "height": 606,
+            "html_attributions": [
+              "\u003ca href=\"https://maps.google.com/maps/contrib/102547989320314778212\"\u003ePanera Bread\u003c/a\u003e"
+            ],
+            "photo_reference": "ARywPAKf64EimXQnVz-kUeG4JrhJdI6WkSLj0WmB69JdXUw7rJ2gx17HejCovHYrF8piW9yZAZBnHOToKGqOB69DtJSYUz9_H77BZ4N7n3ONUUraf5thux7o5WyPh2IuyStCiU_gvko9jW-7BD1iwFuWzxghmIkqCr3o49gIRsfqUKCFDaCe",
+            "width": 602
+          }
+        ],
+        "place_id": "ChIJu9_pqUxL5IkRfzkQNSB5YK0",
+        "plus_code": {
+          "compound_code": "MG64+Q2 East Greenwich, RI, USA",
+          "global_code": "87HCMG64+Q2"
+        },
+        "price_level": 2,
+        "rating": 3.9,
+        "reference": "ChIJu9_pqUxL5IkRfzkQNSB5YK0",
+        "reviews": [
+          {
+            "author_name": "Nikhil Persaud",
+            "author_url": "https://www.google.com/maps/contrib/110685663382335297460/reviews",
+            "language": "en",
+            "original_language": "en",
+            "profile_photo_url": "https://lh3.googleusercontent.com/a-/AD5-WClZcLIlDCfEVCqZcI1qgN-KGE7uhIygLJU6HIFRbA=s128-c0x00000000-cc-rp-mo",
+            "rating": 1,
+            "relative_time_description": "a month ago",
+            "text": "So mean! Meanest Panera I’ve ever been to. Food was not great, below average but I barely touched it because they were just rude. Horrible people working. Management made me more upset than workers , overall horrible experience. Don’t come here. Also Mac was just cheese soup. Already handled food before we got it.",
+            "time": 1671662001,
+            "translated": false
+          },
+          {
+            "author_name": "Katherine Hooper",
+            "author_url": "https://www.google.com/maps/contrib/115523179578590426922/reviews",
+            "language": "en",
+            "original_language": "en",
+            "profile_photo_url": "https://lh3.googleusercontent.com/a/AEdFTp4Ah8r394HNA3s5GbVofqjeDJhawRn2mAL0aAMQ=s128-c0x00000000-cc-rp-mo",
+            "rating": 5,
+            "relative_time_description": "a week ago",
+            "text": "I waited a little long for my order but it was during a busy time and the girl behind the counter  (I wish I got her name!) could not have been more polite and apologetic to me which was completely unnecessary because they make everything to order and I know they had a rush! It was worth the wait because as usual the sandwiches were delicious! Always enjoy their fresh salads too!",
+            "time": 1673726552,
+            "translated": false
+          },
+          {
+            "author_name": "Sean Campbell",
+            "author_url": "https://www.google.com/maps/contrib/117540907098342299717/reviews",
+            "language": "en",
+            "original_language": "en",
+            "profile_photo_url": "https://lh3.googleusercontent.com/a/AEdFTp7Lx51l4clLIc6-gafVihWrbwzddl5W9YpYcIR9=s128-c0x00000000-cc-rp-mo",
+            "rating": 1,
+            "relative_time_description": "a year ago",
+            "text": "Does this look like a wrap? It is barely folded.  It doesn't help a customer for takeout to get this poorly made pile of food to try to eat it on the go.\nPlease train your people how to do a good job at making your simple items.",
+            "time": 1626876163,
+            "translated": false
+          },
+          {
+            "author_name": "billdelri",
+            "author_url": "https://www.google.com/maps/contrib/112447914920319841779/reviews",
+            "language": "en",
+            "original_language": "en",
+            "profile_photo_url": "https://lh3.googleusercontent.com/a/AEdFTp4OG2Dt2BwIJr41KWs9Cu355nkqwI1hRcmUfj0s=s128-c0x00000000-cc-rp-mo-ba5",
+            "rating": 2,
+            "relative_time_description": "a year ago",
+            "text": "Over priced with exceptionally small portions.  Git the teriyaki bowl and it looked like a kids portion and cost about $12. The manager did speak to me and offered to get me something else to satisfy my appetite, which I thought was cool! One pic is of the plate, another of the misleading poster yo advertise the bowl",
+            "time": 1627246461,
+            "translated": false
+          },
+          {
+            "author_name": "Caroline Hollingsworth",
+            "author_url": "https://www.google.com/maps/contrib/104939371095686717290/reviews",
+            "language": "en",
+            "original_language": "en",
+            "profile_photo_url": "https://lh3.googleusercontent.com/a/AEdFTp7oCz4Svfp1-OnT10oZcIhkNKY63TJoxi0vLivf=s128-c0x00000000-cc-rp-mo",
+            "rating": 1,
+            "relative_time_description": "a month ago",
+            "text": "Horrible. All I have to say is the management and staff are rude. I got a refund for Mac and cheese because it looked like cheese water and a few noodles. I politely asked for a new one…and was denied!!!! Couldn’t believe it. Then I asked for a refund and as the manager walked over, she muttered under her breath about how much she hated wasting food like the Mac and cheese that they gave me. Then proceeded to give me a CASH refund for an ONLINE ORDER. Was super sarcastic with me, and showed no kindness whatsoever. Just overall a bad experience with people who clearly don’t know what they’re doing or haven’t had a visit from corporate in a while… I’m in my 20s and pretty relaxed as a person but I couldn’t even believe this experience. Never coming here again. Not like other paneras, trust me and just drive the extra 10 minutes to the one on bald hill.",
+            "time": 1671663794,
+            "translated": false
+          }
+        ],
+        "secondary_opening_hours": [
+          {
+            "open_now": false,
+            "periods": [
+              {
+                "close": {
+                  "date": "2023-01-22",
+                  "day": 0,
+                  "time": "2000"
+                },
+                "open": {
+                  "date": "2023-01-22",
+                  "day": 0,
+                  "time": "0800"
+                }
+              },
+              {
+                "close": {
+                  "date": "2023-01-23",
+                  "day": 1,
+                  "time": "2000"
+                },
+                "open": {
+                  "date": "2023-01-23",
+                  "day": 1,
+                  "time": "0700"
+                }
+              },
+              {
+                "close": {
+                  "date": "2023-01-24",
+                  "day": 2,
+                  "time": "2000"
+                },
+                "open": {
+                  "date": "2023-01-24",
+                  "day": 2,
+                  "time": "0700"
+                }
+              },
+              {
+                "close": {
+                  "date": "2023-01-25",
+                  "day": 3,
+                  "time": "2000"
+                },
+                "open": {
+                  "date": "2023-01-25",
+                  "day": 3,
+                  "time": "0700"
+                }
+              },
+              {
+                "close": {
+                  "date": "2023-01-26",
+                  "day": 4,
+                  "time": "2000"
+                },
+                "open": {
+                  "date": "2023-01-26",
+                  "day": 4,
+                  "time": "0700"
+                }
+              },
+              {
+                "close": {
+                  "date": "2023-01-27",
+                  "day": 5,
+                  "time": "2000"
+                },
+                "open": {
+                  "date": "2023-01-27",
+                  "day": 5,
+                  "time": "0700"
+                }
+              },
+              {
+                "close": {
+                  "date": "2023-01-28",
+                  "day": 6,
+                  "time": "2000"
+                },
+                "open": {
+                  "date": "2023-01-28",
+                  "day": 6,
+                  "time": "0700"
+                }
+              }
+            ],
+            "type": "DELIVERY",
+            "weekday_text": [
+              "Monday: 7:00 AM – 8:00 PM",
+              "Tuesday: 7:00 AM – 8:00 PM",
+              "Wednesday: 7:00 AM – 8:00 PM",
+              "Thursday: 7:00 AM – 8:00 PM",
+              "Friday: 7:00 AM – 8:00 PM",
+              "Saturday: 7:00 AM – 8:00 PM",
+              "Sunday: 8:00 AM – 8:00 PM"
+            ]
+          }
+        ],
+        "serves_beer": false,
+        "serves_breakfast": true,
+        "serves_brunch": true,
+        "serves_dinner": true,
+        "serves_lunch": true,
+        "serves_vegetarian_food": true,
+        "serves_wine": false,
+        "takeout": true,
+        "types": [
+          "cafe",
+          "meal_takeaway",
+          "bakery",
+          "store",
+          "restaurant",
+          "food",
+          "point_of_interest",
+          "establishment"
+        ],
+        "url": "https://maps.google.com/?cid=12493118545561926015",
+        "user_ratings_total": 366,
+        "utc_offset": -300,
+        "vicinity": "1000 Division Street, East Greenwich",
+        "website": "https://locations.panerabread.com/ri/east-greenwich/1000-division-street.html?utm_campaign=dpm-dist&utm_medium=local&utm_source=google&utm_term=203866&utm_content=main",
+        "wheelchair_accessible_entrance": true
+      },
+      "status": "OK"
+    }
+  ],
+  "photos/ARywPAK39_o4ksUhOh2A6JLlr2aMfxri9prEwYSe7MwJ78EYqRncaDsycWnvIJ1yCT0iHo6orVnQm8J7unGHIvrxf_cQCYznuvAg5Sx_cCrw3x004lrDuISgW0SWDHS7P64uB2EmyWrVV8KphsW_0vCBSee-8n37qNoeg-A-LwXUAAk9p9qk": "https://lh3.googleusercontent.com/places/AJDFj43-i3fgw5j99UB8zl54z3yFc4dr3Lprh6N38La_s0uPDoHdReP3R8tAW1_u6hz9TaFc6oz1QSmAN1_nxocqO1y8wmjqwnQ1uJI=s1600-w400"
+}
