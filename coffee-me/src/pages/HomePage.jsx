@@ -1,5 +1,6 @@
 import useLocation from "../hooks/useLocation";
 import useNearby from "../hooks/google/useNearby";
+import { Card } from "../components/Card/Card";
 
 export const HomePage = () => {
   const location = useLocation();
@@ -19,11 +20,15 @@ export const HomePage = () => {
   }
 
   return (
-    <ul>
-      {data.results.map((place) => (
-        <li key={place.place_id}>{place.name}</li>
-      ))}
-    </ul>
+    <div>
+      <Card/>
+      <ul>
+        {data.results.map((place) => (
+          <li key={place.place_id}>{place.name}</li>
+        ))}
+      </ul>
+    </div>
+    
   );
 };
 
