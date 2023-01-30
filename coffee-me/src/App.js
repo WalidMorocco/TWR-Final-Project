@@ -3,7 +3,7 @@ import { Layout } from "./components/Layout";
 
 function App() {
   return (
-    <div>
+    <div style={{backgroundColor:'#D9BBA9', height:'150vh'}}>
       <Layout/>
     </div>
   );

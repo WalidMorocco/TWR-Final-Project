@@ -1,0 +1,49 @@
+@media only screen and (max-width: 600px) {
+
+    .card-container{
+        width:82%;
+        margin-left: 2.3%;
+        margin-top:20px;
+    }
+    .card{
+        width: 100%;
+        background-color: #745246;
+        margin-left: 8.3%;
+        border-radius: 12px;
+        height: 90px;
+    }
+    #store-image{
+        width:75px;
+        height: 75px;
+        margin-top:7.5px;
+        margin-left:7.5px;
+        border-radius: 12px;
+        float: left;
+    }
+    .card-contents{
+        float: left;
+        margin-left: 10px;
+        height: 87px;
+    }
+    #store-name{
+        font-size: 20px;
+        margin: 0;
+        color: white;
+        margin-top: 6px;
+    }
+    #store-miles{
+        font-size: 18px;
+        margin: 0;
+        color: white;
+        margin-top:6px;
+    }
+    #store-details{
+        margin: 0;
+        background: none;
+        border:none;
+        margin-top:6px;
+        font-size: 16px;
+        color: white;
+        margin-left: -6px;
+    }
+}

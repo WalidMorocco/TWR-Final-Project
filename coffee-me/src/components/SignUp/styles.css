@@ -1,0 +1,41 @@
+@media only screen and (max-width: 600px) {
+    .signUp-container{
+        width: 100%;
+        height: 844px;
+        padding-top: 63px;
+        text-align: center;
+    }
+    .signUp-form{
+        width: 80%;
+        margin-top: 30px;
+        margin-left:10%;
+    }
+    .label-title{
+        margin-bottom: 10px;
+        text-align: left;
+    }
+    #email,#password,#confirm-password{
+        text-align: left;
+        font-size: 25px;
+    }
+    #email-input,#password-input,#confirm-password-input{
+        width: 100%;
+        height: 50px;
+        border-radius: 12px;
+        border: none;
+        margin-bottom: 20px;
+    }
+    .submit-button-group{
+        width: 100%;
+    }
+    #submit{
+        width: 50%;
+        height: 50px;
+        border-radius: 12px;
+        border: none;
+        margin-top:20px;
+        background-color: #745246;
+        color: white;
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,16 @@
+@media only screen and (max-width: 600px) {
+    .footer-container{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        background-color: #745246;
+        color: white;
+        text-align: center;
+    }
+    #home-icon{
+        width:30px;
+        margin-top:-4px;
+    }
+}
