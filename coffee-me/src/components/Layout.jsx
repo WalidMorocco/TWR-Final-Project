@@ -1,12 +1,13 @@
-import { Outlet } from 'react-router-dom';
-import { Navbar } from './Navbar/Navar';
-
+import { Outlet, redirect } from 'react-router-dom';
+import { Navbar } from './Navbar/Navbar';
+import { Footer } from "../components/Footer/Footer";
 
 export const Layout = () => {
   return (
-    <div>
+    <div style={{backgroundColor:'#D9BBA9'}}>
       <Navbar/>
       <Outlet />
+      <Footer/>
     </div>
   );
 };

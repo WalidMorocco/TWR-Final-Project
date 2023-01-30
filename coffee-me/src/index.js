@@ -6,6 +6,10 @@ import App from './App';
 import HomePage from './pages/HomePage';
 import UserLocation from './pages/UserLocation';
 import reportWebVitals from './reportWebVitals';
+import AboutUs from './pages/AboutUs/AboutUs';
+import SignUp from './pages/SignUpPage';
+import SignIn from './pages/SignInPage';
+import ProfileSettings from './pages/ProfileSettingsPage';
 
 // Create root element
 const rootElement = document.getElementById('root');
@@ -17,6 +21,10 @@ root.render(
       <Route path="/" element={<App/>}>
         <Route index element={<HomePage />} />
         <Route path="/location" element={<UserLocation />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/ProfileSettings" element={<ProfileSettings />} />
       </Route>
     </Routes>
   </BrowserRouter>

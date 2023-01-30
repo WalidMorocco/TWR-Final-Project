@@ -1,0 +1,28 @@
+@media only screen and (max-width: 600px) {
+    .filter-container{
+        width: 100;
+        padding-top:16%;
+    }
+    .top-filters{
+        width:100%;
+        text-align: center;
+        margin-top:20px;
+    }
+    .bottom-filters{
+        width:100%;
+        text-align: center;
+        margin-top:20px;
+    }
+    #filter-1,#filter-2,#filter-3,#filter-4,#filter-5,#filter-6{
+        width: 25%;
+        height: 30px;
+        border-radius: 12px;
+        border:none;
+        background-color: #745246;
+        color: white;
+    }
+    #filter-2,#filter-5{
+        margin-left:5%;
+        margin-right:5%;
+    }
+}
