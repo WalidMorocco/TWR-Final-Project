@@ -9,8 +9,8 @@ export const UserLocation = () => {
         <div className="wrapper">
             <h1>User's Location</h1>
             <h4>
-                <p>Latitude: {location.coordinates.lat}</p>
-                <p>Longitude: {location.coordinates.lng}</p>
+                <p>Latitude: {location.latitude}</p>
+                <p>Longitude: {location.longitude}</p>
             </h4>
         </div>
     )
