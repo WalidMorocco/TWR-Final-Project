@@ -1,7 +1,9 @@
 import useLocation from "../hooks/useLocation";
+import useGetIPLocation from "../hooks/useGetIPLocation";
 
 export const UserLocation = () => {
-    const location = useLocation();
+    // const location = useLocation();
+    const location = useGetIPLocation();
 
     return (
         <div className="wrapper">
