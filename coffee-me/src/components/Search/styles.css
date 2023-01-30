@@ -11,9 +11,7 @@
         border:none;
     }
     input::placeholder{
-        position: absolute; /*Search text overlap on scroll*/
-        margin-left: 20px;
-        margin-top: 2px;
-        font-size: 18px;
+        padding-left: 20px;
+        font-size: 15px;
     }
 }

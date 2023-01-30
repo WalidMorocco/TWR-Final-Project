@@ -4,7 +4,6 @@ import { Filters } from "../components/Filters/Filters";
 import { Search } from "../components/Search/Search";
 import { Card } from "../components/Card/Card";
 
-
 export const HomePage = () => {
   const location = useLocation();
 
