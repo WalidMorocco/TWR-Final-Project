@@ -9,7 +9,7 @@ var StoreSchema = new Schema({
   },
   userId: {
     type: String,
-    required: true,
+    required: false,
   },
   name: {
     type: String,
@@ -21,39 +21,39 @@ var StoreSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
+    required: false,
   },
   image: {
-    type: Date,
-    required: true,
+    type: String,
+    required: false,
   },
   opening: {
     type: Date,
-    required: true,
+    required: false,
   },
   closing: {
     type: Date,
-    required: true,
+    required: false,
   },
   phone: {
-    type: Date,
+    type: String,
     required: false,
   },
   location: {
-    type: Date,
+    type: String,
     required: true,
   },
   delivery: {
     type: Boolean,
-    required: true,
+    required: false,
   },
   drive_thru: {
     type: Boolean,
-    required: true,
+    required: false,
   },
   views: {
     type: Number,
-    required: true,
+    required: false,
   },
 });
 

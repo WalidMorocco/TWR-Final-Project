@@ -1,44 +1,66 @@
 import useLocation from "../hooks/useLocation";
-import useNearby from "../hooks/google/useNearby";
 import { Filters } from "../components/Filters/Filters";
 import { Search } from "../components/Search/Search";
 import { Card } from "../components/Card/Card";
+import { useEffect, useState } from "react";
+import { computeDistanceBetween, LatLng } from "spherical-geometry-js";
+import axios from "axios";
 
 export const HomePage = () => {
+  const [data, setData] = useState();
   const location = useLocation();
 
   console.log(location);
-  const { data, loading, error } = useNearby(
+
+  useEffect(() => {
+    if (location) {
+      axios
+        .get("http://localhost:5000/nearbystores", {
+          params: {
+            lat: location.coordinates.lat,
+            lon: location.coordinates.lng,
+            radius: "200000",
+          },
+        })
+        .then(function (response) {
+          setData(response.data);
+        });
+    }
+  }, [location]);
+
+  /*const { data, loading, error } = useNearby(
     location.coordinates.lat,
     location.coordinates.lng
-  );
+  );*/
 
-  if (loading) {
+  if (data == null) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
+  /*if (error) {
     return <p>Error: {error.message}</p>;
-  }
-
+  }*/
+  console.log(data);
   return (
-    <div>
-      <Filters/>
-      <Search/>
-      <Card/>  
-      <Card/>  
-      <Card/>  
-      <Card/>  
-      <Card/>  
-      <Card/>  
-      <Card/>  
-      <ul>
-        {data.results.map((place) => (
-          <li key={place.place_id}>{place.name}</li>
-        ))}
-      </ul>
-    </div>
-    
+    <>
+      <Filters />
+      <Search />
+      {data.results.map((place) => (
+        <div key={place.place_id}>
+          <Card
+            name={place.name}
+            distance={computeDistanceBetween(
+              new LatLng(location.coordinates.lat, location.coordinates.lng),
+              new LatLng(
+                place.geometry.location.lat,
+                place.geometry.location.lng
+              )
+            )}
+            photoRef={place.photos[0].photo_reference}
+          />
+        </div>
+      ))}
+    </>
   );
 };
 

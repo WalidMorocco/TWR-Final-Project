@@ -19,7 +19,7 @@ const getPlaces = async (reqType, reqParams) => {
 };
 
 module.exports = {
-  getNearbyPlaces: async (lat, lon, radius = "50000") => {
+  getNearbyPlaces: async (lat, lon, radius = "5000") => {
     return await getPlaces(
       "nearbysearch",
       `location=${lat},${lon}&radius=${radius}&type=cafe`

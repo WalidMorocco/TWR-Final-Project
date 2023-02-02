@@ -1,6 +1,6 @@
-import "./styles.css"
-import coffeeIcon from "/Users/ryan/Documents/School/TWR-Final-Project/coffee-me/src/images/coffeeIcon.png"
-import locationIcon from "/Users/ryan/Documents/School/TWR-Final-Project/coffee-me/src/images/locationIcon.png"
+import "./styles.css";
+import coffeeIcon from "../../images/coffeeIcon.png";
+import locationIcon from "../../images/locationIcon.png";
 
 export const Navbar = () => {
   return (
