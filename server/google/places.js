@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const apiKey = `AIzaSyA31rb_whwOi1F5Kl-GKUzg1ChdOX-UZAk`;
+const apiKey = `[ADD_LOCALLY]`;
 const baseURL = `https://maps.googleapis.com/maps/api/place/`;
 
 const getFullURL = (reqType, reqParams) =>
