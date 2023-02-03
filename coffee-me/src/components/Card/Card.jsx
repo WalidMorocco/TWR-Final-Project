@@ -1,5 +1,5 @@
 import "./styles.css"
-import dunkin from "/Users/ryan/Documents/School/TWR-Final-Project/coffee-me/src/images/dunkin.jpeg"
+import dunkin from "../../images/dunkin.jpeg"
 
 
 

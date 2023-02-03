@@ -1,12 +1,12 @@
 import "./styles.css"
-import coffeeIcon from "/Users/ryan/Documents/School/TWR-Final-Project/coffee-me/src/images/coffeeIcon.png"
-import locationIcon from "/Users/ryan/Documents/School/TWR-Final-Project/coffee-me/src/images/locationIcon.png"
+import coffeeIcon from "../../images/coffeeIcon.png"
+import locationIcon from "../../images/locationIcon.png"
 
 export const Navbar = () => {
   return (
     <div className="navbar-container">
       <div className="navbar-icon">
-        <img id="icon" src={coffeeIcon} alt="React Image" />
+        <img id="icon" src={coffeeIcon} alt="React Image" /> {/** Turn into button **/}
       </div>
       <div className="navbar-location">
         <img id="location-icon" src={locationIcon} alt="React Image" />

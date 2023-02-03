@@ -31,7 +31,7 @@ export const HomePage = () => {
       <Card/>  
       <Card/>  
       <Card/>  
-      <Card/>  
+      <Card/>
       <ul>
         {data.results.map((place) => (
           <li key={place.place_id}>{place.name}</li>
