@@ -3,6 +3,7 @@ import useNearby from "../hooks/google/useNearby";
 import { Filters } from "../components/Filters/Filters";
 import { Search } from "../components/Search/Search";
 import { Card } from "../components/Card/Card";
+import { ScrollBox } from "../components/ScrollBox/ScrollBox";
 
 export const HomePage = () => {
   const location = useLocation();
@@ -25,13 +26,7 @@ export const HomePage = () => {
     <div>
       <Filters/>
       <Search/>
-      <Card/>  
-      <Card/>  
-      <Card/>  
-      <Card/>  
-      <Card/>  
-      <Card/>  
-      <Card/>
+      <ScrollBox/>
       <ul>
         {data.results.map((place) => (
           <li key={place.place_id}>{place.name}</li>
