@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const apiKey = `AIzaSyA31rb_whwOi1F5Kl-GKUzg1ChdOX-UZAk`;
-const baseURL = `https://maps.googleapis.com/maps/api/place/`;
+const baseURL = `http://localhost:5000/`;
 
-const usePlaces = (reqType, reqParams) => {
+const useFetch = (reqType, reqParams) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -12,10 +11,8 @@ const usePlaces = (reqType, reqParams) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        console.log(`${baseURL}${reqType}/json?key=${apiKey}&${reqParams}`);
-        const response = await axios.get(
-          `${baseURL}${reqType}/json?key=${apiKey}&${reqParams}`
-        );
+        console.log(`Calling ${reqType}`);
+        const response = await axios.get(`${baseURL}${reqType}`, reqParams);
         setData(response.data);
       } catch (error) {
         setError(error);

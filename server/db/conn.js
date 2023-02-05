@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-var db = require("./database");
 
 module.exports = {
   connectToServer: function () {
