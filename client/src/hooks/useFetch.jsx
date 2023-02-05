@@ -27,4 +27,4 @@ const useFetch = (reqType, reqParams) => {
   return { data, loading, error };
 };
 
-export default usePlaces;
+export default useFetch;
