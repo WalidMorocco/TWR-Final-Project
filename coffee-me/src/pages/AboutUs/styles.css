@@ -16,6 +16,7 @@
     background-color: #745246;
     padding-top: 15px;
     border-radius: 12px;
+    overflow: auto;
 }
 #text-box{
     width: 90%;
