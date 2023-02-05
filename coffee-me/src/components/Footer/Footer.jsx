@@ -1,5 +1,6 @@
 import "./styles.css"
 import coffee from "../../images/coffeeIcon.png"
+import home from "../../images/home.png"
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 export const Footer= () => {

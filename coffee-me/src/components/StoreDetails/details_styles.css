@@ -115,6 +115,8 @@
         margin-top: 3px;
         background-color: #745246;
         border-radius: 12px;
+        overflow: auto;
+        height:140px;
     }
     #details-text{
         margin: 0;
