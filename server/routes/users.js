@@ -25,9 +25,9 @@ router.get('/register', function (req, res) {
 
 //post routes
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/messages/chat',
-    failureRedirect: '/users/login',
-    failureMessage: true
+    // successRedirect: '/messages/chat',
+    // failureRedirect: '/users/login',
+    // failureMessage: true
 }));
 
 router.post('/register', async function (req, res) {
@@ -40,26 +40,23 @@ router.post('/register', async function (req, res) {
         }
     })
 
-    await User.findOne({name:req.body.name}).exec().then(function(user){
+    await User.findOne({username:req.body.username}).exec().then(function(user){
         if(user){
             errors.push("Username already in use.");
         }
     })
 
-    if (req.body.password != req.body.password2) {
-        errors.push("Passwords do not match.");
-    }
     if (errors.length > 0) {
-        res.render('users/register', {
-            error_msg: errors,
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password,
-            password2: req.body.password2
-        });
+        // res.render('users/register', {
+        //     error_msg: errors,
+        //     username: req.body.username,s
+        //     email: req.body.email,
+        //     password: req.body.password,
+        //     password2: req.body.password2
+        // });
     } else {
         var newUser = new User({
-            name: req.body.name,
+            username: req.body.username,
             email: req.body.email,
             password: req.body.password,
         });
@@ -73,15 +70,13 @@ router.post('/register', async function (req, res) {
                 }).catch(function (err) {
                     console.log(err);
                     errors.push({ err: err });
-                    res.render('users/register', {
-                        errors: errors,
-                    });
+                    // res.render('users/register', {
+                    //     errors: errors,
+                    // });
                     return;
                 });
             });
         });
-
-
     }
 });
 
