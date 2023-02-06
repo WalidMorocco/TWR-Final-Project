@@ -55,6 +55,8 @@ router.get("/storedetails", async function (req, res) {
           name: placeDetails.name,
           phone: placeDetails.formatted_phone_number,
           location: `${placeDetails.geometry.location.lat},${placeDetails.geometry.location.lng}`,
+          delivery: placeDetails.delivery,
+          rating: placeDetails.rating,
         });
 
         newStore
