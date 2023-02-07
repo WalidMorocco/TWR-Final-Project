@@ -1,10 +1,9 @@
 const axios = require("axios");
 
-const apiKey = `[ADD_LOCALLY]`;
 const baseURL = `https://maps.googleapis.com/maps/api/place/`;
 
 const getFullURL = (reqType, reqParams) =>
-  `${baseURL}${reqType}?key=${apiKey}&${reqParams}`;
+  `${baseURL}${reqType}?key=${process.env.GOOGLE_API_KEY}&${reqParams}`;
 
 const getPlaces = async (reqType, reqParams) => {
   try {
@@ -19,7 +18,7 @@ const getPlaces = async (reqType, reqParams) => {
 };
 
 module.exports = {
-  getNearbyPlaces: async (lat, lon, radius = "5000") => {
+  getNearbyPlaces: async (lat, lon, radius) => {
     return await getPlaces(
       "nearbysearch",
       `location=${lat},${lon}&radius=${radius}&type=cafe`

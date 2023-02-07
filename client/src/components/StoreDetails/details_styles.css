@@ -1,0 +1,147 @@
+@media only screen and (max-width: 600px) {
+    .storeDetails-container{
+        width: 100%;
+        padding-top:15%; 
+        margin: 0;
+    }
+    #store-images{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .detailsTitle-container{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    #details-title{
+        margin: 0;
+        padding: 0;
+        font-size: 27px;
+        padding-top: 5px;
+        margin-left: 5%;
+    }
+
+    .address-container{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        margin-top: 5px;
+    }
+    #address{
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        width: 100%;
+        margin-left: 10%;
+    }
+    .rate {
+        margin: 0;
+        padding: 0;
+        float: left;
+        height: 46px;
+        padding-top: 5px;
+        margin-left: 9%;
+        margin-bottom: 5px;
+    }
+    .rate:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+    }
+    .rate:not(:checked) > label {
+        float:right;
+        width:1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:28px;
+        color:#ccc;
+    }
+    .rate:not(:checked) > label:before {
+        content: '★ ';
+    }
+    .rate > input:checked ~ label {
+        color: #ffc700;    
+    }
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+        color: #deb217;  
+    }
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }
+    .drive-thru-container{
+       float: left;
+       width: 100%;
+       margin-top: -30px;
+       margin-bottom: 5px;
+    }
+    #check-image{
+        width: 25px;
+        float: left;
+        margin-left: 10%;
+        margin-top: 15px;
+    }
+    #drive-thru{
+        font-size: 18px;
+        margin-left: 5px;
+        float: left;
+    }
+    .time-container{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        float: left;
+        margin-top: -20px;
+        margin-bottom: 5px;
+    }
+    #monday,#tuesday,#wednesday,#thursday,#friday,#saturday,#sunday{
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        padding-top: 5px;
+        margin-left: 10%;
+    }
+    .details-container{
+        margin: 0;
+        padding: 0;
+        width: 90%;
+        margin-left: 5%;
+        float: left;
+        margin-top: 3px;
+        background-color: #745246;
+        border-radius: 12px;
+        overflow: auto;
+        height:140px;
+    }
+    #details-text{
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        width: 90%;
+        margin-left: 5%;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        color: white;
+    }
+    .button-container{
+        float: left;
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+       
+    }
+    #reviews{
+        width: 50%;
+        font-size: 18px;
+        border-radius: 12px;
+        background-color: #745246;
+        border: none;
+        color: white;
+        height: 40px;
+    }
+}

@@ -5,22 +5,17 @@ import locationIcon from "../../images/locationIcon.png";
 import useLocation from "../../hooks/useLocation";
 
 export const Navbar = () => {
+
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleAboutClick = () => {
-    navigate("/AboutUs", { replace: false });
+  const navigateToAbout = () => {
+    navigate('/AboutUs');
   };
-
   return (
     <div className="navbar-container">
       <div className="navbar-icon">
-        <img
-          id="icon"
-          src={coffeeIcon}
-          alt="CoffeeMe"
-          onClick={handleAboutClick}
-        />
+        <button id="icon-button" onClick={navigateToAbout}><img id="icon" src={coffeeIcon} alt="React Image" /></button>
       </div>
       <div className="navbar-location">
         <img id="location-icon" src={locationIcon} alt="Location" />

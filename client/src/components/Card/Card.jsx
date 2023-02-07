@@ -1,9 +1,15 @@
 import "./styles.css";
 import PropTypes from "prop-types";
 import { Photo } from "../Photo";
-import usePhoto from "../../hooks/usePhoto";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 export const Card = ({ name, distance, photoRef }) => {
+const navigate = useNavigate();
+
+  const navigateToDetails = () => {
+    navigate('/StoreDetails');
+  };
+
   const formatDistance = (distance) => {
     var convDist = distance / 1609;
     if (convDist < 1) {
@@ -22,7 +28,7 @@ export const Card = ({ name, distance, photoRef }) => {
         <div className="card-contents">
           <h1 id="store-name">{name}</h1>
           <h2 id="store-miles">{formatDistance(distance)}</h2>
-          <button id="store-details">Details</button>
+          <button id="store-details" onClick={navigateToDetails}>Details</button>
         </div>
       </div>
     </div>

@@ -1,46 +1,53 @@
 @media only screen and (max-width: 600px) {
-  .navbar-container {
-    width: 100%;
-    height: 60px;
-    /*border: 2px solid red;*/
-    background-color: #745246;
-    margin: 0;
-    position: fixed;
-    top: 0;
-    overflow: hidden;
-  }
-  .navbar-icon {
-    height: 60px;
-    width: 25%;
-    margin: 0;
-    text-align: center;
-    float: left;
-    border-right: 1px solid black;
-  }
-  #icon {
-    margin: 0;
-    width: 40px;
-    margin-top: 9px;
-  }
-  .navbar-location {
-    width: 75%;
-    margin: 0x;
-    height: 60px;
-    margin-left: 25%;
-  }
-  #location-icon {
-    width: 35px;
-    float: left;
-    margin: 0;
-    margin-left: 52px;
-    margin-top: -1px;
-  }
-  #navbar-location-text {
-    width: 100%;
-    color: white;
-    text-align: center;
-    line-height: 35px;
-    font-size: 12px;
-    margin-left: -60px;
-  }
+    .navbar-container{
+        width: 100%;
+        height: 60px;
+        /*border: 2px solid red;*/
+        background-color: #745246;
+        margin: 0;
+        position: fixed;
+        top:0;
+        overflow: hidden;
+    }
+    .navbar-icon{
+        height: 60px;
+        width: 25%;
+        margin: 0;
+        text-align: center;
+        float: left;
+        border-right: 1px solid black;
+    }
+    #icon-button{
+        width: 100%;
+        background: none;
+        margin:0;
+        border: none;
+    }
+    #icon{
+        margin: 0;
+        width: 40px;
+        margin-top:9px;
+    }
+    .navbar-location{
+        width: 75%;
+        margin: 0X;
+        height: 60px;
+        margin-left:25%;
+    }
+    #location-icon{
+        width: 35px;
+        float: left;
+        margin: 0;
+        margin-left: 52px;
+        margin-top: -1px;
+    }
+    #navbar-location-text{
+        width: 100%;
+        color: white;
+        text-align: center;
+        line-height: 35px;
+        font-size: 12px;
+        margin-left: -60px;
+    }
+
 }
