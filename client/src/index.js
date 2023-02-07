@@ -10,6 +10,7 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import SignUp from './pages/SignUpPage';
 import SignIn from './pages/SignInPage';
 import ProfileSettings from './pages/ProfileSettingsPage';
+import StoreDetails from './pages/StoreDetailsPage';
 
 // Create root element
 const rootElement = document.getElementById('root');
@@ -25,6 +26,7 @@ root.render(
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/ProfileSettings" element={<ProfileSettings />} />
+        <Route path="/StoreDetails" element={<StoreDetails />} />
       </Route>
     </Routes>
   </BrowserRouter>

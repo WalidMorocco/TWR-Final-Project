@@ -2,6 +2,7 @@ import useLocation from "../hooks/useLocation";
 import { Filters } from "../components/Filters/Filters";
 import { Search } from "../components/Search/Search";
 import { Card } from "../components/Card/Card";
+import { ScrollBox } from "../components/ScrollBox/ScrollBox";
 import { useEffect, useState } from "react";
 import { computeDistanceBetween, LatLng } from "spherical-geometry-js";
 import axios from "axios";
@@ -45,6 +46,7 @@ export const HomePage = () => {
     <>
       <Filters />
       <Search />
+      {/**<ScrollBox/>**/}
       {data.results.map((place) => (
         <div key={place.place_id}>
           <Card

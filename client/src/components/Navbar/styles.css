@@ -8,7 +8,6 @@
         position: fixed;
         top:0;
         overflow: hidden;
-        
     }
     .navbar-icon{
         height: 60px;
@@ -17,6 +16,12 @@
         text-align: center;
         float: left;
         border-right: 1px solid black;
+    }
+    #icon-button{
+        width: 100%;
+        background: none;
+        margin:0;
+        border: none;
     }
     #icon{
         margin: 0;

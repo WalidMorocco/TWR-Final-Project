@@ -26,13 +26,13 @@
         height: 87px;
     }
     #store-name{
-        font-size: 20px;
+        font-size: 17px;
         margin: 0;
         color: white;
-        margin-top: 6px;
+        margin-top: 10px;
     }
     #store-miles{
-        font-size: 18px;
+        font-size: 15px;
         margin: 0;
         color: white;
         margin-top:6px;
@@ -42,7 +42,7 @@
         background: none;
         border:none;
         margin-top:6px;
-        font-size: 16px;
+        font-size: 15px;
         color: white;
         margin-left: -6px;
     }
