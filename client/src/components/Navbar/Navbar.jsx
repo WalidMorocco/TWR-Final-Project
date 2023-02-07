@@ -1,12 +1,13 @@
-import "./styles.css"
-import React from 'react';
-import coffeeIcon from "../../images/coffeeIcon.png"
-import locationIcon from "../../images/locationIcon.png"
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import "./styles.css";
+import { useNavigate } from "react-router-dom";
+import coffeeIcon from "../../images/coffeeIcon.png";
+import locationIcon from "../../images/locationIcon.png";
+import useLocation from "../../hooks/useLocation";
 
 export const Navbar = () => {
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const navigateToAbout = () => {
     navigate('/AboutUs');
@@ -14,11 +15,13 @@ export const Navbar = () => {
   return (
     <div className="navbar-container">
       <div className="navbar-icon">
-        <button id="icon-button" onClick={navigateToAbout}><img id="icon" src={coffeeIcon} alt="React Image" /></button> {/** Turn into button **/}
+        <button id="icon-button" onClick={navigateToAbout}><img id="icon" src={coffeeIcon} alt="React Image" /></button>
       </div>
       <div className="navbar-location">
-        <img id="location-icon" src={locationIcon} alt="React Image" />
-        <h1 id="navbar-location-text">194 Main St Ave</h1>
+        <img id="location-icon" src={locationIcon} alt="Location" />
+        <h1 id="navbar-location-text">
+          {location.coordinates.lat}, {location.coordinates.lng}
+        </h1>
       </div>
     </div>
   );

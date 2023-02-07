@@ -11,7 +11,7 @@ const useFetch = (reqType, reqParams) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        console.log(`Calling ${reqType}`);
+        console.log(`Calling ${baseURL}${reqType}`);
         const response = await axios.get(`${baseURL}${reqType}`, reqParams);
         setData(response.data);
       } catch (error) {
