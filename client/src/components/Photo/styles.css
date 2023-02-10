@@ -1,0 +1,12 @@
+.store-image.full {
+  max-height: 200px;
+}
+
+.store-image.thumbnail {
+  width: 75px;
+  height: 75px;
+  margin-top: 7.5px;
+  margin-left: 7.5px;
+  border-radius: 12px;
+  float: left;
+}

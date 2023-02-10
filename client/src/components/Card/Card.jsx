@@ -1,13 +1,14 @@
 import "./styles.css";
 import PropTypes from "prop-types";
-import { Photo } from "../Photo";
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import defaultStoreIcon from "../../images/coffeeIcon.png";
+import { Photo } from "../Photo/Photo";
+import { useNavigate } from "react-router-dom";
 
-export const Card = ({ name, distance, photoRef }) => {
-const navigate = useNavigate();
+export const Card = ({ storeId, name, distance, photoRef }) => {
+  const navigate = useNavigate();
 
   const navigateToDetails = () => {
-    navigate('/StoreDetails');
+    navigate(`/StoreDetails/${storeId}`);
   };
 
   const formatDistance = (distance) => {
@@ -24,11 +25,21 @@ const navigate = useNavigate();
   return (
     <div className="card-container">
       <div className="card">
-        {photoRef && <Photo photoRef={photoRef} />}
+        {photoRef ? (
+          <Photo photoRef={photoRef} size="thumbnail" />
+        ) : (
+          <img
+            className="store-image thumbnail"
+            src={defaultStoreIcon}
+            alt="Store Img"
+          />
+        )}
         <div className="card-contents">
           <h1 id="store-name">{name}</h1>
           <h2 id="store-miles">{formatDistance(distance)}</h2>
-          <button id="store-details" onClick={navigateToDetails}>Details</button>
+          <button id="store-details" onClick={navigateToDetails}>
+            Details
+          </button>
         </div>
       </div>
     </div>

@@ -29,8 +29,8 @@ router.get("/nearbystores", async function (req, res) {
 router.get("/storedetails", async function (req, res) {
   var store;
 
-  console.log(req.query.placeId);
-  Store.findOne({ placeId: req.query.placeId })
+  console.log(req.query.storeId);
+  Store.findOne({ placeId: req.query.storeId })
     .exec()
     .then((result) => {
       console.log(`mongo result: ${result}`);
@@ -45,7 +45,7 @@ router.get("/storedetails", async function (req, res) {
     })
     .then(async () => {
       if (store == null) {
-        const response = await getPlaceDetails(req.query.placeId);
+        const response = await getPlaceDetails(req.query.storeId);
         console.log(`Details fetched: ${response}`);
 
         const placeDetails = response.result;
@@ -53,10 +53,17 @@ router.get("/storedetails", async function (req, res) {
         var newStore = new Store({
           placeId: placeDetails.place_id,
           name: placeDetails.name,
+          description: placeDetails?.editorial_summary?.overview,
           phone: placeDetails.formatted_phone_number,
-          location: `${placeDetails.geometry.location.lat},${placeDetails.geometry.location.lng}`,
+          location: {
+            address: placeDetails.vicinity,
+            lat: placeDetails.geometry.location.lat,
+            lng: placeDetails.geometry.location.lng,
+          },
           delivery: placeDetails.delivery,
           rating: placeDetails.rating,
+          openingHours: placeDetails?.current_opening_hours?.weekday_text,
+          images: placeDetails?.photos?.map((p) => p.photo_reference),
         });
 
         newStore

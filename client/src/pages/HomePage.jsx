@@ -11,8 +11,9 @@ export const HomePage = () => {
     <>
       <Filters />
       <Search />
-      {location.loaded && <StoresList location={location} />}
-      {/**<ScrollBox/>**/}
+      <ScrollBox>
+        {location.loaded && <StoresList location={location} />}
+      </ScrollBox>
     </>
   );
 };
