@@ -1,15 +1,10 @@
-import "./styles.css"
-import { Card } from "../Card/Card";
+import "./styles.css";
+import PropTypes from "prop-types";
 
-export const ScrollBox = () => {
-  return (
-    <div className="scroll-container">
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-    </div>
-  );
+export const ScrollBox = ({ children }) => {
+  return <div className="scroll-container">{children}</div>;
+};
+
+ScrollBox.propTypes = {
+  children: PropTypes.node.isRequired,
 };

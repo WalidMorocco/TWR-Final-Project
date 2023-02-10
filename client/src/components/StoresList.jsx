@@ -23,6 +23,7 @@ export const StoresList = ({ location }) => {
         data.results.map((place) => (
           <div key={place.place_id}>
             <Card
+              storeId={place.place_id}
               name={place.name}
               distance={computeDistanceBetween(
                 new LatLng(location.coordinates.lat, location.coordinates.lng),

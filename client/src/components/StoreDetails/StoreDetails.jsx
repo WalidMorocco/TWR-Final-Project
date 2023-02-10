@@ -1,48 +1,90 @@
-import "./details_styles.css"
-import dunkin from "../../images/dunkinDetails.jpeg"
-import coffee from "../../images/coffeeIcon.png"
-import check from "../../images/check.png"
+import "./details_styles.css";
+import useDetails from "../../hooks/useDetails";
+import { useParams } from "react-router-dom";
+import ImageSlider from "../ImageSlider/ImageSlider";
+import CheckIcon from "@mui/icons-material/Check";
+import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
+import FreeBreakfastOutlinedIcon from "@mui/icons-material/FreeBreakfastOutlined";
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
+
+const mapsBaseURL = "https://www.google.com/maps/dir/";
+
+const getNavigationURL = (location) => {
+  return `${mapsBaseURL}${location.address}/@${location.lat},${location.lng}`;
+};
 
 export const StoreDetails = () => {
+  const { storeId } = useParams();
+  const { data, loading, error } = useDetails(storeId);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="storeDetails-container">
-      <img id="store-images" src={dunkin} alt="React Image" />
+      <ImageSlider images={data.images} />
       <div className="detailsTitle-container">
-        <h1 id="details-title">Dunkin Donuts</h1>
+        <h1 id="details-title">{data.name}</h1>
       </div>
       <div className="address-container">
-          <a href="#" id="address">123 Main St Providence RI</a>
+        <a href={getNavigationURL(data.location)} id="address">
+          {data.location.address}
+        </a>
       </div>
-      <div class="rate">
-          <input type="radio" id="star5" name="rate" value="5" />
-          <label for="star5" title="text">5 stars</label>
-          <input type="radio" id="star4" name="rate" value="4" />
-          <label for="star4" title="text">4 stars</label>
-          <input type="radio" id="star3" name="rate" value="3" />
-          <label for="star3" title="text">3 stars</label>
-          <input type="radio" id="star2" name="rate" value="2" />
-          <label for="star2" title="text">2 stars</label>
-          <input type="radio" id="star1" name="rate" value="1" />
-          <label for="star1" title="text">1 star</label>
+      <div className="rate">
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Rating
+            name="customized-color"
+            value={data.rating}
+            getLabelText={(value) => `${value} Cup${value !== 1 ? "s" : ""}`}
+            precision={0.5}
+            icon={<FreeBreakfastIcon fontSize="inherit" />}
+            emptyIcon={<FreeBreakfastOutlinedIcon fontSize="inherit" />}
+            sx={{
+              "& .MuiRating-iconFilled": {
+                color: "#685618",
+              },
+            }}
+          />
+          <Box sx={{ ml: 1 }}>{data.rating}</Box>
+        </Box>
       </div>
-      <div className="drive-thru-container">
-        <img id="check-image" src={check} alt="React Image" />
-        <p id="drive-thru">Drive thru</p>
-      </div>
+      {data.delivery && (
+        <div className="drive-thru-container">
+          <div id="check-image">
+            <CheckIcon />
+          </div>
+          <p id="drive-thru">Delivery</p>
+        </div>
+      )}
+      {data.driveThru && (
+        <div className="drive-thru-container">
+          <div id="check-image">
+            <CheckIcon />
+          </div>
+          <p id="drive-thru">Drive thru</p>
+        </div>
+      )}
       <div className="time-container">
-        <p id="monday">Monday - 5 AM - 9 PM</p>
-        <p id="tuesday">Tuesday - 5 AM - 9 PM</p>
-        <p id="wednesday">Wednesday - 5 AM - 9 PM</p>
-        <p id="thursday">Thursday - 5 AM - 9 PM</p>
-        <p id="friday">Friday - 5 AM - 9 PM</p>
-        <p id="saturday">Saturday - 5 AM - 9 PM</p>
-        <p id="sunday">Sunday - 5 AM - 9 PM</p>
+        {data.openingHours &&
+          data.openingHours.map((hours, i) => (
+            <div key={i}>
+              <p className="day">{hours}</p>
+            </div>
+          ))}
       </div>
+      {}
       <div className="details-container">
-        <p id="details-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
-          took a galley Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
-          took a galley</p>
+        <p id="details-text">
+          {data.description ? data.description : "No description available"}
+        </p>
       </div>
       <div className="button-container">
         <button id="reviews">Reviews</button>

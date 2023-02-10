@@ -1,9 +1,9 @@
 import useFetch from "./useFetch";
 
-const useDetails = (placeId) => {
+const useDetails = (storeId) => {
   return useFetch("storedetails", {
     params: {
-      id: placeId,
+      storeId: storeId,
     },
   });
 };
