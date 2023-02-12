@@ -10,6 +10,7 @@ export const StoresList = ({ location }) => {
   );
 
   console.log(data);
+  
 
   if (loading) {
     return <p>Loading...</p>;

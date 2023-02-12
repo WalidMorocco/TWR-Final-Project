@@ -10,7 +10,7 @@ export const Footer= () => {
     navigate('/');
   };
   const navigateToProfile = () => {
-    navigate('/ProfileSettingsPage');
+    navigate('/ProfileSettings');
   };
   const navigateToSellerDashboard = () => {
     navigate('/');

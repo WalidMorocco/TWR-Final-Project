@@ -1,0 +1,105 @@
+@media only screen and (max-width: 600px) {
+
+    .reviews-container{
+        width: 90%;
+        margin-left:5%;
+        padding-top: 63px;
+        float: left;
+    }
+    .title-container{
+        width: 100%;
+        text-align: center;
+        float: left;
+    }
+    #reviews-title{
+        
+    }
+    .review-image-container{
+        float: left;
+    }
+    #review-images{
+        width: 100%;
+        border-radius: 12px;
+    }
+    .rating-container{
+        float: left;
+        width: 80%;
+        margin-left: 10%;
+    }
+    .rates {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        float: left;
+    }
+    .rates:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+    }
+    .rates:not(:checked) > label {
+        float:right;
+        width:1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:50px;
+        color:#ccc;
+        padding-left: 3px;
+        padding-right:3px;
+    }
+    .rates:not(:checked) > label:before {
+        content: '★ ';
+    }
+    .rates > input:checked ~ label {
+        color: #ffc700;    
+    }
+    .rates:not(:checked) > label:hover,
+    .rates:not(:checked) > label:hover ~ label {
+        color: #deb217;  
+    }
+    .rates > input:checked + label:hover,
+    .rates > input:checked + label:hover ~ label,
+    .rates > input:checked ~ label:hover,
+    .rates > input:checked ~ label:hover ~ label,
+    .rates > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }
+    .lower-container{
+        float: left;
+        width: 100%;
+        margin: 0%;
+        text-align: center;
+        margin-top: -10px;
+    }
+    #lower-review{
+        font-size: 30px;
+    }
+    .leave-review-container{
+        float: left;
+        background-color: #745246;
+        height: 200px;
+        overflow: auto;
+        border-radius: 12px;
+    }
+    #review-box{
+        width: 90%;
+        margin-left: 5%;
+        color: white;
+        font-size: 18px;
+    }
+    .button-box{
+        float: left;
+        width: 100%;
+        text-align: center;
+        margin-top:25px;
+    }
+    #save{
+        width: 60%;
+        height: 50px;
+        border-radius: 12px;
+        background-color: #745246;
+        color: white;
+        font-size: 25px;
+        border:none;
+    }
+}
