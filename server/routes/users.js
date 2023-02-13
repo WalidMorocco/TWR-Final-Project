@@ -3,15 +3,13 @@ const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
-const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
-const session = require("express-session");
-const bodyParser = require("body-parser");
 var router = express.Router();
 
-//load user model
+// Load user model
 require('../models/User');
 var User = mongoose.model('users');
+mongoose.set('strictQuery', true);
 
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
@@ -20,21 +18,23 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password'
-}, async (email, password, done) => {
-    const user = await User.findOne({ email });
-    if (!user) {
-        return done(null, false, { message: 'Incorrect email or password' });
-    }
+        usernameField: 'email',
+        passwordField: 'password'
+    }, 
+    async (email, password, done) => {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return done(null, false, { message: 'Incorrect email or password' });
+        }
 
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-        return done(null, false, { message: 'Incorrect email or password' });
-    }
+        const isMatch = await user.comparePassword(password);
+        if (!isMatch) {
+            return done(null, false, { message: 'Incorrect email or password' });
+        }
 
-    return done(null, user);
-}));
+        return done(null, user);
+    }
+));
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -46,8 +46,6 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
-
-//post routes
 router.post("/login", (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
         if (err) throw err;
@@ -61,6 +59,7 @@ router.post("/login", (req, res, next) => {
         }
     })(req, res, next);
 });
+
 router.post('/register', async function(req, res) {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const newUser = new User({
@@ -74,12 +73,10 @@ router.post('/register', async function(req, res) {
     });
 });
 
-
-
-// router.get('/logout', function (req, res) {
-//     req.logout();
-//     req.flash("success_msg", "You successfully logged out");
-//     res.redirect('/users/login');
-// });
+// Implement the logout endpoint
+router.get("/logout", (req, res) => {
+    req.logout();
+    res.send({ message: "Logged out successfully" });
+});
 
 module.exports = router;
