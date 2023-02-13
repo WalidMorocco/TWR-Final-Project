@@ -23,7 +23,10 @@ export const SignIn = () => {
   return (
     <div className='signIn-container'>
       <h1 id='signIn-title'>Sign In</h1>
-      <form className='signIn-form'>
+      <form
+        className='signIn-form'
+        onSubmit={handleSubmit}
+      >
         <div className='label-title'>
           <label id='email'>Email:</label>
         </div>
@@ -48,7 +51,12 @@ export const SignIn = () => {
           <a href='#'>Not a user? Sign up now!</a>
         </div>
         <div className='submit-button-group'>
-          <button id='submit'>Sign In</button>
+          <button
+            type='submit'
+            id='submit'
+          >
+            Sign In
+          </button>
         </div>
       </form>
     </div>

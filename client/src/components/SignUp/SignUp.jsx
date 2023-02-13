@@ -25,7 +25,6 @@ export const SignUp = () => {
         email,
         password,
       };
-
       try {
         const res = await axios.post('http://localhost:5000/register', newUser);
         console.log('User registered');
