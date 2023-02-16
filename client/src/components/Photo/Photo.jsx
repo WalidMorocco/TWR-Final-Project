@@ -5,8 +5,6 @@ import usePhoto from "../../hooks/usePhoto";
 export const Photo = ({ photoRef, size }) => {
   const { data, loading, error } = usePhoto(photoRef);
 
-  console.log(photoRef);
-
   return (
     <>
       {data && data.photoURL && (

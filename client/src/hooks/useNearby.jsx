@@ -1,7 +1,7 @@
 import useFetch from "./useFetch";
 
-const useNearby = (lat, lon, radius = "50000") => {
-  return useFetch("nearbystores", {
+const useNearby = (lat, lon, radius, filter) => {
+  return useFetch(`nearbystores/${filter}`, {
     params: {
       lat: lat,
       lon: lon,

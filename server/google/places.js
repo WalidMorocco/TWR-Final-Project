@@ -29,6 +29,6 @@ module.exports = {
     return await getPlaces("details", `place_id=${placeId}`);
   },
 
-  getPlacePhoto: (photoReference) =>
+  getPlacePhoto: async (photoReference) =>
     getFullURL("photo", `maxwidth=400&photo_reference=${photoReference}`),
 };

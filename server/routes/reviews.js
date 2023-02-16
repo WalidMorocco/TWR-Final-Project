@@ -1,12 +1,12 @@
-var express = require("express");
-var mongoose = require("mongoose");
-var router = express.Router();
+const express = require("express");
+const mongoose = require("mongoose");
+const router = express.Router();
 
 require("../models/Review");
-var Review = mongoose.model("reviews");
+let Review = mongoose.model("reviews");
 
 router.post("/addreview", async function (req, res) {
-  var newReview = new Review({
+  let newReview = new Review({
     storeId: req.query.storeId,
     name: req.query.name,
     title: req.query.title,

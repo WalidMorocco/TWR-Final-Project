@@ -1,6 +1,7 @@
-var express = require("express");
-var mongoose = require("mongoose");
-var router = express.Router();
+//const geometry = require("spherical-geometry-js");
+const express = require("express");
+const mongoose = require("mongoose");
+const router = express.Router();
 
 const {
   getNearbyPlaces,
@@ -8,29 +9,66 @@ const {
   getPlaceDetails,
 } = require("../google/places");
 
-require("../models/Store");
-var Store = mongoose.model("stores");
+const filters = require("../filters");
 
-router.get("/nearbystores", async function (req, res) {
+require("../models/Store");
+const Store = mongoose.model("stores");
+
+require("../models/Search");
+const Search = mongoose.model("searches");
+
+router.get("/nearbystores/:filter", async function (req, res) {
   console.log(
     `Calling getNearbyPlaces ${req.query.lat}, ${req.query.lon}, ${req.query.radius}`
   );
 
-  var stores = await getNearbyPlaces(
+  const stores = await getNearbyPlaces(
     req.query.lat,
     req.query.lon,
     req.query.radius
   );
   console.log(`Stores fetched: ${stores}`);
 
-  res.json(stores);
+  const allStores = stores?.results.map(
+    (s) =>
+      new Store({
+        storeId: s.place_id,
+        name: s.name,
+        location: {
+          address: s.vicinity,
+          lat: s.geometry.location.lat,
+          lng: s.geometry.location.lng,
+        },
+        rating: s.rating,
+        images: s?.photos?.map((p) => p.photo_reference),
+        distance: computeDistanceBetween(
+          new LatLng(req.query.lat, req.query.lon),
+          new LatLng(s.location.lat, s.location.lng)
+        ),
+      })
+  );
+
+  const newSearch = new Search({
+    location: {
+      lat: req.query.lat,
+      lng: req.query.lon,
+    },
+    results: allStores,
+  });
+
+  newSearch.save();
+
+  console.log(`Using filter ${req.params.filter}`);
+  const filteredStores = filters.applyFilter(allStores, req.params.filter);
+
+  res.json(filteredStores);
 });
 
 router.get("/storedetails", async function (req, res) {
-  var store;
+  let store;
 
   console.log(req.query.storeId);
-  Store.findOne({ placeId: req.query.storeId })
+  Store.findOne({ storeId: req.query.storeId })
     .exec()
     .then((result) => {
       console.log(`mongo result: ${result}`);
@@ -50,8 +88,8 @@ router.get("/storedetails", async function (req, res) {
 
         const placeDetails = response.result;
 
-        var newStore = new Store({
-          placeId: placeDetails.place_id,
+        let newStore = new Store({
+          storeId: placeDetails.place_id,
           name: placeDetails.name,
           description: placeDetails?.editorial_summary?.overview,
           phone: placeDetails.formatted_phone_number,
@@ -83,7 +121,7 @@ router.get("/storephoto", async function (req, res) {
   // First, we will call S3 here to see if we have image cached.
 
   // If no cached image exists, we will call google api.
-  var photo = await getPlacePhoto(req.query.photoRef);
+  const photo = await getPlacePhoto(req.query.photoRef);
   console.log(`Photo fetched: ${photo}`);
 
   res.send({ photoURL: photo });
