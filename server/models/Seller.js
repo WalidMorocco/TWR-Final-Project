@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var SellerSchema = new Schema({
+const SellerSchema = new Schema({
   userId: {
     type: String,
     unique: true,

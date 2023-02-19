@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var StoreSchema = new Schema({
-  placeId: {
+const StoreSchema = new Schema({
+  storeId: {
     type: String,
     unique: true,
     required: true,
@@ -45,6 +45,10 @@ var StoreSchema = new Schema({
     required: false,
   },
   views: {
+    type: Number,
+    required: false,
+  },
+  distance: {
     type: Number,
     required: false,
   },
