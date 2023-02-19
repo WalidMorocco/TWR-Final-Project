@@ -6,7 +6,7 @@ import { ScrollBox } from "../components/ScrollBox/ScrollBox";
 import { useState } from "react";
 
 export const HomePage = () => {
-  const location = useLocation();
+  const { loaded, coordinates } = useLocation();
 
   const [filter, setFilter] = useState(null);
 
@@ -20,7 +20,7 @@ export const HomePage = () => {
       <Filters onFilterChange={onFilterChange} />
       <Search />
       <ScrollBox>
-        {location.loaded && <StoresList location={location} filter={filter} />}
+        {loaded && <StoresList location={coordinates} filter={filter} />}
       </ScrollBox>
     </>
   );

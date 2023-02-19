@@ -1,9 +1,9 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const router = express.Router();
+import { Router } from "express";
+import { model } from "mongoose";
+const router = Router();
 
-require("../models/Review");
-let Review = mongoose.model("reviews");
+import "../models/Review";
+let Review = model("reviews");
 
 router.post("/addreview", async function (req, res) {
   let newReview = new Review({

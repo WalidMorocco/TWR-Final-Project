@@ -1,18 +1,14 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+import { Schema, model } from "mongoose";
 
-require("./Store");
-StoreSchema = mongoose.model("stores").schema;
-
-let SearchSchema = new Schema({
+const SearchSchema = new Schema({
   location: {
     lat: { type: String, required: true },
     lng: { type: String, required: true },
   },
   results: {
-    type: [StoreSchema],
+    type: String,
     required: true,
   },
 });
 
-mongoose.model("searches", SearchSchema);
+model("searches", SearchSchema);

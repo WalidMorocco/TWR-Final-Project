@@ -1,16 +1,21 @@
 import { Card } from "./Card/Card";
 import useNearby from "../hooks/useNearby";
+import { Loading } from "./Loading/Loading";
 
 export const StoresList = ({ location, filter }) => {
   const { data, loading, error } = useNearby(
-    location.coordinates.lat,
-    location.coordinates.lng,
+    location.lat,
+    location.lng,
     "5000",
     filter
   );
 
+  if (error) {
+    console.log(error);
+  }
+
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (

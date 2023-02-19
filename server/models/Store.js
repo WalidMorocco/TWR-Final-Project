@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+import { Schema, model } from "mongoose";
 
 const StoreSchema = new Schema({
   storeId: {
@@ -54,4 +53,4 @@ const StoreSchema = new Schema({
   },
 });
 
-mongoose.model("stores", StoreSchema);
+model("stores", StoreSchema);

@@ -1,12 +1,13 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-const passport = require("passport");
-const router = express.Router();
+import { Router } from "express";
+import { model } from "mongoose";
+import bcryptjs from "bcryptjs";
+import passport from "passport";
+const router = Router();
+const { genSalt, hash: _hash } = bcryptjs;
 
 //load user model
-require("../models/User");
-const User = mongoose.model("users");
+import "../models/User.js";
+const User = model("users");
 
 //Routes for Sign in
 router.get("/login", function (req, res) {
@@ -68,8 +69,8 @@ router.post("/register", async function (req, res) {
       password: req.body.password,
     });
 
-    bcrypt.genSalt(10, function (err, salt) {
-      bcrypt.hash(newUser.password, salt, function (err, hash) {
+    genSalt(10, function (err, salt) {
+      _hash(newUser.password, salt, function (err, hash) {
         if (err) throw err;
         newUser.password = hash;
         newUser
@@ -96,4 +97,4 @@ router.get("/logout", function (req, res) {
   res.redirect("/users/login");
 });
 
-module.exports = router;
+export default router;

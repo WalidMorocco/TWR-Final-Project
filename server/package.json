@@ -5,6 +5,7 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
@@ -23,6 +24,7 @@
     "mongodb": "^4.13.0",
     "mongoose": "^6.9.0",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "spherical-geometry-js": "^3.0.0"
   }
 }

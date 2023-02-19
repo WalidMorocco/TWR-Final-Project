@@ -23,7 +23,6 @@ const useFetch = (reqType, reqParams) => {
     getData();
   }, [reqType]);
 
-  console.log(data);
   return { data, loading, error };
 };
 

@@ -1,9 +1,9 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const router = express.Router();
+import { Router } from "express";
+import { model } from "mongoose";
+const router = Router();
 
-require("../models/Seller");
-const Seller = mongoose.model("sellers");
+import "../models/Seller";
+const Seller = model("sellers");
 
 router.post("/createseller", async function (req, res) {
   const newSeller = new Seller({
