@@ -4,7 +4,9 @@ const cors = require("cors");
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 var router = express.Router();
+const secret = '47DDBD4D13F45F298693D395AE66B'
 
 // Load user model
 require('../models/User');
@@ -48,17 +50,23 @@ passport.deserializeUser(function(id, done) {
 
 router.post("/login", (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
-        if (err) throw err;
-        if (!user) res.send("No User Exists");
-        else {
+        if (err) {
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+        if (!user) {
+            return res.status(401).json({ error: "Invalid credentials" });
+        }
         req.logIn(user, (err) => {
-            if (err) throw err;
-            res.send("Successfully Authenticated");
+            if (err) {
+                return res.status(500).json({ error: "Internal Server Error" });
+            }
+            const token = jwt.sign({ userId: user.id }, secret);
+            res.json({ token });
             console.log(req.user);
         });
-        }
     })(req, res, next);
 });
+
 
 router.post('/register', async function(req, res) {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
