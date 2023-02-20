@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import bcrypt from "bcryptjs";
 
 const UserSchema = new Schema({
   username: {
@@ -24,5 +25,9 @@ const UserSchema = new Schema({
     required: false,
   },
 });
+
+UserSchema.methods.comparePassword = function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
+};
 
 model("users", UserSchema);
