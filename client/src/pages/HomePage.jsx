@@ -12,12 +12,11 @@ export const HomePage = () => {
   return (
     <>
       <Filters />
-      <Search />
-
+      {location.loaded && <Search location={location}/>}
       {/* {location.loaded && <StoresList location={location} />} */}
 
       {/* <Reviews/> */}
-      {/**<ScrollBox/>**/}
+      <ScrollBox/>
     </>
   );
 };
