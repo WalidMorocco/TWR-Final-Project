@@ -12,8 +12,8 @@ export const Card = ({ storeId, name, distance, photoRef }) => {
   };
 
   const formatDistance = (distance) => {
-    var convDist = distance / 1609;
-    if (convDist < 1) {
+    let convDist = distance / 1609;
+    if (convDist < 0.1) {
       convDist = (convDist * 5280).toFixed(0);
       return `${convDist} Feet`;
     } else {

@@ -1,8 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+import { Schema, model } from "mongoose";
 
-var StoreSchema = new Schema({
-  placeId: {
+const StoreSchema = new Schema({
+  storeId: {
     type: String,
     unique: true,
     required: true,
@@ -48,6 +47,10 @@ var StoreSchema = new Schema({
     type: Number,
     required: false,
   },
+  distance: {
+    type: Number,
+    required: false,
+  },
 });
 
-mongoose.model("stores", StoreSchema);
+model("stores", StoreSchema);
