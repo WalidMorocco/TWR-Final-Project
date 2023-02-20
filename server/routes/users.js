@@ -1,21 +1,20 @@
-const mongoose = require("mongoose");
-const express = require("express");
-const cors = require("cors");
-const passport = require("passport");
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import { model } from "mongoose";
+import express from "express";
+import expressSession from 'express-session';
+import passport from "passport";
+import { Strategy as LocalStrategy } from 'passport-local';
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 var router = express.Router();
 const secret = '47DDBD4D13F45F298693D395AE66B'
 
 // Load user model
-require('../models/User');
-var User = mongoose.model('users');
-mongoose.set('strictQuery', true);
+import '../models/User.js';
+var User = model('users');
 
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
-router.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+router.use(expressSession({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 router.use(passport.initialize());
 router.use(passport.session());
 
@@ -100,4 +99,4 @@ router.get("/logout", (req, res) => {
     res.send({ message: "Logged out successfully" });
 });
 
-module.exports = router;
+export default router;
