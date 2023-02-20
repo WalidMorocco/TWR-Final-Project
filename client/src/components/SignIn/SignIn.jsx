@@ -8,6 +8,13 @@ export const SignIn = () => {
   const [error, setError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, [isLoggedIn]);
+
   const logCheck = () => {
     console.log('Logged In:', isLoggedIn);
   };
