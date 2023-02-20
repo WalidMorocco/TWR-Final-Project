@@ -13,6 +13,9 @@ app.use(stores);
 import users from "./routes/users.js";
 app.use(users);
 
+import reviews from "./routes/reviews.js";
+app.use(reviews);
+
 // get driver connection
 import { connectToServer } from "./db/conn.js";
 

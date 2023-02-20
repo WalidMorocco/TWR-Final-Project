@@ -3,10 +3,9 @@ import { Schema, model } from "mongoose";
 const ReviewSchema = new Schema({
   storeId: {
     type: String,
-    unique: true,
     required: true,
   },
-  name: {
+  username: {
     type: String,
     required: true,
   },
@@ -20,7 +19,11 @@ const ReviewSchema = new Schema({
   },
   rating: {
     type: Number,
-    required: false,
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    required: true,
   },
 });
 
