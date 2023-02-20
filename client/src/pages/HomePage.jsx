@@ -3,16 +3,24 @@ import { Filters } from "../components/Filters/Filters";
 import { Search } from "../components/Search/Search";
 import { StoresList } from "../components/StoresList";
 import { ScrollBox } from "../components/ScrollBox/ScrollBox";
+import { useState } from "react";
 
 export const HomePage = () => {
-  const location = useLocation();
+  const { loaded, coordinates } = useLocation();
+
+  const [filter, setFilter] = useState(null);
+
+  const onFilterChange = (selectedFilter) => {
+    console.log(selectedFilter);
+    setFilter(selectedFilter);
+  };
 
   return (
     <>
-      <Filters />
+      <Filters onFilterChange={onFilterChange} />
       <Search />
       <ScrollBox>
-        {location.loaded && <StoresList location={location} />}
+        {loaded && <StoresList location={coordinates} filter={filter} />}
       </ScrollBox>
     </>
   );

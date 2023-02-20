@@ -1,11 +1,18 @@
 import "./styles.css";
 import PropTypes from "prop-types";
 import usePhoto from "../../hooks/usePhoto";
+import { Loading } from "../Loading/Loading";
 
 export const Photo = ({ photoRef, size }) => {
   const { data, loading, error } = usePhoto(photoRef);
 
-  console.log(photoRef);
+  if (error) {
+    console.log(error);
+  }
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
