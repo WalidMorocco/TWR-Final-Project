@@ -1,100 +1,102 @@
-import { Router } from "express";
 import { model } from "mongoose";
-import bcryptjs from "bcryptjs";
+import express from "express";
+import expressSession from 'express-session';
 import passport from "passport";
-const router = Router();
-const { genSalt, hash: _hash } = bcryptjs;
+import { Strategy as LocalStrategy } from 'passport-local';
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+var router = express.Router();
+const secret = '47DDBD4D13F45F298693D395AE66B'
 
-//load user model
-import "../models/User.js";
-const User = model("users");
+// Load user model
+import '../models/User.js';
+var User = model('users');
 
-//Routes for Sign in
-router.get("/login", function (req, res) {
-  if (req.session.messages) {
-    req.flash("error_msg", req.session.messages);
-    req.session.messages = null;
-    res.redirect("/users/login");
-  } else {
-    res.render("users/login");
-  }
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
+router.use(expressSession({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+router.use(passport.initialize());
+router.use(passport.session());
+
+passport.use(new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password'
+    }, 
+    async (email, password, done) => {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return done(null, false, { message: 'Incorrect email or password' });
+        }
+
+        const isMatch = await user.comparePassword(password);
+        if (!isMatch) {
+            return done(null, false, { message: 'Incorrect email or password' });
+        }
+
+        return done(null, user);
+    }
+));
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
 });
 
-router.get("/register", function (req, res) {
-  res.render("users/register");
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
 });
 
-//post routes
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    // successRedirect: '/messages/chat',
-    // failureRedirect: '/users/login',
-    // failureMessage: true
-  })
-);
+router.post("/login", (req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
+        if (err) {
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
+        if (!user) {
+            return res.status(401).json({ error: "Invalid credentials" });
+        }
+        req.logIn(user, (err) => {
+            if (err) {
+                return res.status(500).json({ error: "Internal Server Error" });
+            }
+            const token = jwt.sign({ userId: user.id }, secret);
+            res.json({ token });
+            console.log(req.user);
+        });
+    })(req, res, next);
+});
 
-router.post("/register", async function (req, res) {
-  console.log(req.body);
-  let errors = [];
 
-  await User.findOne({ email: req.body.email })
-    .exec()
-    .then(function (user) {
-      if (user) {
-        errors.push("A user with this email already exists.");
-      }
+router.post('/register', async function(req, res) {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+    // Check if the username or email already exists in the database
+    const existingUser = await User.findOne({
+        $or: [{ username: req.body.username }, { email: req.body.email }]
     });
 
-  await User.findOne({ username: req.body.username })
-    .exec()
-    .then(function (user) {
-      if (user) {
-        errors.push("Username already in use.");
-      }
-    });
-
-  if (errors.length > 0) {
-    // res.render('users/register', {
-    //     error_msg: errors,
-    //     username: req.body.username,s
-    //     email: req.body.email,
-    //     password: req.body.password,
-    //     password2: req.body.password2
-    // });
-  } else {
+    if (existingUser) {
+        return res.status(400).json({
+        success: false,
+        message: 'Username or email already in use'
+        });
+    }
+    
     const newUser = new User({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
+        username: req.body.username,
+        email: req.body.email,
+        password: hashedPassword,
     });
-
-    genSalt(10, function (err, salt) {
-      _hash(newUser.password, salt, function (err, hash) {
-        if (err) throw err;
-        newUser.password = hash;
-        newUser
-          .save()
-          .then(function (user) {
-            res.redirect("/users/login");
-          })
-          .catch(function (err) {
-            console.log(err);
-            errors.push({ err: err });
-            // res.render('users/register', {
-            //     errors: errors,
-            // });
-            return;
-          });
-      });
+    newUser.save(function(err) {
+        if (err) { return res.json({ success: false, message: 'Sign Up failed' }); }
+        res.json({ success: true, message: 'Sign Up successful' });
     });
-  }
 });
 
-router.get("/logout", function (req, res) {
-  req.logout();
-  req.flash("success_msg", "You successfully logged out");
-  res.redirect("/users/login");
+// Implement the logout endpoint
+router.get("/logout", (req, res) => {
+    req.logout();
+    res.send({ message: "Logged out successfully" });
 });
 
 export default router;
