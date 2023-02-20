@@ -6,6 +6,7 @@ import userIcon from '../../images/userIcon.png';
 import { useState } from 'react';
 import { SignIn } from '../SignIn/SignIn';
 import { SignUp } from '../SignUp/SignUp';
+import LocationModal from '../Location/LocationModal';
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ export const Navbar = () => {
         <div className='nav-section'>
           <button
             className='nav-button'
-            onClick={navigateToAbout}
+            onClick={() => handleSwitchModal('location')}
           >
             <img
               id='location-icon'
@@ -61,6 +62,9 @@ export const Navbar = () => {
           </button>
         </div>
       </nav>
+      {currentModal === 'location' && (
+        <LocationModal handleSwitchModal={handleSwitchModal} />
+      )}
       {currentModal === 'signIn' && (
         <SignIn handleSwitchModal={handleSwitchModal} />
       )}
