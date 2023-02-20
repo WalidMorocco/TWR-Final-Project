@@ -1,44 +1,73 @@
 @media only screen and (max-width: 600px) {
-    .signIn-container{
+    .modal {
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 844px;
-        padding-top: 63px;
+        height: 100%;
+    }
+
+    .signIn-container {
+        background-color: rgb(217, 187, 169);
+        border-radius: 10px;
+        padding: 10%;
         text-align: center;
+        width: 70%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     }
-    .signIn-form{
-        width: 80%;
-        margin-top: 30px;
-        margin-left:10%;
+
+    .logged-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    .label-title{
-        margin-bottom: 10px;
+
+    #signIn-title {
+        font-size: 24px;
+        margin: 0 0 5%;
+    }
+
+    .signIn-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .label-title {
+        margin: 10px 0;
         text-align: left;
+        width: 100%;
     }
-    #email,#password{
+
+    input[type="email"],
+    input[type="password"] {
+        border: none;
+        border-radius: 5px;
+        margin: 5px 0;
+        padding: 10px;
+        width: 100%;
+    }
+
+    #error {
+        color: red;
+        margin: 5px 0;
         text-align: left;
-        font-size: 25px;
-    }
-    #email-input,#password-input{
-        width: 100%;
-        height: 50px;
-        border-radius: 12px;
-        border: none;
-        margin-bottom: 20px;
-    }
-    /*.sign-up-now{
-        
-    }*/
-    .submit-button-group{
         width: 100%;
     }
-    #submit{
-        width: 50%;
-        height: 50px;
-        border-radius: 12px;
-        border: none;
-        margin-top:20px;
-        background-color: #745246;
-        color: white;
-        font-size: 20px;
+
+    .sign-up-now {
+        margin: 10px 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    .submit-button-group {
+        margin-top: 20px;
+        width: 100%;
     }
 }

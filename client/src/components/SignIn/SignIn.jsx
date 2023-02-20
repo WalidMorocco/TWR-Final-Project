@@ -15,10 +15,6 @@ export const SignIn = () => {
     }
   }, [isLoggedIn]);
 
-  const logCheck = () => {
-    console.log('Logged In:', isLoggedIn);
-  };
-
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
@@ -41,56 +37,63 @@ export const SignIn = () => {
   };
 
   return (
-    <div className='signIn-container'>
-      {isLoggedIn ? (
-        <div>
-          <p>You are logged in!</p>
-          <button onClick={handleLogout}>Log out</button>
-        </div>
-      ) : (
-        <>
-          <h1 id='signIn-title'>Sign In</h1>
-          <form
-            className='signIn-form'
-            onSubmit={handleSubmit}
-          >
-            <div className='label-title'>
-              <label id='email'>Email:</label>
-            </div>
-            <input
-              id='email-input'
-              type='email'
-              placeholder='Email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <div className='label-title'>
-              <label id='password'>Password:</label>
-            </div>
-            <input
-              id='password-input'
-              type='password'
-              placeholder='Password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {error && <div>{error}</div>}
-            <div className='sign-up-now'>
-              <a href='#'>Not a user? Sign up now!</a>
-            </div>
+    <div className='modal'>
+      <div className='signIn-container'>
+        {isLoggedIn ? (
+          <div className='logged-container'>
+            <p>You are logged in!</p>
             <div className='submit-button-group'>
               <button
-                type='submit'
                 id='submit'
+                onClick={handleLogout}
               >
-                Sign In
+                Log out
               </button>
             </div>
-          </form>
-        </>
-      )}
-      <button onClick={logCheck}>Check Logged In</button>
-      <button onClick={handleLogout}>Log out</button>
+          </div>
+        ) : (
+          <>
+            <h1 id='signIn-title'>Sign In</h1>
+            <form
+              className='signIn-form'
+              onSubmit={handleSubmit}
+            >
+              <div className='label-title'>
+                <label id='email'>Email:</label>
+              </div>
+              <input
+                id='email-input'
+                type='email'
+                placeholder='Email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <div className='label-title'>
+                <label id='password'>Password:</label>
+              </div>
+              <input
+                id='password-input'
+                type='password'
+                placeholder='Password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {error && <div>{error}</div>}
+              <div className='sign-up-now'>
+                <a href='#'>Not a user? Sign up now!</a>
+              </div>
+              <div className='submit-button-group'>
+                <button
+                  type='submit'
+                  id='submit'
+                >
+                  Sign In
+                </button>
+              </div>
+            </form>
+          </>
+        )}
+      </div>
     </div>
   );
 };

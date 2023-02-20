@@ -70,14 +70,27 @@ router.post("/login", (req, res, next) => {
 
 router.post('/register', async function(req, res) {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+    // Check if the username or email already exists in the database
+    const existingUser = await User.findOne({
+        $or: [{ username: req.body.username }, { email: req.body.email }]
+    });
+
+    if (existingUser) {
+        return res.status(400).json({
+        success: false,
+        message: 'Username or email already in use'
+        });
+    }
+    
     const newUser = new User({
         username: req.body.username,
         email: req.body.email,
         password: hashedPassword,
     });
     newUser.save(function(err) {
-        if (err) { return res.json({ success: false, message: 'Signup failed' }); }
-        res.json({ success: true, message: 'Signup successful' });
+        if (err) { return res.json({ success: false, message: 'Sign Up failed' }); }
+        res.json({ success: true, message: 'Sign Up successful' });
     });
 });
 
