@@ -66,8 +66,26 @@
         width: 100%;
     }
 
+    .sign-up-now button {
+        font-size: 14px;
+        background-color: transparent;
+        border: none;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
     .submit-button-group {
         margin-top: 20px;
         width: 100%;
+    }
+
+    .submit-button-group button {
+        background-color: #745246;
+        font-size: 20px;
+        color: white;
+        padding: 5%;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
     }
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './styles.css';
 
-export const SignUp = () => {
+export const SignUp = (props) => {
   const [responseMessage, setResponseMessage] = useState(null);
   const [formData, setFormData] = useState({
     username: '',
@@ -34,6 +34,7 @@ export const SignUp = () => {
         );
 
         setResponseMessage(response.data.message);
+        props.handleSwitchModal('signIn');
       } catch (error) {
         setResponseMessage(error.response.data.message);
       }
@@ -41,8 +42,14 @@ export const SignUp = () => {
   };
 
   return (
-    <div className='modal'>
-      <div className='signUp-container'>
+    <div
+      className='modal'
+      onClick={() => props.handleSwitchModal('')}
+    >
+      <div
+        className='signUp-container'
+        onClick={(e) => e.stopPropagation()}
+      >
         <h1 id='signUp-title'>Sign Up</h1>
         <form
           className='signUp-form'

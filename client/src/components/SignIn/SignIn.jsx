@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './styles.css';
 
-export const SignIn = () => {
+export const SignIn = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -37,8 +37,14 @@ export const SignIn = () => {
   };
 
   return (
-    <div className='modal'>
-      <div className='signIn-container'>
+    <div
+      className='modal'
+      onClick={() => props.handleSwitchModal('')}
+    >
+      <div
+        className='signIn-container'
+        onClick={(e) => e.stopPropagation()}
+      >
         {isLoggedIn ? (
           <div className='logged-container'>
             <p>You are logged in!</p>
@@ -78,9 +84,16 @@ export const SignIn = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              {error && <div>{error}</div>}
+              {error && <div id='error'>{error}</div>}
               <div className='sign-up-now'>
-                <a href='#'>Not a user? Sign up now!</a>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    props.handleSwitchModal('signUp');
+                  }}
+                >
+                  Not a user? Sign up now!
+                </button>
               </div>
               <div className='submit-button-group'>
                 <button
