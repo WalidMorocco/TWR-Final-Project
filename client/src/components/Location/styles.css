@@ -11,7 +11,7 @@
         height: 100%;
     }
 
-    .signUp-container {
+    .location-container {
         background-color: rgb(217, 187, 169);
         border-radius: 10px;
         padding: 10%;
@@ -20,50 +20,28 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     }
 
-    .logged-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #signUp-title {
+    #location-title {
         font-size: 24px;
         margin: 0 0 5%;
     }
 
-    .signUp-form {
+    .location-form {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .label-title {
+    .label-address {
         margin: 10px 0;
         text-align: left;
         width: 100%;
     }
 
-    input[type="username"],
-    input[type="email"],
-    input[type="password"] {
+    input[type="text"] {
         border: none;
         border-radius: 5px;
         margin: 5px 0;
         padding: 10px;
-        width: 100%;
-    }
-
-    #error {
-        color: red;
-        margin: 5px 0;
-        text-align: left;
-        width: 100%;
-    }
-
-    .sign-up-now {
-        margin: 10px 0;
-        text-align: left;
         width: 100%;
     }
 

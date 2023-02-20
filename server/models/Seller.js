@@ -1,7 +1,6 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+import { Schema, model } from "mongoose";
 
-var SellerSchema = new Schema({
+const SellerSchema = new Schema({
   userId: {
     type: String,
     unique: true,
@@ -14,4 +13,4 @@ var SellerSchema = new Schema({
   },
 });
 
-mongoose.model("sellers", SellerSchema);
+model("sellers", SellerSchema);

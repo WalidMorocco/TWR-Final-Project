@@ -1,13 +1,11 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+import { Schema, model } from "mongoose";
 
-var ReviewSchema = new Schema({
+const ReviewSchema = new Schema({
   storeId: {
     type: String,
-    unique: true,
     required: true,
   },
-  name: {
+  username: {
     type: String,
     required: true,
   },
@@ -21,8 +19,12 @@ var ReviewSchema = new Schema({
   },
   rating: {
     type: Number,
-    required: false,
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    required: true,
   },
 });
 
-mongoose.model("reviews", ReviewSchema);
+model("reviews", ReviewSchema);

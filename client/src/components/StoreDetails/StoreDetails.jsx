@@ -7,6 +7,7 @@ import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 import FreeBreakfastOutlinedIcon from "@mui/icons-material/FreeBreakfastOutlined";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
+import { Loading } from "../Loading/Loading";
 
 const mapsBaseURL = "https://www.google.com/maps/dir/";
 
@@ -18,8 +19,12 @@ export const StoreDetails = () => {
   const { storeId } = useParams();
   const { data, loading, error } = useDetails(storeId);
 
+  if (error) {
+    console.log(error);
+  }
+
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (
