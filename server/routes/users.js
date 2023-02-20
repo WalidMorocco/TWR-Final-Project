@@ -77,7 +77,6 @@ router.post("/login", (req, res, next) => {
 });
 
 router.post("/register", async function (req, res) {
-  console.log(req.body.password);
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
   // Check if the username or email already exists in the database
