@@ -1,7 +1,7 @@
 @media only screen and (max-width: 600px) {
     .search-container{
         width: 80%;
-        margin-left: 9.3%;
+        margin-left: 10%;
         margin-top: 20px;
     }
     #search-bar{
@@ -13,5 +13,15 @@
     input::placeholder{
         padding-left: 20px;
         font-size: 15px;
+    }
+    .results-container{
+        width: 100%;
+        background-color: #745246;
+        height: 600px;
+        margin-top: 0px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-bottom: #D9BBA9;
+        color: white;
     }
 }

@@ -15,10 +15,13 @@ export const HomePage = () => {
     setFilter(selectedFilter);
   };
 
+  const location = useLocation();
+  
   return (
     <>
       <Filters onFilterChange={onFilterChange} />
-      <Search />
+      {/* <Search /> */}
+      {location.loaded && <Search location={location}/>}
       <ScrollBox>
         {loaded && <StoresList location={coordinates} filter={filter} />}
       </ScrollBox>

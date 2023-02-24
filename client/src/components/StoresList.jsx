@@ -6,7 +6,7 @@ export const StoresList = ({ location, filter }) => {
   const { data, loading, error } = useNearby(
     location.lat,
     location.lng,
-    "5000",
+    "8000",
     filter
   );
 
