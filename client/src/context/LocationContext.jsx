@@ -51,7 +51,7 @@ export const LocationProvider = ({ children }) => {
       }
       setLoading(false);
     }
-  }, [location]);
+  }, [location.loaded]);
 
   useEffect(() => {
     localStorage.setItem("locationSettings", JSON.stringify(locationSettings));
