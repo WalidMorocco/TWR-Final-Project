@@ -12,9 +12,10 @@ const Store = model("stores");
 import "../models/Search.js";
 const Search = model("searches");
 
-const getCachedNearbySearch = async (lat, lng) => {
+const getCachedNearbySearch = async (lat, lng, radius) => {
   const result = await Search.findOne({
     location: { lat: lat, lng: lng },
+    radius: radius,
   })
     .exec()
     .catch((err) => {
@@ -37,7 +38,7 @@ const getCachedStore = async (storeId) => {
 };
 
 export async function getNearbyStores(lat, lng, radius) {
-  const cachedSearch = await getCachedNearbySearch(lat, lng);
+  const cachedSearch = await getCachedNearbySearch(lat, lng, radius);
 
   let rawStores;
   if (cachedSearch) {
@@ -51,6 +52,7 @@ export async function getNearbyStores(lat, lng, radius) {
         lat: lat,
         lng: lng,
       },
+      radius: radius,
       results: JSON.stringify(rawStores),
     });
 

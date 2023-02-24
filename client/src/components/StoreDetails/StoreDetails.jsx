@@ -8,22 +8,25 @@ import FreeBreakfastOutlinedIcon from "@mui/icons-material/FreeBreakfastOutlined
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import { Loading } from "../Loading/Loading";
+import { LocationContext } from "../../context/LocationContext";
+import { useContext } from "react";
 
 const mapsBaseURL = "https://www.google.com/maps/dir/";
 
-const getNavigationURL = (location) => {
-  return `${mapsBaseURL}${location.address}/@${location.lat},${location.lng}`;
+const getNavigationURL = (userlocation, storeLocation) => {
+  return `${mapsBaseURL}${userlocation.location.address}/@${userlocation.location.lat},${userlocation.location.lng}/${storeLocation.address}`;
 };
 
 export const StoreDetails = () => {
   const { storeId } = useParams();
   const { data, loading, error } = useDetails(storeId);
+  const locationContext = useContext(LocationContext);
 
   if (error) {
     console.log(error);
   }
 
-  if (loading) {
+  if (loading || locationContext.loading) {
     return <Loading />;
   }
 
@@ -34,7 +37,10 @@ export const StoreDetails = () => {
         <h1 id="details-title">{data.name}</h1>
       </div>
       <div className="address-container">
-        <a href={getNavigationURL(data.location)} id="address">
+        <a
+          href={getNavigationURL(locationContext.settings, data.location)}
+          id="address"
+        >
           {data.location.address}
         </a>
       </div>
