@@ -5,6 +5,10 @@ const SearchSchema = new Schema({
     lat: { type: String, required: true },
     lng: { type: String, required: true },
   },
+  radius: {
+    type: Number,
+    required: true,
+  },
   results: {
     type: String,
     required: true,

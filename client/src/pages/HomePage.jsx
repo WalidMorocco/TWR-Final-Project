@@ -1,17 +1,15 @@
-import useLocation from "../hooks/useLocation";
 import { Filters } from "../components/Filters/Filters";
 import { Search } from "../components/Search/Search";
 import { StoresList } from "../components/StoresList";
 import { ScrollBox } from "../components/ScrollBox/ScrollBox";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { LocationContext } from "../context/LocationContext";
 
 export const HomePage = () => {
-  const { loaded, coordinates } = useLocation();
-
+  const { settings, loading } = useContext(LocationContext);
   const [filter, setFilter] = useState(null);
 
   const onFilterChange = (selectedFilter) => {
-    console.log(selectedFilter);
     setFilter(selectedFilter);
   };
 
@@ -20,7 +18,7 @@ export const HomePage = () => {
       <Filters onFilterChange={onFilterChange} />
       <Search />
       <ScrollBox>
-        {loaded && <StoresList location={coordinates} filter={filter} />}
+        {!loading && <StoresList locationSettings={settings} filter={filter} />}
       </ScrollBox>
     </>
   );

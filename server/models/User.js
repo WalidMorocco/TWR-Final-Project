@@ -26,7 +26,7 @@ const UserSchema = new Schema({
   },
 });
 
-UserSchema.methods.comparePassword = function(candidatePassword) {
+UserSchema.methods.comparePassword = function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
 

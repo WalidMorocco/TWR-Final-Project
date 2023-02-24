@@ -55,6 +55,6 @@ export async function applyFilter(sourceList, filter) {
     case "local":
       return filterLocal(sourceList);
     default:
-      return stores;
+      return sourceList;
   }
 }
