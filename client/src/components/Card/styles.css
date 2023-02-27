@@ -30,6 +30,11 @@
         margin: 0;
         color: white;
         margin-top: 10px;
+        width: 180px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        
     }
     #store-miles{
         font-size: 15px;

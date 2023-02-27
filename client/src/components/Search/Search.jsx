@@ -3,6 +3,8 @@ import { useState } from "react";
 import React from 'react';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import useNearby from "../../hooks/useNearby";
+import {useEffect} from "react";
+import axios from "axios";
 
 export const Search = ({ location }) => {
   const { data, loading, error } = useNearby(
@@ -18,13 +20,24 @@ export const Search = ({ location }) => {
   };
 
   var check = false;
-  var { StoreName, Address, Rating, hours} = "";
+  var { StoreName, Address, Rating, hours, open, placeId, number} = "";
   var stores = [];
-
+  var setData = [];
+  
   function refreshPage() {
     window.location.reload(false);
   }
+  
+  useEffect(() => {
+    axios.get("https://maps.googleapis.com/maps/api/place/details/json?place_id="+'ChIJcWTFjv5K5IkRY6ySbyU1J68'+"&key=AIzaSyBQ2ZxE8xaMwz0ipaMuDT_UE7EkPcIc00E")
+    .then((response) => console.log("RESPONSE "+JSON.stringify(response.data)))
+  }, []);
 
+  // number = response.formatted_phone_number;
+  // console.log("NUM" + number);
+
+  //  console.log(setData2);
+   
   if(value  != null){
     console.log(value);
     variables = {
@@ -46,6 +59,16 @@ export const Search = ({ location }) => {
         check = true;
         StoreName = el.place.name;
         Address = el.place.vicinity;
+        Rating = el.place.rating;
+        hours = el.place.opening_hours.open_now;
+        placeId =el.place.place_id;
+        console.log(placeId + "AAAAAA")
+        if (hours == true){
+          open = "Open"
+        } 
+        else{
+          open = "Closed"
+        }
       }
     })
   }
@@ -55,20 +78,28 @@ export const Search = ({ location }) => {
         <GooglePlacesAutocomplete   
             selectProps={{
               value,
-              placeholder: 'Search...',
+              placeholder: 'Search',
               onChange: setValue,
             }}
             apiKey="AIzaSyBkpSZDQLvioiTKdeakMG3CQTnh5c2U0Rk"
           />
           <div className="results-container">
             <div className="title-result">
-              <h1>{StoreName}</h1>
+              <h1 id="r-title">{StoreName}</h1>
+            </div>
+            <div className="hours-result">
+              <h3 id="hours">{open}</h3>
             </div>
             <div className="address-result">
-              <a>{Address}</a>
+              <label htmlFor="Address">Address <br/> </label>
+              <h3 id="a-address">{Address}</h3>
             </div>
-            <div>
-              <button onClick={refreshPage}>Click to reload!</button>
+            <div className="rating-result">
+              <label htmlFor="Rating">Rating <br/> </label>
+              <h3 id="r-rating">{Rating}</h3>
+            </div>
+            <div className="close-button">
+              <button id="close" onClick={refreshPage}>Click to reload!</button>
             </div>
           </div>
       </div>

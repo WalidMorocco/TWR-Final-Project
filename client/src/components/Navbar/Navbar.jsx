@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import coffeeIcon from "../../images/coffeeIcon.png";
 import locationIcon from "../../images/locationIcon.png";
 import useLocation from "../../hooks/useLocation";
+import { FaPeriscope } from 'react-icons/fa';
+import { IconContext } from "react-icons/lib";
+import {FaInfo} from 'react-icons/fa';
+
 
 export const Navbar = () => {
 
@@ -14,14 +18,18 @@ export const Navbar = () => {
   };
   return (
     <div className="navbar-container">
-      <div className="navbar-icon">
-        <button id="icon-button" onClick={navigateToAbout}><img id="icon" src={coffeeIcon} alt="React Image" /></button>
-      </div>
+      <IconContext.Provider value={{ className: "about-icon" }}>
+        <div className="navbar-icon">
+          <button id="icon-button" onClick={navigateToAbout}><FaInfo/></button>
+        </div>
+      </IconContext.Provider>
       <div className="navbar-location">
-        <img id="location-icon" src={locationIcon} alt="Location" />
+      <IconContext.Provider value={{ className: "loc-icon" }}>
+      <FaPeriscope/>
         <h1 id="navbar-location-text">
-          {location.coordinates.lat}, {location.coordinates.lng}
+        {location.coordinates.lat}, {location.coordinates.lng}
         </h1>
+      </IconContext.Provider>
       </div>
     </div>
   );

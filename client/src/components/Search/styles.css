@@ -17,11 +17,59 @@
     .results-container{
         width: 100%;
         background-color: #745246;
-        height: 600px;
+
         margin-top: 0px;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
+        border-radius: 12px;
         border-bottom: #D9BBA9;
+      
+    }
+    .title-result{
+        margin-left: 5%;
+    }
+    #r-title{
+        padding-top: 5%;
+    }
+    #hours{
+        margin-left: 10%;
+    }
+    label{
+        margin-left: 10%;
+        font-size: 20px;
+        font-weight: bold;
+        
+    }
+    .address-result{
+        width: 100%;
+        /* background-color: #61443a; */
+    }
+    #a-address{
+        margin-left: 10%;
+        margin-top: 5px;
+        width: 100%;
+        font-size: 17px;
+    }
+    .rating-result{
+        width: 100%;
+        /* background-color: #61443a; */
+    }
+    #r-rating{
+        margin-left: 10%;
+        margin-top: 5px;
+        font-size: 17px;
+    }
+    .close-button{
+        width: 100%;
+
+    }
+    #close{
+        width: 80%;
+        margin-left: 10%;
+        border-radius: 12px;
+        border:none;
+        height: 40px;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        background-color: #573e35;
         color: white;
     }
 }

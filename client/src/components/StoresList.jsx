@@ -6,7 +6,7 @@ export const StoresList = ({ location }) => {
   const { data, loading, error } = useNearby(
     location.coordinates.lat,
     location.coordinates.lng,
-    "5000"
+    "8000"
   );
 
   console.log(data);
