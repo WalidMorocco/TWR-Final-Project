@@ -70,7 +70,7 @@ router.post("/login", (req, res, next) => {
         return res.status(500).json({ error: "Internal Server Error" });
       }
       const token = jwt.sign({ userId: user.id }, secret);
-      res.json({ token });
+      res.json({ token, user: { id: user.id, email: user.email, name: user.name } });
       console.log(req.user);
     });
   })(req, res, next);
@@ -166,6 +166,15 @@ router.post("/favorite", function (req, res) {
           });
       }
     });
+});
+
+router.get('/user', (req, res) => {
+  const token = req.headers.authorization.split(' ')[1];
+  const { userId } = jwt.verify(token, secret);
+  // Assuming you have a User model
+  User.findById(userId).then((user) => {
+    res.json({ id: user.id, email: user.email, username: user.username });
+  });
 });
 
 export default router;

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { SignIn } from '../SignIn/SignIn';
 import { SignUp } from '../SignUp/SignUp';
 import LocationModal from '../Location/LocationModal';
+import ProfileModal from '../ProfileModal/ProfileModal';
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -70,6 +71,9 @@ export const Navbar = () => {
       )}
       {currentModal === 'signUp' && (
         <SignUp handleSwitchModal={handleSwitchModal} />
+      )}
+      {currentModal === 'profile' && (
+        <ProfileModal handleSwitchModal={handleSwitchModal} />
       )}
     </>
   );
