@@ -1,64 +1,56 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+import { Schema, model } from "mongoose";
 
-var StoreSchema = new Schema({
-  placeId: {
+const StoreSchema = new Schema({
+  storeId: {
     type: String,
     unique: true,
     required: true,
-  },
-  userId: {
-    type: String,
-    required: false,
   },
   name: {
     type: String,
     required: true,
   },
-  email: {
-    type: String,
-    required: false,
-  },
   description: {
     type: String,
     required: false,
   },
-  image: {
-    type: String,
+  location: {
+    address: { type: String, required: true },
+    lat: { type: String, required: true },
+    lng: { type: String, required: true },
+  },
+  images: {
+    type: [String],
     required: false,
   },
-  opening: {
-    type: Date,
-    required: false,
-  },
-  closing: {
-    type: Date,
+  openingHours: {
+    type: [String],
     required: false,
   },
   phone: {
     type: String,
     required: false,
   },
-  location: {
-    type: String,
-    required: true,
-  },
   delivery: {
     type: Boolean,
     required: false,
   },
-  drive_thru: {
+  driveThru: {
     type: Boolean,
-    required: false,
-  },
-  views: {
-    type: Number,
     required: false,
   },
   rating: {
     type: Number,
     required: false,
   },
+  views: {
+    type: Number,
+    required: false,
+  },
+  distance: {
+    type: Number,
+    required: false,
+  },
 });
 
-mongoose.model("stores", StoreSchema);
+model("stores", StoreSchema);

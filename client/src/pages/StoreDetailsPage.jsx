@@ -1,12 +1,10 @@
-import {StoreDetails} from "../components/StoreDetails/StoreDetails";
+import { StoreDetails } from "../components/StoreDetails/StoreDetails";
 
-
-export const StoreDetailsPage = () => {
+export const StoreDetailsPage = (storeId) => {
   return (
     <div>
-      <StoreDetails/>
+      <StoreDetails storeId={storeId} />
     </div>
-    
   );
 };
 

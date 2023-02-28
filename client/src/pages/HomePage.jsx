@@ -1,22 +1,25 @@
-import useLocation from "../hooks/useLocation";
 import { Filters } from "../components/Filters/Filters";
 import { Search } from "../components/Search/Search";
 import { StoresList } from "../components/StoresList";
 import { ScrollBox } from "../components/ScrollBox/ScrollBox";
-import { useRef, useEffect} from "react";
-import { Reviews } from "../components/Reviews/Reviews";
+import { useContext, useState } from "react";
+import { LocationContext } from "../context/LocationContext";
 
 export const HomePage = () => {
-  const location = useLocation();
+  const { settings, loading } = useContext(LocationContext);
+  const [filter, setFilter] = useState(null);
+
+  const onFilterChange = (selectedFilter) => {
+    setFilter(selectedFilter);
+  };
 
   return (
     <>
-      <Filters />
-      {location.loaded && <Search location={location}/>}
-      {/* {location.loaded && <StoresList location={location} />} */}
-
-      {/* <Reviews/> */}
-      <ScrollBox/>
+      <Filters onFilterChange={onFilterChange} />
+      {!loading && <Search location={settings.location}/>}
+      <ScrollBox>
+        {!loading && <StoresList locationSettings={settings} filter={filter} />}
+      </ScrollBox>
     </>
   );
 };

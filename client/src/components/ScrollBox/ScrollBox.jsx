@@ -1,13 +1,10 @@
-import "./styles.css"
-import { Card } from "../Card/Card";
-import { StoresList } from "../StoresList";
-import useLocation from "../../hooks/useLocation";
+import "./styles.css";
+import PropTypes from "prop-types";
 
-export const ScrollBox = () => {
-  const location = useLocation();
-  return (
-    <div className="scroll-container">
-        {location.loaded && <StoresList location={location} />}
-    </div>
-  );
+export const ScrollBox = ({ children }) => {
+  return <div className="scroll-container">{children}</div>;
+};
+
+ScrollBox.propTypes = {
+  children: PropTypes.node.isRequired,
 };

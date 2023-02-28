@@ -1,38 +1,35 @@
 import { Card } from "./Card/Card";
-import { computeDistanceBetween, LatLng } from "spherical-geometry-js";
 import useNearby from "../hooks/useNearby";
+import { Loading } from "./Loading/Loading";
 
-export const StoresList = ({ location }) => {
+export const StoresList = ({ locationSettings, filter }) => {
+  console.log(locationSettings);
+  console.log(locationSettings.radius);
   const { data, loading, error } = useNearby(
-    location.coordinates.lat,
-    location.coordinates.lng,
-    "8000"
+    locationSettings.location.lat,
+    locationSettings.location.lng,
+    locationSettings.radius * 1609,
+    filter
   );
 
-  console.log(data);
-  
+  if (error) {
+    console.log(error);
+  }
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (
     <>
-      {data &&
-        data.results &&
-        data.results.length &&
-        data.results.map((place) => (
-          <div key={place.place_id}>
+      {data?.length &&
+        data.map((store) => (
+          <div key={store.storeId}>
             <Card
-              name={place.name}
-              distance={computeDistanceBetween(
-                new LatLng(location.coordinates.lat, location.coordinates.lng),
-                new LatLng(
-                  place.geometry.location.lat,
-                  place.geometry.location.lng
-                )
-              )}
-              photoRef={place.photos ? place.photos[0].photo_reference : null}
+              storeId={store.storeId}
+              name={store.name}
+              distance={store.distance}
+              photoRef={store.images ? store.images[0] : null}
             />
           </div>
         ))}

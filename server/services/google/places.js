@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 const baseURL = `https://maps.googleapis.com/maps/api/place/`;
 
@@ -17,18 +17,15 @@ const getPlaces = async (reqType, reqParams) => {
   }
 };
 
-module.exports = {
-  getNearbyPlaces: async (lat, lon, radius) => {
-    return await getPlaces(
-      "nearbysearch",
-      `location=${lat},${lon}&radius=${radius}&type=cafe`
-    );
-  },
-
-  getPlaceDetails: async (placeId) => {
-    return await getPlaces("details", `place_id=${placeId}`);
-  },
-
-  getPlacePhoto: (photoReference) =>
-    getFullURL("photo", `maxwidth=400&photo_reference=${photoReference}`),
-};
+export async function getNearbyPlaces(lat, lng, radius) {
+  return await getPlaces(
+    "nearbysearch",
+    `location=${lat},${lng}&radius=${radius}&type=cafe`
+  );
+}
+export async function getPlaceDetails(placeId) {
+  return await getPlaces("details", `place_id=${placeId}`);
+}
+export async function getPlacePhoto(photoReference) {
+  return getFullURL("photo", `maxwidth=400&photo_reference=${photoReference}`);
+}

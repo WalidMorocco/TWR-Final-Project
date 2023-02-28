@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+import { Schema, model } from "mongoose";
+import bcrypt from "bcryptjs";
 
-var UserSchema = new Schema({
+const UserSchema = new Schema({
   username: {
     type: String,
     unique: true,
@@ -26,4 +26,8 @@ var UserSchema = new Schema({
   },
 });
 
-mongoose.model("users", UserSchema);
+UserSchema.methods.comparePassword = function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
+};
+
+model("users", UserSchema);

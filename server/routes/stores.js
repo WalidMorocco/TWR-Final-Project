@@ -1,85 +1,40 @@
-var express = require("express");
-var mongoose = require("mongoose");
-var router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const {
-  getNearbyPlaces,
-  getPlacePhoto,
-  getPlaceDetails,
-} = require("../google/places");
+import { getNearbyStores, getStoreDetails } from "../services/dataManager.js";
+import { getPlacePhoto } from "../services/google/places.js";
+import { applyFilter } from "../utils/filters.js";
 
-require("../models/Store");
-var Store = mongoose.model("stores");
+router.get("/nearbystores/:filter", async function (req, res) {
+  console.log(`/nearbystores/${req.params.filter}`);
 
-router.get("/nearbystores", async function (req, res) {
-  console.log(
-    `Calling getNearbyPlaces ${req.query.lat}, ${req.query.lon}, ${req.query.radius}`
-  );
-
-  var stores = await getNearbyPlaces(
+  const stores = await getNearbyStores(
     req.query.lat,
-    req.query.lon,
+    req.query.lng,
     req.query.radius
   );
-  console.log(`Stores fetched: ${stores}`);
 
-  res.json(stores);
+  const filteredStores = await applyFilter(stores, req.params.filter);
+
+  res.json(filteredStores);
 });
 
 router.get("/storedetails", async function (req, res) {
-  var store;
+  console.log("/storedetails");
+  console.log(req.query.storeId);
 
-  console.log(req.query.placeId);
-  Store.findOne({ placeId: req.query.placeId })
-    .exec()
-    .then((result) => {
-      console.log(`mongo result: ${result}`);
-      store = JSON.parse(JSON.stringify(result));
+  const store = await getStoreDetails(req.query.storeId);
 
-      if (store) {
-        res.json(store);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .then(async () => {
-      if (store == null) {
-        const response = await getPlaceDetails(req.query.placeId);
-        console.log(`Details fetched: ${response}`);
-
-        const placeDetails = response.result;
-
-        var newStore = new Store({
-          placeId: placeDetails.place_id,
-          name: placeDetails.name,
-          phone: placeDetails.formatted_phone_number,
-          location: `${placeDetails.geometry.location.lat},${placeDetails.geometry.location.lng}`,
-          delivery: placeDetails.delivery,
-          rating: placeDetails.rating,
-        });
-
-        newStore
-          .save()
-          .then(function (user) {
-            res.json(user);
-          })
-          .catch(function (err) {
-            console.log(err);
-            return;
-          });
-      }
-    });
+  res.json(store);
 });
 
 router.get("/storephoto", async function (req, res) {
   // First, we will call S3 here to see if we have image cached.
 
   // If no cached image exists, we will call google api.
-  var photo = await getPlacePhoto(req.query.photoRef);
-  console.log(`Photo fetched: ${photo}`);
+  const photo = await getPlacePhoto(req.query.photoRef);
 
   res.send({ photoURL: photo });
 });
 
-module.exports = router;
+export default router;

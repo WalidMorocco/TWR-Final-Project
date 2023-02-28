@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 const baseURL = `http://localhost:5000/`;
 
-const useFetch = (reqType, reqParams) => {
+const useFetch = (urlSegment) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -11,8 +11,8 @@ const useFetch = (reqType, reqParams) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        console.log(`Calling ${baseURL}${reqType}`);
-        const response = await axios.get(`${baseURL}${reqType}`, reqParams);
+        console.log(`Calling ${baseURL}${urlSegment}`);
+        const response = await axios.get(`${baseURL}${urlSegment}`);
         setData(response.data);
       } catch (error) {
         setError(error);
@@ -21,9 +21,8 @@ const useFetch = (reqType, reqParams) => {
       }
     };
     getData();
-  }, [reqType]);
+  }, [urlSegment]);
 
-  console.log(data);
   return { data, loading, error };
 };
 
