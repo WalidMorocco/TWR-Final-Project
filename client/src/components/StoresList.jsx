@@ -2,11 +2,13 @@ import { Card } from "./Card/Card";
 import useNearby from "../hooks/useNearby";
 import { Loading } from "./Loading/Loading";
 
-export const StoresList = ({ location, filter }) => {
+export const StoresList = ({ locationSettings, filter }) => {
+  console.log(locationSettings);
+  console.log(locationSettings.radius);
   const { data, loading, error } = useNearby(
-    location.lat,
-    location.lng,
-    "5000",
+    locationSettings.location.lat,
+    locationSettings.location.lng,
+    locationSettings.radius * 1609,
     filter
   );
 
