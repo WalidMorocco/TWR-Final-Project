@@ -1,61 +1,15 @@
 import { model } from "mongoose";
 import express from "express";
-import expressSession from "express-session";
 import passport from "passport";
-import { Strategy as LocalStrategy } from "passport-local";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { uploadImage, multerUpload } from "../services/aws/bucket.js";
 var router = express.Router();
-const secret = "47DDBD4D13F45F298693D395AE66B";
+const secret = process.env.USER_AUTH_SECRET;
 
 // Load user model
 import "../models/User.js";
 var User = model("users");
-
-router.use(express.urlencoded({ extended: true }));
-router.use(express.json());
-router.use(
-  expressSession({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-router.use(passport.initialize());
-router.use(passport.session());
-
-passport.use(
-  new LocalStrategy(
-    {
-      usernameField: "email",
-      passwordField: "password",
-    },
-    async (email, password, done) => {
-      const user = await User.findOne({ email });
-      if (!user) {
-        return done(null, false, { message: "Incorrect email or password" });
-      }
-
-      const isMatch = await user.comparePassword(password);
-      if (!isMatch) {
-        return done(null, false, { message: "Incorrect email or password" });
-      }
-
-      return done(null, user);
-    }
-  )
-);
-
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
-});
 
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -65,13 +19,15 @@ router.post("/login", (req, res, next) => {
     if (!user) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
-    req.logIn(user, (err) => {
+    req.login(user, { session: false }, (err) => {
       if (err) {
         return res.status(500).json({ error: "Internal Server Error" });
       }
       const token = jwt.sign({ userId: user.id }, secret);
-      res.json({ token });
-      console.log(req.user);
+      res.json({
+        token,
+        user: { username: user.username, picture: user.picture },
+      });
     });
   })(req, res, next);
 });
@@ -126,14 +82,14 @@ router.post("/uploadimage", multerUpload.single("userImage"), (req, res) => {
         .exec()
         .then(function (user) {
           if (user) {
-            user.profileImage = data.Location;
+            user.picture = data.Location;
             user
               .save()
               .then((result) => {
                 res.status(200).send({
                   _id: result._id,
                   username: result.username,
-                  profileImage: data.Location,
+                  picture: data.Location,
                 });
               })
               .catch((err) => {
@@ -143,29 +99,6 @@ router.post("/uploadimage", multerUpload.single("userImage"), (req, res) => {
         });
     }
   });
-});
-
-router.post("/favorite", function (req, res) {
-  // saving the information in the database.
-  User.findOne({ username: req.body.username })
-    .exec()
-    .then(function (user) {
-      if (user) {
-        user.favorites.push(req.body.storeId);
-        user
-          .save()
-          .then((result) => {
-            res.status(200).send({
-              _id: result._id,
-              username: result.username,
-              favorites: result.favorites,
-            });
-          })
-          .catch((err) => {
-            res.send({ message: err });
-          });
-      }
-    });
 });
 
 export default router;

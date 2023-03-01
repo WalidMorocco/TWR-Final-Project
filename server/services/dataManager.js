@@ -12,6 +12,9 @@ const Store = model("stores");
 import "../models/Search.js";
 const Search = model("searches");
 
+import "../models/Favorite.js";
+const Favorite = model("favorites");
+
 const getCachedNearbySearch = async (lat, lng, radius) => {
   const result = await Search.findOne({
     location: { lat: lat, lng: lng },
@@ -22,12 +25,23 @@ const getCachedNearbySearch = async (lat, lng, radius) => {
       console.error(err);
     });
 
-  const search = JSON.parse(JSON.stringify(result));
+  const search = result ? JSON.parse(JSON.stringify(result)) : null;
   return search;
 };
 
 const getCachedStore = async (storeId) => {
   const result = await Store.findOne({ storeId: storeId })
+    .exec()
+    .catch((err) => {
+      console.error(err);
+    });
+
+  const store = JSON.parse(JSON.stringify(result));
+  return store;
+};
+
+const getFavoriteStore = async (storeId, userId) => {
+  const result = await Favorite.findOne({ storeId: storeId, users: userId })
     .exec()
     .catch((err) => {
       console.error(err);
@@ -47,16 +61,19 @@ export async function getNearbyStores(lat, lng, radius) {
     rawStores = await getNearbyPlaces(lat, lng, radius);
     console.log(`Stores fetched: ${rawStores}`);
 
-    const newSearch = new Search({
-      location: {
-        lat: lat,
-        lng: lng,
-      },
-      radius: radius,
-      results: JSON.stringify(rawStores),
-    });
+    if (rawStores?.status?.toUpperCase() === "OK") {
+      const newSearch = new Search({
+        createdAt: new Date(),
+        location: {
+          lat: lat,
+          lng: lng,
+        },
+        radius: radius,
+        results: JSON.stringify(rawStores),
+      });
 
-    newSearch.save();
+      newSearch.save();
+    }
   }
 
   const stores = rawStores?.results?.map(
@@ -104,7 +121,7 @@ export async function getStoreDetails(storeId) {
         lng: placeDetails.geometry.location.lng,
       },
       delivery: placeDetails.delivery ?? false,
-      driveThru: placeDetails.curbside_pickup ?? false,
+      curbsidePickup: placeDetails.curbside_pickup ?? false,
       rating: placeDetails.rating,
       openingHours: placeDetails.current_opening_hours?.weekday_text,
       images: placeDetails.photos?.map((p) => p.photo_reference),
@@ -116,4 +133,29 @@ export async function getStoreDetails(storeId) {
   }
 
   return store;
+}
+
+export async function getUserFavorites(userId, location) {
+  const results = await Favorite.find({ users: userId })
+    .exec()
+    .catch((err) => {
+      console.error(err);
+    });
+
+  console.log(results);
+  const favorites = results?.map(
+    (s) =>
+      new Store({
+        storeId: s.storeId,
+        name: s.name,
+        location: s.location,
+        images: [s.image],
+        distance: computeDistanceBetween(
+          new LatLng(location.lat, location.lng),
+          new LatLng(s.location.lat, s.location.lng)
+        ),
+      })
+  );
+
+  return favorites;
 }

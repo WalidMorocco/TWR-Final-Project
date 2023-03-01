@@ -14,14 +14,18 @@ router.get("/nearbystores/:filter", async function (req, res) {
     req.query.radius
   );
 
-  const filteredStores = await applyFilter(stores, req.params.filter);
+  const filteredStores = await applyFilter(
+    stores,
+    req.params.filter,
+    req.user,
+    { lat: req.query.lat, lng: req.query.lng }
+  );
 
   res.json(filteredStores);
 });
 
 router.get("/storedetails", async function (req, res) {
-  console.log("/storedetails");
-  console.log(req.query.storeId);
+  console.log(`/storedetails ${req.query.storeId}`);
 
   const store = await getStoreDetails(req.query.storeId);
 

@@ -35,7 +35,7 @@ const StoreSchema = new Schema({
     type: Boolean,
     required: false,
   },
-  driveThru: {
+  curbsidePickup: {
     type: Boolean,
     required: false,
   },
@@ -49,6 +49,10 @@ const StoreSchema = new Schema({
   },
   distance: {
     type: Number,
+    required: false,
+  },
+  users: {
+    type: [String],
     required: false,
   },
 });
