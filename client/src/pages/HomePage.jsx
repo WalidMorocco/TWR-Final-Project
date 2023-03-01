@@ -15,7 +15,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <Filters onFilterChange={onFilterChange} />
+      <Filters filter={filter} onFilterChange={onFilterChange} />
       <Search />
       <ScrollBox>
         {!loading && <StoresList locationSettings={settings} filter={filter} />}
