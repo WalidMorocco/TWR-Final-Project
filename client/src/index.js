@@ -11,27 +11,30 @@ import SignIn from "./pages/SignInPage";
 import ProfileSettings from "./pages/ProfileSettingsPage";
 import StoreDetails from "./pages/StoreDetailsPage";
 import { LocationProvider } from "./context/LocationContext";
+import { AuthProvider } from "./context/AuthContext";
 
 // Create root element
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
-  <LocationProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route path="/AboutUs" element={<AboutUs />} />
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/SignIn" element={<SignIn />} />
-          <Route path="/ProfileSettings" element={<ProfileSettings />} />
-          <Route path="/StoreDetails/:storeId" element={<StoreDetails />} />
-          <Route path="*" element={<p>Route not found</p>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </LocationProvider>
+  <AuthProvider>
+    <LocationProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+            <Route path="/AboutUs" element={<AboutUs />} />
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/SignIn" element={<SignIn />} />
+            <Route path="/ProfileSettings" element={<ProfileSettings />} />
+            <Route path="/StoreDetails/:storeId" element={<StoreDetails />} />
+            <Route path="*" element={<p>Route not found</p>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </LocationProvider>
+  </AuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

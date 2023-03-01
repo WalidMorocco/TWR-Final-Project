@@ -20,10 +20,6 @@ const UserSchema = new Schema({
     type: String,
     required: false,
   },
-  favorites: {
-    type: Array,
-    required: false,
-  },
 });
 
 UserSchema.methods.comparePassword = function (candidatePassword) {

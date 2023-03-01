@@ -1,7 +1,11 @@
-import { getStoreDetails } from "../services/dataManager.js";
+import { getStoreDetails, getUserFavorites } from "../services/dataManager.js";
 
 const filterAroundYou = (sourceList) => {
-  return sourceList?.sort((s1, s2) => (s1.distance < s2.distance ? -1 : 1));
+  if (sourceList?.length) {
+    return sourceList?.sort((s1, s2) => (s1.distance < s2.distance ? -1 : 1));
+  } else {
+    return sourceList;
+  }
 };
 
 const filterStoreDetail = async (sourceList, detailPredicate) => {
@@ -18,42 +22,44 @@ const filterStoreDetail = async (sourceList, detailPredicate) => {
   return filterAroundYou(result);
 };
 
-const filterDriveThru = (sourceList) => {
-  return filterStoreDetail(sourceList, (details) => details?.driveThru);
+const filterCurbsidePickup = (sourceList) => {
+  return filterStoreDetail(sourceList, (details) => details?.curbsidePickup);
 };
 
 const filterDelivery = async (sourceList) => {
   return filterStoreDetail(sourceList, (details) => details?.delivery);
 };
 
-const filterFavorites = (sourceList) => {
-  // Will be implemented later.
-  return sourceList;
+const filterFavorites = async (userId, location) => {
+  const allFavorites = await getUserFavorites(userId, location);
+
+  console.log(allFavorites);
+  return filterAroundYou(allFavorites);
 };
 
 const filterBestRated = (sourceList) => {
   // Will need clarification.
-  return filterAroundYou(sourceList.filter((s) => s.rating > 4.5));
+  return sourceList.sort((s1, s2) => (s1.rating > s2.rating ? -1 : 1));
 };
 
-const filterLocal = (sourceList) => {
+const filterCoffeeMe = (sourceList) => {
   return sourceList?.filter((store) => store.local);
 };
 
-export async function applyFilter(sourceList, filter) {
+export async function applyFilter(sourceList, filter, userId, location) {
   switch (filter) {
     case "aroundyou":
       return filterAroundYou(sourceList);
-    case "drivethru":
-      return filterDriveThru(sourceList);
+    case "curbside":
+      return filterCurbsidePickup(sourceList);
     case "delivery":
       return await filterDelivery(sourceList);
     case "favorites":
-      return filterFavorites(sourceList);
+      return filterFavorites(userId, location);
     case "bestrated":
       return filterBestRated(sourceList);
-    case "local":
-      return filterLocal(sourceList);
+    case "coffeeme":
+      return filterCoffeeMe(sourceList);
     default:
       return sourceList;
   }

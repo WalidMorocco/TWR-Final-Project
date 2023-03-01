@@ -1,6 +1,10 @@
 import { Schema, model } from "mongoose";
 
 const SearchSchema = new Schema({
+  createdAt: {
+    type: Date,
+    required: true,
+  },
   location: {
     lat: { type: String, required: true },
     lng: { type: String, required: true },

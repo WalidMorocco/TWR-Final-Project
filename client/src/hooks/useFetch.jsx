@@ -12,7 +12,11 @@ const useFetch = (urlSegment) => {
     const getData = async () => {
       try {
         console.log(`Calling ${baseURL}${urlSegment}`);
-        const response = await axios.get(`${baseURL}${urlSegment}`);
+        const response = await axios.get(`${baseURL}${urlSegment}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         setData(response.data);
       } catch (error) {
         setError(error);

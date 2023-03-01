@@ -1,20 +1,36 @@
 import express, { json } from "express";
 const app = express();
 import cors from "cors";
+import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import passport from "passport";
+import passportInit from "./auth/passport.js";
+
+import users from "./routes/users.js";
+import stores from "./routes/stores.js";
+import reviews from "./routes/reviews.js";
+import favorites from "./routes/favorites.js";
+
 dotenv.config({ path: "./config.env" });
 const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(json());
 
-import stores from "./routes/stores.js";
-app.use(stores);
+app.use(bodyParser.urlencoded({ extended: false }));
 
-import users from "./routes/users.js";
+passportInit(passport);
+
 app.use(users);
-
-import reviews from "./routes/reviews.js";
+app.use(stores);
 app.use(reviews);
+
+app.use(
+  "/user",
+  passport.authenticate("jwt", { session: false }),
+  stores,
+  favorites,
+  users
+);
 
 // get driver connection
 import { connectToServer } from "./db/conn.js";

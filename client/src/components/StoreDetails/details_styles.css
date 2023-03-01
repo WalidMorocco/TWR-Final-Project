@@ -4,19 +4,19 @@
     padding-top: 60px;
     margin: 0;
   }
-  .slider-image{
+  .slider-image {
     width: 100%;
     margin: 0;
-    margin-left: .5%;
+    margin-left: 0.5%;
     position: fixed;
-    top:60px;
+    top: 60px;
   }
   .detailsTitle-container {
     width: 100%;
     margin: 0;
     padding: 0;
     position: fixed;
-    top:270px;
+    top: 270px;
   }
   #details-title {
     margin: 0;
@@ -40,7 +40,6 @@
     font-size: 16px;
     width: 100%;
     margin-left: 10%;
-
   }
   .rate {
     margin: 0;
@@ -51,7 +50,7 @@
     margin-left: 9%;
     margin-bottom: 5px;
     position: fixed;
-    top:357px;
+    top: 357px;
   }
   .drive-thru-container {
     float: left;
@@ -59,7 +58,7 @@
     margin-top: -30px;
     margin-bottom: 5px;
     position: fixed;
-    top:415px;
+    top: 415px;
   }
   #check-image {
     width: 25px;
@@ -102,7 +101,7 @@
     height: fit-content;
     height: 100px;
     position: fixed;
-    top:630px;
+    top: 630px;
   }
   #details-text {
     margin: 0;
