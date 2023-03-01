@@ -44,7 +44,9 @@ export const StoreDetails = () => {
 
   return (
     <div className="storeDetails-container">
-      <ImageSlider images={data.images} />
+      <div className="slider-image">
+        <ImageSlider images={data.images} />
+      </div>
       <Stack direction="row">
         <h1 id="details-title" width="80%">
           {data.name}

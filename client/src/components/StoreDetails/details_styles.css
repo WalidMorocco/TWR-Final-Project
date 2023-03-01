@@ -1,13 +1,27 @@
 @media only screen and (max-width: 600px) {
   .storeDetails-container {
-    width: 100%;
-    padding-top: 15%;
+    width: 99%;
+    padding-top: 60px;
     margin: 0;
+  }
+  .slider-image {
+    width: 100%;
+    margin: 0;
+    margin-left: 0.5%;
+    position: fixed;
+    top: 60px;
+  }
+  .detailsTitle-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 270px;
   }
   #details-title {
     margin: 0;
-    margin-top: 20px;
-    margin-left: 5%;
+    margin-top: 25px;
+    margin-left: 10%;
     font-size: 27px;
   }
 
@@ -15,12 +29,15 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    margin-top: 5px;
+    height: 40px;
+    margin-top: 10px;
+    position: fixed;
+    top: 325px;
   }
   #address {
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 16px;
     width: 100%;
     margin-left: 10%;
   }
@@ -29,15 +46,19 @@
     padding: 0;
     float: left;
     height: 46px;
-    padding-top: 5px;
+    padding-top: 10px;
     margin-left: 9%;
     margin-bottom: 5px;
+    position: fixed;
+    top: 357px;
   }
   .drive-thru-container {
     float: left;
     width: 100%;
     margin-top: -30px;
     margin-bottom: 5px;
+    position: fixed;
+    top: 415px;
   }
   #check-image {
     width: 25px;
@@ -56,7 +77,9 @@
     width: 100%;
     float: left;
     margin-top: -20px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    position: fixed;
+    top: 450px;
   }
   .day {
     margin: 0;
@@ -76,6 +99,9 @@
     border-radius: 12px;
     overflow: auto;
     height: fit-content;
+    height: 100px;
+    position: fixed;
+    top: 630px;
   }
   #details-text {
     margin: 0;
@@ -91,7 +117,9 @@
     float: left;
     text-align: center;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 25px;
+    position: fixed;
+    bottom: 45px;
   }
   #reviews {
     width: 50%;
@@ -100,6 +128,6 @@
     background-color: #745246;
     border: none;
     color: white;
-    height: 40px;
+    height: 50px;
   }
 }
