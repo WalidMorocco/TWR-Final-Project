@@ -51,6 +51,17 @@ const StoreSchema = new Schema({
     type: Number,
     required: false,
   },
+  reviews: [
+    {
+      user: {
+        username: { type: String, required: true },
+        picture: { type: String, required: false },
+      },
+      rating: { type: Number, required: true },
+      text: { type: String, required: false },
+      timestamp: { type: Number, required: true },
+    },
+  ],
   users: {
     type: [String],
     required: false,
