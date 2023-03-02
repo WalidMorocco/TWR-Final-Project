@@ -3,7 +3,6 @@
     .reviews-container{
         width: 90%;
         margin-left:5%;
-        padding-top: 63px;
         float: left;
     }
     .title-container{
@@ -26,43 +25,11 @@
         width: 80%;
         margin-left: 10%;
     }
-    .rates {
+    .rate {
         margin: 0;
         padding: 0;
         width: 100%;
         float: left;
-    }
-    .rates:not(:checked) > input {
-        position:absolute;
-        top:-9999px;
-    }
-    .rates:not(:checked) > label {
-        float:right;
-        width:1em;
-        overflow:hidden;
-        white-space:nowrap;
-        cursor:pointer;
-        font-size:50px;
-        color:#ccc;
-        padding-left: 3px;
-        padding-right:3px;
-    }
-    .rates:not(:checked) > label:before {
-        content: '★ ';
-    }
-    .rates > input:checked ~ label {
-        color: #ffc700;    
-    }
-    .rates:not(:checked) > label:hover,
-    .rates:not(:checked) > label:hover ~ label {
-        color: #deb217;  
-    }
-    .rates > input:checked + label:hover,
-    .rates > input:checked + label:hover ~ label,
-    .rates > input:checked ~ label:hover,
-    .rates > input:checked ~ label:hover ~ label,
-    .rates > label:hover ~ input:checked ~ label {
-        color: #c59b08;
     }
     .lower-container{
         float: left;
