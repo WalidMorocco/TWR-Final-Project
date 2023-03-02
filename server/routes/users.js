@@ -61,44 +61,43 @@ router.post("/register", async function (req, res) {
   });
 });
 
-// Implement the logout endpoint
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.send({ message: "Logged out successfully" });
-});
+router.post(
+  "user/uploadimage",
+  passport.authenticate("jwt", { session: false }),
+  multerUpload.single("userImage"),
+  (req, res) => {
+    uploadImage(req.file, (error, data) => {
+      if (error) {
+        res.status(500).send({ err: error });
+      }
 
-router.post("/uploadimage", multerUpload.single("userImage"), (req, res) => {
-  uploadImage(req.file, (error, data) => {
-    if (error) {
-      res.status(500).send({ err: error });
-    }
+      // If not then below code will be executed
+      console.log(data);
 
-    // If not then below code will be executed
-    console.log(data);
-
-    if (data) {
-      // saving the information in the database.
-      User.findOne({ username: req.body.username })
-        .exec()
-        .then(function (user) {
-          if (user) {
-            user.picture = data.Location;
-            user
-              .save()
-              .then((result) => {
-                res.status(200).send({
-                  _id: result._id,
-                  username: result.username,
-                  picture: data.Location,
+      if (data) {
+        // saving the information in the database.
+        User.findById(req.user)
+          .exec()
+          .then(function (user) {
+            if (user) {
+              user.picture = data.Location;
+              user
+                .save()
+                .then((result) => {
+                  res.status(200).send({
+                    _id: result._id,
+                    username: result.username,
+                    picture: data.Location,
+                  });
+                })
+                .catch((err) => {
+                  res.send({ message: err });
                 });
-              })
-              .catch((err) => {
-                res.send({ message: err });
-              });
-          }
-        });
-    }
-  });
-});
+            }
+          });
+      }
+    });
+  }
+);
 
 export default router;

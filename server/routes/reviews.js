@@ -2,31 +2,17 @@ import { Router } from "express";
 import { model } from "mongoose";
 const router = Router();
 
+// Load review model
 import "../models/Review.js";
 let Review = model("reviews");
-
-router.get("/getreviews", async function (req, res) {
-  const result = await Review.find({
-    storeId: req.query.storeId,
-  })
-    .exec()
-    .catch((err) => {
-      console.error(err);
-    });
-
-  const storeReviews = JSON.parse(JSON.stringify(result));
-
-  res.json(storeReviews);
-});
 
 router.post("/addreview", function (req, res) {
   const newReview = new Review({
     storeId: req.query.storeId,
-    username: req.query.username,
-    title: req.query.title,
-    description: req.query.description,
+    user: req.user,
+    text: req.query.text,
     rating: req.query.rating,
-    timestamp: new Date(),
+    timestamp: req.query.timestamp,
   });
 
   newReview
@@ -43,14 +29,13 @@ router.post("/addreview", function (req, res) {
 router.post("/updatereview", function (req, res) {
   Review.findOne({
     storeId: req.query.storeId,
-    username: req.query.username,
+    user: req.user,
   })
     .exec()
     .then(function (review) {
-      review.title = req.query.title;
-      review.description = req.query.description;
+      review.text = req.query.text;
       review.rating = req.query.rating;
-      review.timestamp = new Date();
+      review.timestamp = req.query.timestamp;
 
       review.save().then((result) => {
         res.status(200).send({
@@ -66,7 +51,7 @@ router.post("/updatereview", function (req, res) {
 router.post("/deletereview", function (req, res) {
   Review.deleteOne({
     storeId: req.query.storeId,
-    username: req.query.username,
+    user: req.user,
   })
     .exec()
     .then((result) => {

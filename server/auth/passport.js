@@ -47,7 +47,6 @@ export default function (passport) {
       },
       async (token, done) => {
         try {
-          console.log(token);
           return done(null, token.userId);
         } catch (error) {
           done(error);
