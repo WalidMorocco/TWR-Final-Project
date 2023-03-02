@@ -1,8 +1,12 @@
 import { Router } from "express";
 const router = Router();
 
-import { getNearbyStores, getStoreDetails } from "../services/dataManager.js";
-import { getPlacePhoto } from "../services/google/places.js";
+import {
+  getNearbyStores,
+  getStoreDetails,
+  getStoreReviews,
+  getStorePhoto,
+} from "../services/dataManager.js";
 import { applyFilter } from "../utils/filters.js";
 
 router.get("/nearbystores/:filter", async function (req, res) {
@@ -18,7 +22,7 @@ router.get("/nearbystores/:filter", async function (req, res) {
     stores,
     req.params.filter,
     req.user,
-    { lat: req.query.lat, lng: req.query.lng }
+    { lat: req.query.lat, lng: req.query.lng, radius: req.query.radius }
   );
 
   res.json(filteredStores);
@@ -32,13 +36,19 @@ router.get("/storedetails", async function (req, res) {
   res.json(store);
 });
 
-router.get("/storephoto", async function (req, res) {
+router.get("/storereviews", async function (req, res) {
+  const storeReviews = await getStoreReviews(req.query.storeId);
+
+  res.json(storeReviews);
+});
+
+router.get("/storephoto", function (req, res) {
   // First, we will call S3 here to see if we have image cached.
 
   // If no cached image exists, we will call google api.
-  const photo = await getPlacePhoto(req.query.photoRef);
+  const photoURL = getStorePhoto(req.query.photoRef);
 
-  res.send({ photoURL: photo });
+  res.send({ photoURL });
 });
 
 export default router;

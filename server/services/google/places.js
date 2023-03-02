@@ -17,15 +17,36 @@ const getPlaces = async (reqType, reqParams) => {
   }
 };
 
-export async function getNearbyPlaces(lat, lng, radius) {
+export async function getNearbyPlaces(lat, lng, radius, nextPageToken) {
   return await getPlaces(
     "nearbysearch",
-    `location=${lat},${lng}&radius=${radius}&type=cafe`
+    nextPageToken
+      ? `pagetoken=${nextPageToken}`
+      : `location=${lat},${lng}&type=cafe&rankby=distance`
   );
 }
+
 export async function getPlaceDetails(placeId) {
-  return await getPlaces("details", `place_id=${placeId}`);
+  return await getPlaces(
+    "details",
+    `place_id=${placeId}&fields=name%2C` +
+      "editorial_summary/overview%2C" +
+      "formatted_phone_number%2C" +
+      "vicinity%2C" +
+      "geometry/location%2C" +
+      "delivery%2C" +
+      "curbside_pickup%2C" +
+      "rating%2C" +
+      "current_opening_hours/weekday_text%2C" +
+      "photos%2C" +
+      "reviews"
+  );
 }
-export async function getPlacePhoto(photoReference) {
+
+export async function getPlaceReviews(placeId) {
+  return await getPlaces("details", `place_id=${placeId}&fields=reviews`);
+}
+
+export function getPlacePhoto(photoReference) {
   return getFullURL("photo", `maxwidth=400&photo_reference=${photoReference}`);
 }

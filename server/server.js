@@ -22,14 +22,13 @@ passportInit(passport);
 
 app.use(users);
 app.use(stores);
-app.use(reviews);
 
 app.use(
   "/user",
   passport.authenticate("jwt", { session: false }),
   stores,
-  favorites,
-  users
+  reviews,
+  favorites
 );
 
 // get driver connection

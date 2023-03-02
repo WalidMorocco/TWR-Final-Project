@@ -4,6 +4,7 @@ import {
   getNearbyPlaces,
   getPlacePhoto,
   getPlaceDetails,
+  getPlaceReviews,
 } from "../services/google/places.js";
 
 import "../models/Store.js";
@@ -14,6 +15,12 @@ const Search = model("searches");
 
 import "../models/Favorite.js";
 const Favorite = model("favorites");
+
+import "../models/Review.js";
+const Review = model("reviews");
+
+import "../models/User.js";
+const User = model("users");
 
 const getCachedNearbySearch = async (lat, lng, radius) => {
   const result = await Search.findOne({
@@ -95,7 +102,7 @@ export async function getNearbyStores(lat, lng, radius) {
       })
   );
 
-  return stores;
+  return stores.filter((s) => s.distance <= radius);
 }
 
 export async function getStoreDetails(storeId) {
@@ -111,7 +118,7 @@ export async function getStoreDetails(storeId) {
     const placeDetails = response.result;
 
     store = new Store({
-      storeId: placeDetails.place_id,
+      storeId: storeId,
       name: placeDetails.name,
       description: placeDetails?.editorial_summary?.overview,
       phone: placeDetails.formatted_phone_number,
@@ -125,6 +132,15 @@ export async function getStoreDetails(storeId) {
       rating: placeDetails.rating,
       openingHours: placeDetails.current_opening_hours?.weekday_text,
       images: placeDetails.photos?.map((p) => p.photo_reference),
+      reviews: placeDetails.reviews?.map((r) => ({
+        user: {
+          username: r.author_name,
+          picture: r.profile_photo_url,
+        },
+        rating: r.rating,
+        text: r.text,
+        timestamp: r.time,
+      })),
     });
 
     store.save().catch(function (err) {
@@ -133,6 +149,47 @@ export async function getStoreDetails(storeId) {
   }
 
   return store;
+}
+
+export async function getStoreReviews(storeId) {
+  const cachedStore = await getCachedStore(storeId);
+
+  let reviews = [];
+  if (cachedStore?.reviews) {
+    reviews = cachedStore.reviews;
+  } else {
+    const response = await getPlaceReviews(storeId);
+    console.log(`Details fetched: ${response}`);
+
+    const placeReviews = response.result;
+
+    if (placeReviews?.reviews) {
+      reviews = placeReviews.reviews.map((r) => ({
+        user: {
+          username: r.author_name,
+          picture: r.profile_photo_url,
+        },
+        rating: r.rating,
+        text: r.text,
+        timestamp: r.time,
+      }));
+    }
+  }
+
+  const coffeeMeReviews = await Review.find({ storeId })
+    .populate("user", "username picture -_id")
+    .exec()
+    .catch((err) => {
+      console.error(err);
+    });
+
+  reviews.push(...coffeeMeReviews);
+
+  return reviews.sort((r1, r2) => (r1.timestamp > r2.timestamp ? -1 : 1));
+}
+
+export function getStorePhoto(photoReference) {
+  return getPlacePhoto(photoReference);
 }
 
 export async function getUserFavorites(userId, location) {

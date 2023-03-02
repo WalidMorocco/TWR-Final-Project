@@ -5,15 +5,11 @@ const ReviewSchema = new Schema({
     type: String,
     required: true,
   },
-  username: {
-    type: String,
-    required: true,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "users",
   },
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
+  text: {
     type: String,
     required: false,
   },
@@ -22,7 +18,7 @@ const ReviewSchema = new Schema({
     required: true,
   },
   timestamp: {
-    type: Date,
+    type: Number,
     required: true,
   },
 });
