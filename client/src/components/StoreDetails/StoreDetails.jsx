@@ -120,9 +120,12 @@ export const StoreDetails = () => {
           {data.description ? data.description : "No description available"}
         </p>
       </div>
-      <div className="button-container">
-        <button id="reviews">Reviews</button>
-      </div>
+
+      {authContext.loggedIn && (
+        <div className="button-container">
+          <button id="reviews">Reviews</button>
+        </div>
+      )}
     </div>
   );
 };

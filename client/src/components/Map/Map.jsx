@@ -54,13 +54,9 @@ const Map = ({
     }
   }
 
-  console.log(process.env);
-
   return (
-    <LoadScript
-      googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
-      libraries={libs}
-    >
+    //<LoadScript libraries={libs}>
+    <>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -114,7 +110,8 @@ const Map = ({
           <MyLocationIcon />
         </IconButton>
       </Stack>
-    </LoadScript>
+    </>
+    //</LoadScript>
   );
 };
 

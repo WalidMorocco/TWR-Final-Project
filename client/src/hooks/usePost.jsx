@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-const baseURL = "http://localhost:5000/";
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 const usePost = (urlSegment) => {
   const authContext = useContext(AuthContext);
@@ -15,7 +15,7 @@ const usePost = (urlSegment) => {
     try {
       setLoading(true);
 
-      console.log(`post ${baseURL}${urlSegment} ${authContext.token}`);
+      console.log(`post ${baseURL}${urlSegment}`);
       const response = await axios.post(
         `${baseURL}${urlSegment}`,
         data,

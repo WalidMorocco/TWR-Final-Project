@@ -39,6 +39,17 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const updatePicture = () => {
+    //Call uploadimage
+
+    const updatedUser = {
+      picture: {
+        /**/
+      },
+    };
+    setUser(...updatedUser);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -47,6 +58,8 @@ export const AuthProvider = ({ children }) => {
         loggedIn: token ? true : false,
         onLogin,
         onLogout,
+        //updatePicture,
+        //updateUsername,
       }}
     >
       {children}
