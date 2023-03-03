@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
+import usePost from "../../hooks/usePost";
 import "./styles.css";
 
 export const SignUp = (props) => {
+  const register = usePost("register");
+
   const [responseMessage, setResponseMessage] = useState(null);
   const [formData, setFormData] = useState({
     username: "",
@@ -28,10 +30,7 @@ export const SignUp = (props) => {
         password,
       };
       try {
-        const response = await axios.post(
-          "http://localhost:5000/register",
-          newUser
-        );
+        const response = await register.postData(newUser);
 
         setResponseMessage(response.data.message);
         props.handleSwitchModal("signIn");

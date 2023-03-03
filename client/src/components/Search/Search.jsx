@@ -5,6 +5,7 @@ import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import useNearby from "../../hooks/useNearby";
 import { useEffect } from "react";
 import axios from "axios";
+import useDetails from "../../hooks/useDetails";
 
 export const Search = ({ locationSettings }) => {
   const { data } = useNearby(
@@ -28,17 +29,17 @@ export const Search = ({ locationSettings }) => {
     window.location.reload(false);
   }
 
-  useEffect(() => {
-    axios
-      .get(
-        "https://maps.googleapis.com/maps/api/place/details/json?place_id=" +
-          "ChIJcWTFjv5K5IkRY6ySbyU1J68" +
-          `&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`
-      )
-      .then((response) =>
-        console.log("RESPONSE " + JSON.stringify(response.data))
-      );
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "https://maps.googleapis.com/maps/api/place/details/json?place_id=" +
+  //         "ChIJcWTFjv5K5IkRY6ySbyU1J68" +
+  //         `&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`
+  //     )
+  //     .then((response) =>
+  //       console.log("RESPONSE " + JSON.stringify(response.data))
+  //     );
+  // }, []);
 
   // number = response.formatted_phone_number;
   // console.log("NUM" + number);
@@ -88,7 +89,7 @@ export const Search = ({ locationSettings }) => {
             placeholder: "Search",
             onChange: setValue,
           }}
-          apiKey="AIzaSyBkpSZDQLvioiTKdeakMG3CQTnh5c2U0Rk"
+          apiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
         />
         <div className="results-container">
           <div className="title-result">
@@ -126,7 +127,7 @@ export const Search = ({ locationSettings }) => {
           placeholder: "Search...",
           onChange: setValue,
         }}
-        apiKey="AIzaSyBkpSZDQLvioiTKdeakMG3CQTnh5c2U0Rk"
+        apiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
       />
       {/* <input id="search-bar" type="text" placeholder="Search..."/> */}
     </div>
