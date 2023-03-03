@@ -3,9 +3,9 @@ import { useState } from "react";
 import React from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import useNearby from "../../hooks/useNearby";
-import { useEffect } from "react";
-import axios from "axios";
-import useDetails from "../../hooks/useDetails";
+//import { useEffect } from "react";
+//import axios from "axios";
+//import useDetails from "../../hooks/useDetails";
 
 export const Search = ({ locationSettings }) => {
   const { data } = useNearby(
@@ -89,7 +89,6 @@ export const Search = ({ locationSettings }) => {
             placeholder: "Search",
             onChange: setValue,
           }}
-          apiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
         />
         <div className="results-container">
           <div className="title-result">
@@ -127,7 +126,6 @@ export const Search = ({ locationSettings }) => {
           placeholder: "Search...",
           onChange: setValue,
         }}
-        apiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
       />
       {/* <input id="search-bar" type="text" placeholder="Search..."/> */}
     </div>

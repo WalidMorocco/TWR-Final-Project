@@ -66,7 +66,7 @@ export async function getNearbyStores(lat, lng, radius) {
     rawStores = JSON.parse(cachedSearch.results);
   } else {
     rawStores = await getNearbyPlaces(lat, lng, radius);
-    console.log(`Stores fetched: ${rawStores}`);
+    console.log(`Stores fetched`);
 
     if (rawStores?.status?.toUpperCase() === "OK") {
       const newSearch = new Search({
@@ -113,7 +113,7 @@ export async function getStoreDetails(storeId) {
     store = cachedStore;
   } else {
     const response = await getPlaceDetails(storeId);
-    console.log(`Details fetched: ${response}`);
+    console.log(`Details fetched`);
 
     const placeDetails = response.result;
 
@@ -159,7 +159,7 @@ export async function getStoreReviews(storeId) {
     reviews = cachedStore.reviews;
   } else {
     const response = await getPlaceReviews(storeId);
-    console.log(`Details fetched: ${response}`);
+    console.log(`Reviews fetched`);
 
     const placeReviews = response.result;
 
@@ -199,7 +199,6 @@ export async function getUserFavorites(userId, location) {
       console.error(err);
     });
 
-  console.log(results);
   const favorites = results?.map(
     (s) =>
       new Store({

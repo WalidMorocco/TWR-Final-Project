@@ -19,7 +19,6 @@ export const SignIn = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("submit pressed");
       postData({
         email,
         password,

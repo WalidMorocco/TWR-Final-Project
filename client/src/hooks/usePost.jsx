@@ -15,7 +15,7 @@ const usePost = (urlSegment) => {
     try {
       setLoading(true);
 
-      console.log(`post ${baseURL}${urlSegment}`);
+      console.log(`Post ${baseURL}${urlSegment}`);
       const response = await axios.post(
         `${baseURL}${urlSegment}`,
         data,
@@ -27,7 +27,6 @@ const usePost = (urlSegment) => {
             }
           : null
       );
-      console.log(response.data);
       setResponseData(response.data);
     } catch (error) {
       setError(error);

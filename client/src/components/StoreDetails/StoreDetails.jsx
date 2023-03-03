@@ -75,6 +75,7 @@ export const StoreDetails = () => {
             precision={0.5}
             icon={<FreeBreakfastIcon fontSize="inherit" />}
             emptyIcon={<FreeBreakfastOutlinedIcon fontSize="inherit" />}
+            readOnly
             sx={{
               "& .MuiRating-iconFilled": {
                 color: "#685618",

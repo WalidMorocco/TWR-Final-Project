@@ -40,7 +40,6 @@ const LocationSettings = ({
       settings.location.lng !== currentlocation.lng ||
       settings.location.address !== currentAddress
     ) {
-      console.log(settings.location.address);
       console.log(currentAddress);
       updateLocation({
         lat: currentlocation.lat,
