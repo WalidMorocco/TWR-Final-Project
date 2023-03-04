@@ -26,7 +26,7 @@ router.post("/login", (req, res, next) => {
       const token = jwt.sign({ userId: user.id }, secret);
       res.json({
         token,
-        user: { username: user.username, picture: user.picture },
+        user: { username: user.username, email:user.email, picture: user.picture },
       });
     });
   })(req, res, next);
@@ -59,6 +59,38 @@ router.post("/register", async function (req, res) {
     }
     res.json({ success: true, message: "Sign Up successful" });
   });
+});
+
+router.put("/user/username", passport.authenticate("jwt", { session: false }), async function (req, res) {
+  try {
+    const user = await User.findById(req.user.id);
+    const existingUser = await User.findOne({ username: req.body.username });
+    if (existingUser) {
+      return res.status(400).json({ success: false, message: "Username already in use" });
+    }
+    user.username = req.body.username;
+    await user.save();
+    res.json({ success: true, message: "Username updated" });
+  } catch (err) {
+    console.log(err);
+    res.json({ success: false, message: "Error updating username" });
+  }
+});
+
+router.put("/user/password", passport.authenticate("jwt", { session: false }), async function (req, res) {
+  try {
+    const user = await User.findById(req.user.id);
+    const isMatch = await bcrypt.compare(req.body.currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ success: false, message: "Invalid current password" });
+    }
+    user.password = await bcrypt.hash(req.body.newPassword, 10);
+    await user.save();
+    res.json({ success: true, message: "Password updated" });
+  } catch (err) {
+    console.log(err);
+    res.json({ success: false, message: "Error updating password" });
+  }
 });
 
 router.post(
