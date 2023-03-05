@@ -1,6 +1,6 @@
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import Home from "@mui/icons-material/Home";
 
 export const Footer = () => {
   const navigate = useNavigate();
@@ -13,7 +13,12 @@ export const Footer = () => {
       <div className="top-filters">
         <div className="home-filter">
           <button className="filter-1" onClick={navigateToHome}>
-            <HomeOutlinedIcon fontSize="large" sx={{ color: "white" }} />
+            <Home 
+              style={{
+                color:"white",
+                fontSize:"40px",
+                marginTop:"5px"
+              }}/>
           </button>
         </div>
       </div>
