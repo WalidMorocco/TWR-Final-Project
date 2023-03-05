@@ -2,7 +2,6 @@ import "./styles.css";
 import { useState } from "react";
 import React from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import useNearby from "../../hooks/useNearby";
 import { useEffect } from "react";
 import axios from "axios";
 import Car from "@mui/icons-material/LocationOnSharp";
@@ -21,9 +20,9 @@ export const Search = ({ locationSettings }) => {
     rating: "",
     phone: "",
     website: "",
-    open:"",
-    curbside:"",
-    delivery:"",
+    open: "",
+    curbside: "",
+    delivery: "",
   };
 
   var check = false;
@@ -33,17 +32,14 @@ export const Search = ({ locationSettings }) => {
   }
 
   useEffect(() => {
-    if(value != null){
+    if (value != null) {
       axios
-      .get(
-        "https://maps.googleapis.com/maps/api/place/details/json?place_id=" +
-          value.value.place_id +
-          `&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`
-      )
-      .then((response) =>
-       
-        setRes(response.data)
-      );
+        .get(
+          "https://maps.googleapis.com/maps/api/place/details/json?place_id=" +
+            value.value.place_id +
+            `&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`
+        )
+        .then((response) => setRes(response.data));
     }
   }, [value]);
 
@@ -51,9 +47,9 @@ export const Search = ({ locationSettings }) => {
     console.log(value);
 
     check = true;
-    if(res != null){
+    if (res != null) {
       console.log(res.result);
-      variables={
+      variables = {
         name: res.result.name,
         address: res.result.formatted_address,
         rating: res.result.rating,
@@ -62,25 +58,21 @@ export const Search = ({ locationSettings }) => {
         open: res.result.current_opening_hours.open_now,
         curbside: res.result.curbside_pickup,
         delivery: res.result.delivery,
-
+      };
+      if (variables.open == false) {
+        variables.open = "Closed";
+      } else {
+        variables.open = "Open";
       }
-      if(variables.open == false){
-        variables.open = "Closed"
+      if (variables.curbside == false) {
+        variables.curbside = "Unavailable";
+      } else {
+        variables.curbside = "Available";
       }
-      else{
-        variables.open = "Open"
-      }
-      if(variables.curbside == false){
-        variables.curbside = "Unavailable"
-      }
-      else{
-        variables.curbside = "Available"
-      }
-      if(variables.delivery == false){
-        variables.delivery = "Unavailable"
-      }
-      else{
-        variables.delivery = "Available"
+      if (variables.delivery == false) {
+        variables.delivery = "Unavailable";
+      } else {
+        variables.delivery = "Available";
       }
     }
   }
@@ -104,27 +96,30 @@ export const Search = ({ locationSettings }) => {
           <div className="button-search-group">
             <button id="btnA">
               <Car
-              style={{
-                color:"white",
-                fontSize:"25px",
-                marginTop:"1px"
-              }}/>
+                style={{
+                  color: "white",
+                  fontSize: "25px",
+                  marginTop: "1px",
+                }}
+              />
             </button>
             <button id="btnB" onClick={navigateToDetails}>
-              <Website 
+              <Website
                 style={{
-                  color:"white",
-                  fontSize:"25px",
-                  marginTop:"1px"
-                }}/>
+                  color: "white",
+                  fontSize: "25px",
+                  marginTop: "1px",
+                }}
+              />
             </button>
-            <button id="btnC" >
-              <Phone 
+            <button id="btnC">
+              <Phone
                 style={{
-                  color:"white",
-                  fontSize:"25px",
-                  marginTop:"1px"
-                }}/>
+                  color: "white",
+                  fontSize: "25px",
+                  marginTop: "1px",
+                }}
+              />
             </button>
           </div>
           <div className="open-result">
@@ -156,7 +151,7 @@ export const Search = ({ locationSettings }) => {
           placeholder: "Search...",
           onChange: setValue,
         }}
-        minLengthAutocomplete = "6"
+        minLengthAutocomplete="6"
       />
     </div>
   );
