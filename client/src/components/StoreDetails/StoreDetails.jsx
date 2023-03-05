@@ -14,6 +14,9 @@ import { LocationContext } from "../../context/LocationContext";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
+import { Drawer, Typography, IconButton } from '@mui/material';
+import { useState } from 'react';
+import { Reviews } from "../Reviews/Reviews";
 
 const mapsBaseURL = "https://www.google.com/maps/dir/";
 
@@ -33,6 +36,12 @@ export const StoreDetails = () => {
 
   const authContext = useContext(AuthContext);
   const locationContext = useContext(LocationContext);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+
+  const [currentModal, setCurrentModal] = useState('');
+  const handleSwitchModal = (modalName) => {
+    setCurrentModal(modalName);
+  };
 
   if (error) {
     console.log(error);
@@ -42,6 +51,8 @@ export const StoreDetails = () => {
     return <Loading />;
   }
 
+  // console.log("DATA" + JSON.stringify(data));
+  // console.log(data.reviews);
   return (
     <div className="storeDetails-container">
       <div className="slider-image">
@@ -51,7 +62,9 @@ export const StoreDetails = () => {
         <h1 id="details-title" width="80%">
           {data.name}
         </h1>
-        {authContext.loggedIn && <FavoriteButton store={data} />}
+        <div className="fav-btn">
+          {authContext.loggedIn && <FavoriteButton store={data} />}
+        </div>
       </Stack>
       <div className="address-container">
         <a
@@ -98,10 +111,10 @@ export const StoreDetails = () => {
         {data.curbsidePickup && (
           <Grid item xs={8}>
             <div className="drive-thru-container">
-              <div id="check-image">
+              <div id="check-image-2">
                 <CheckIcon />
               </div>
-              <p id="drive-thru">Curbside Pickup</p>
+              <p id="curbside">Curbside Pickup</p>
             </div>
           </Grid>
         )}
@@ -120,9 +133,96 @@ export const StoreDetails = () => {
           {data.description ? data.description : "No description available"}
         </p>
       </div>
-      <div className="button-container">
-        <button id="reviews">Reviews</button>
-      </div>
+
+      <>
+      <IconButton 
+        size='large' 
+        edge='start' 
+        color='inherit' 
+        aria-label='logo' 
+        onClick={()=> setIsDrawerOpen(true)}
+      >
+        <div className="review-btn-container">
+          <button id="reviews-btn">Reviews</button>
+        </div>
+      </IconButton>
+        <Drawer 
+          anchor='bottom' 
+          open={isDrawerOpen} 
+          onClose={() => setIsDrawerOpen(false)}
+          >
+            <div className="review-title-container">
+              <h1 id="top-title">Reviews</h1>
+            </div>
+          <Box p={2} 
+            bgcolor="#D9BBA9"
+            overflow="auto"
+            height='400px' 
+            width='358px' 
+            textAlign='center' 
+            role='presentation'
+          >
+            <Typography variant='h6' component='div'>
+              {/* {data.reviews} */}
+              {/* PUT REVIEWS HERE */}
+              <div className="review-container-slider">
+                <div className="title-container">
+                  <h1 id="review-name">{data.reviews[0].user.username}</h1>
+                  <h3 id="review-rating">{data.reviews[0].rating}</h3>
+                </div>
+                <div className="text-container">
+                  <p id="review-text">{data.reviews[0].text}</p>
+                </div>
+              </div>
+
+              <div className="review-container-slider">
+                <div className="title-container">
+                  <h1 id="review-name">{data.reviews[1].user.username}</h1>
+                  <h3 id="review-rating">{data.reviews[1].rating}</h3>
+                </div>
+                <div className="text-container">
+                  <p id="review-text">{data.reviews[1].text}</p>
+                </div>
+              </div>
+
+              <div className="review-container-slider">
+                <div className="title-container">
+                  <h1 id="review-name">{data.reviews[2].user.username}</h1>
+                  <h3 id="review-rating">{data.reviews[2].rating}</h3>
+                </div>
+                <div className="text-container">
+                  <p id="review-text">{data.reviews[2].text}</p>
+                </div>
+              </div>
+
+              <div className="review-container-slider">
+                <div className="title-container">
+                  <h1 id="review-name">{data.reviews[3].user.username}</h1>
+                  <h3 id="review-rating">{data.reviews[3].rating}</h3>
+                </div>
+                <div className="text-container">
+                  <p id="review-text">{data.reviews[3].text}</p>
+                </div>
+              </div>
+
+              <div className="review-container-slider">
+                <div className="title-container">
+                  <h1 id="review-name">{data.reviews[4].user.username}</h1>
+                  <h3 id="review-rating">{data.reviews[4].rating}</h3>
+                </div>
+                <div className="text-container">
+                  <p id="review-text">{data.reviews[4].text}</p>
+                </div>
+              </div>
+            </Typography>
+          </Box>
+        </Drawer>
+      </>
+      <button id="reviews-btn2" onClick={() => handleSwitchModal('review')}>Leave Review</button>
+      {currentModal === 'review' && (
+        <Reviews handleSwitchModal={handleSwitchModal} />
+      )}
     </div>
   );
 };
+

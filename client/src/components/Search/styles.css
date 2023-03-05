@@ -25,37 +25,58 @@
     }
     .title-result{
         margin-left: 5%;
+        color: white;
+        
     }
     #r-title{
         padding-top: 5%;
+        font-size: 22px;
+        width: 80%;
+        margin-bottom: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow:ellipsis;
     }
-    #hours{
-        margin-left: 10%;
-    }
-    label{
-        margin-left: 10%;
-        font-size: 20px;
-        font-weight: bold;
-        
-    }
-    .address-result{
+    .open-result{
         width: 100%;
         /* background-color: #61443a; */
     }
-    #a-address{
-        margin-left: 10%;
+    #o-open{
+        margin-left: 12%;
         margin-top: 5px;
         width: 100%;
         font-size: 17px;
+        color: white;
     }
     .rating-result{
         width: 100%;
         /* background-color: #61443a; */
     }
     #r-rating{
-        margin-left: 10%;
+        margin-left: 12%;
         margin-top: 5px;
         font-size: 17px;
+        color: white;
+    }
+    .delivery-result{
+        width: 100%;
+        /* background-color: #61443a; */
+    }
+    #d-delivery{
+        margin-left: 12%;
+        margin-top: 5px;
+        font-size: 17px;
+        color: white;
+    }
+    .curbside-result{
+        width: 100%;
+        /* background-color: #61443a; */
+    }
+    #c-curbside{
+        margin-left: 12%;
+        margin-top: 5px;
+        font-size: 17px;
+        color: white;
     }
     .close-button{
         width: 100%;
@@ -71,5 +92,35 @@
         margin-bottom: 25px;
         background-color: #573e35;
         color: white;
+    }
+    .button-search-group{
+        width: 90%;
+        margin-left: 5%;
+        margin-top: -5px;
+        margin-bottom: 20px;
+    }
+    #btnA{
+        width: 25%;
+        margin-left: 6.5%;
+        margin-right: 5%;
+        border-radius: 12px;
+        height: 30px;
+        background-color: #D9BBA9;
+        border: none;
+    }
+    #btnB{
+        width: 25%;
+        height: 30px;
+        margin-right: 5%;
+        border-radius: 12px;
+        background-color: #D9BBA9;
+        border: none;
+    }
+    #btnC{
+        width: 25%;
+        height: 30px;
+        border-radius: 12px;
+        background-color: #D9BBA9;
+        border: none;
     }
 }

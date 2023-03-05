@@ -1,5 +1,4 @@
 .scroll-container {
-  margin-top: 5px;
-  height: 565px;
+  height: 520px;
   overflow: auto;
 }

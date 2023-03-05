@@ -4,7 +4,6 @@ import { StoresList } from "../components/StoresList";
 import { ScrollBox } from "../components/ScrollBox/ScrollBox";
 import { useContext, useState } from "react";
 import { LocationContext } from "../context/LocationContext";
-import { Reviews } from "../components/Reviews/Reviews";
 
 export const HomePage = () => {
   const { settings, loading } = useContext(LocationContext);

@@ -38,7 +38,7 @@ export const FavoriteButton = ({ store }) => {
             })
           : unfavorite.postData({ storeId: store.storeId });
       }}
-      sx={{ mt: "20px", width: "10%" }}
+      sx={{ mt: "-10px", width: "10%" }}
     />
   );
 };
