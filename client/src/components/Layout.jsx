@@ -1,14 +1,22 @@
+import React from "react";
+import { LoadScript } from "@react-google-maps/api";
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar/Navbar";
 import { Footer } from "../components/Footer/Footer";
-import React from "react";
+
+const libs = ["places"];
 
 export const Layout = () => {
   return (
     <div>
-      <Navbar />
-      <Outlet />
-      <Footer />
+      <LoadScript
+        googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
+        libraries={libs}
+      >
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </LoadScript>
     </div>
   );
 };

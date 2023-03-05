@@ -29,7 +29,6 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   const onLogin = (newUser, token) => {
-    console.log(newUser);
     setToken(token);
     setUser(newUser);
   };

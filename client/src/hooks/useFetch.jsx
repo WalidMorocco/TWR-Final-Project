@@ -14,7 +14,7 @@ const useFetch = (urlSegment) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        console.log(`Calling ${baseURL}${urlSegment}`);
+        console.log(`Fetch ${baseURL}${urlSegment}`);
         const response = await axios.get(`${baseURL}${urlSegment}`, {
           headers: {
             Authorization: `Bearer ${authContext.token}`,

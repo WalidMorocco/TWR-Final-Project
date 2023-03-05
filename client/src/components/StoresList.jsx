@@ -3,8 +3,6 @@ import useNearby from "../hooks/useNearby";
 import { Loading } from "./Loading/Loading";
 
 export const StoresList = ({ locationSettings, filter }) => {
-  console.log(locationSettings);
-  console.log(locationSettings.radius);
   const { data, loading, error } = useNearby(
     locationSettings.location.lat,
     locationSettings.location.lng,
