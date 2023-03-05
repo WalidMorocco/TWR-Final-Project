@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
-import './styles.css';
+import React, { useState } from "react";
+import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import "./styles.css";
 
 export const EditProfile = (props) => {
   const { user, updateUser } = useContext(AuthContext);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   console.log(username);
   console.log(password);
@@ -18,7 +18,7 @@ export const EditProfile = (props) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match');
+      setErrorMessage("Passwords do not match");
       return;
     }
 
@@ -42,7 +42,7 @@ export const EditProfile = (props) => {
         };
       }
       const response = await axios.put(
-        `http://localhost:5000/users/${user.id}`,
+        `${process.env.REACT_APP_BASE_URL}users/${user.id}`,
         {
           username: username,
           password: password,
@@ -62,54 +62,45 @@ export const EditProfile = (props) => {
   };
 
   return (
-    <div
-      className='modal'
-      onClick={() => props.handleSwitchModal('')}
-    >
-      <div
-        className='edit-container'
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="modal" onClick={() => props.handleSwitchModal("")}>
+      <div className="edit-container" onClick={(e) => e.stopPropagation()}>
         <h2>Edit Profile</h2>
-        <form
-          className='edit-form'
-          onSubmit={handleSubmit}
-        >
-          <label className='label-title'>
+        <form className="edit-form" onSubmit={handleSubmit}>
+          <label className="label-title">
             Username
             <input
-              type='username'
+              type="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
-          <label className='label-title'>
+          <label className="label-title">
             Current Password
             <input
-              type='password'
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <label className='label-title'>
+          <label className="label-title">
             New Password
             <input
-              type='password'
+              type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </label>
-          <label className='label-title'>
+          <label className="label-title">
             Profile Picture
             <input
-              type='file'
-              accept='image/*'
+              type="file"
+              accept="image/*"
               // onChange={handlePictureChange}
             />
           </label>
-          {errorMessage && <p id='error'>{errorMessage}</p>}
-          <div className='submit-button-group'>
-            <button type='submit'>Save Changes</button>
+          {errorMessage && <p id="error">{errorMessage}</p>}
+          <div className="submit-button-group">
+            <button type="submit">Save Changes</button>
           </div>
         </form>
       </div>

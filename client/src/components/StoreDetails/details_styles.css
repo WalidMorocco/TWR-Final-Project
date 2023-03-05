@@ -9,7 +9,7 @@
     margin: 0;
     margin-left: 0.5%;
     position: fixed;
-    top:88px;
+    top: 88px;
   }
   .detailsTitle-container {
     width: 100%;
@@ -22,11 +22,11 @@
     margin-left: 10%;
     font-size: 27px;
     position: fixed;
-    top:290px;
+    top: 290px;
     width: 80%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
   }
 
   .address-container {
@@ -36,10 +36,10 @@
     height: 40px;
     margin-top: 10px;
     position: fixed;
-    top:350px;
+    top: 350px;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
   }
   #address {
     margin: 0;
@@ -56,9 +56,9 @@
     padding-top: 10px;
     margin-left: 9%;
     margin-bottom: 5px;
-    margin-top:-35px;
+    margin-top: -35px;
     position: fixed;
-    top:400px;
+    top: 400px;
     left: 33px;
     /* top:425px;
     left: 0px; */
@@ -75,7 +75,7 @@
     margin-left: 10%;
     margin-top: 15px;
     position: fixed;
-    top:422px;
+    top: 422px;
     left: -5px;
   }
   #check-image-2 {
@@ -84,7 +84,7 @@
     margin-left: 10%;
     margin-top: 15px;
     position: fixed;
-    top:423px;
+    top: 423px;
     left: 145px;
   }
   #drive-thru {
@@ -92,15 +92,15 @@
     margin-left: 5px;
     float: left;
     position: fixed;
-    top:425px;
+    top: 425px;
     left: 60px;
   }
-  #curbside{
+  #curbside {
     font-size: 16px;
     margin-left: 5px;
     float: left;
     position: fixed;
-    top:425px;
+    top: 425px;
     left: 210px;
   }
   .time-container {
@@ -113,7 +113,7 @@
     margin-left: 5%;
     border-radius: 12px;
     position: fixed;
-    top:460px;
+    top: 460px;
     height: 170px;
     overflow: auto;
   }
@@ -166,10 +166,10 @@
     color: white;
     height: 50px;
   }
-  #reviews-btn{
+  #reviews-btn {
     position: fixed;
     bottom: 53px;
-    left: -78px;
+    left: 15px;
     width: 42%;
     margin-left: 25%;
     height: 40px;
@@ -179,11 +179,16 @@
     border: none;
     color: white;
   }
-  #reviews-btn2{
+
+  #reviews-btn:disabled {
+    background-color: #6d635f;
+  }
+
+  #reviews-btn2 {
     position: fixed;
     bottom: 53px;
-    left: 109px;
-    width: 42%;
+    left: 200px;
+    width: 40px;
     margin-left: 25%;
     height: 40px;
     border-radius: 12px;
@@ -192,7 +197,7 @@
     border: none;
     color: white;
   }
-  .review-container-slider{
+  .review-container-slider {
     width: 90%;
     margin: 0;
     margin-left: 5%;
@@ -202,12 +207,12 @@
     border: none;
     margin-bottom: 20px;
   }
-  .title-container{
+  .title-container {
     width: 100%;
     color: white;
     margin-top: 15px;
   }
-  #review-name{
+  #review-name {
     float: left;
     width: 60%;
     margin: 0;
@@ -216,40 +221,39 @@
     margin-left: 5%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
   }
-  #review-rating{
+  #review-rating {
     float: left;
     width: 35%;
     margin: 0;
     font-size: 20px;
   }
-  .text-container{
+  .text-container {
     width: 96%;
     height: 100px;
     overflow: auto;
     color: white;
   }
-  #review-text{
+  #review-text {
     text-align: left;
     margin-left: 5%;
     font-size: 15px;
-    
   }
-  #top-title{
+  #top-title {
     font-size: 25px;
     margin: 0;
     margin-bottom: 10px;
     margin-top: 5px;
   }
-  .review-title-container{
+  .review-title-container {
     margin: 0;
     width: 100%;
     background-color: #745246;
     text-align: center;
     color: white;
   }
-  .fav-btn{
+  .fav-btn {
     position: fixed;
     /* top: 370px;
     left: 189px; */

@@ -19,7 +19,7 @@ export const FavoriteButton = ({ store }) => {
     if (data) {
       setIsFavorite(data.isFavorite ?? false);
     }
-  }, [loading, store]);
+  }, [data, loading, store]);
 
   return (
     <Checkbox

@@ -19,7 +19,7 @@ const usePost = (urlSegment) => {
       const response = await axios.post(
         `${baseURL}${urlSegment}`,
         data,
-        authContext.loggedIn
+        authContext.token
           ? {
               headers: {
                 Authorization: `Bearer ${authContext.token}`,
