@@ -1,11 +1,12 @@
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import coffeeIcon from "../../images/coffeeIcon.png";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Profile from '@mui/icons-material/AccountCircle';
+import Location from '@mui/icons-material/LocationOnSharp';
 import { useState } from "react";
 import { SignIn } from "../SignIn/SignIn";
 import { SignUp } from "../SignUp/SignUp";
+import { EditProfile } from '../EditProfile/EditProfile';
 import LocationModal from "../Location/LocationModal";
 import { width } from "@mui/system";
 // import useLocation from "../../hooks/useLocation";
@@ -23,21 +24,6 @@ export const Navbar = () => {
   };
 
   return (
-    // <div className="navbar-container">
-    //   <IconContext.Provider value={{ className: "about-icon" }}>
-    //     <div className="navbar-icon">
-    //       <button id="icon-button" onClick={navigateToAbout}><FaInfo/></button>
-    //     </div>
-    //   </IconContext.Provider>
-    //   <div className="navbar-location">
-    //   <IconContext.Provider value={{ className: "loc-icon" }}>
-    //   <FaPeriscope/>
-    //     <h1 id="navbar-location-text">
-    //     {location.coordinates.lat}, {location.coordinates.lng}
-    //     </h1>
-    //   </IconContext.Provider>
-    //   </div>
-    // </div>
     <>
       <nav>
         <div className="nav-section">
@@ -51,7 +37,10 @@ export const Navbar = () => {
             className="nav-button"
             onClick={() => handleSwitchModal("location")}
           >
-            <LocationOnOutlinedIcon fontSize="large" sx={{ color: "white" }} />
+            <Location
+              fontSize='large'
+              style={{ color: 'white' }}
+            />
           </button>
         </div>
 
@@ -60,7 +49,10 @@ export const Navbar = () => {
             className="nav-button"
             onClick={() => handleSwitchModal("signIn")}
           >
-            <AccountCircleIcon fontSize="large" sx={{ color: "white" }} />
+            <Profile
+              fontSize='large'
+              style={{ color: 'white' }}
+            />
           </button>
         </div>
       </nav>
@@ -72,6 +64,9 @@ export const Navbar = () => {
       )}
       {currentModal === "signUp" && (
         <SignUp handleSwitchModal={handleSwitchModal} />
+      )}
+      {currentModal === 'editProfile' && (
+        <EditProfile handleSwitchModal={handleSwitchModal} />
       )}
     </>
   );

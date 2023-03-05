@@ -20,13 +20,16 @@
         background-color: #745246;
         color: white;
     }
-    #filter-1:hover,#filter-2:hover,#filter-3:hover,#filter-4:hover,#filter-5:hover,#filter-6:hover{
+    /* #filter-1:hover,#filter-2:hover,#filter-3:hover,#filter-4:hover,#filter-5:hover,#filter-6:hover{
         background-color: #D9BBA9;
         border:2px solid #745246;
         color: #745246;
-    }
+    } */
     #filter-2,#filter-5{
         margin-left:5%;
         margin-right:5%;
+    }
+    .active {
+        background-color: #D9BBA9;
     }
 }
