@@ -1,43 +1,88 @@
-import { useEffect, useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import "./styles.css";
+import { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import './styles.css';
 
-export const Filters = ({ filter, onFilterChange }) => {
+export const Filters = ({ defaultFilter, onFilterChange }) => {
   const authContext = useContext(AuthContext);
+  const [currentFilter, setCurrentFilter] = useState(defaultFilter);
+
+  const handleFilterClick = (filter) => {
+    setCurrentFilter(filter);
+    sessionStorage.setItem('lastSetFilter', filter);
+    onFilterChange(filter);
+  };
 
   useEffect(() => {
-    document.getElementById("filter-1").click();
+    const lastSetFilter = sessionStorage.getItem('lastSetFilter');
+    if (lastSetFilter) {
+      setCurrentFilter(lastSetFilter);
+    }
   }, []);
 
   useEffect(() => {
-    if (!authContext.loggedIn && filter === "favorites") {
-      document.getElementById("filter-1").click();
+    if (sessionStorage.getItem('lastSetFilter')) {
+      onFilterChange(sessionStorage.getItem('lastSetFilter'));
     }
-  }, [authContext.loggedIn]);
+  }, [onFilterChange]);
+
+  const getButtonStyle = (filter) => {
+    if (filter === currentFilter) {
+      return {
+        backgroundColor: '#D9BBA9',
+        border: '2px solid #745246',
+        color: '#745246',
+      };
+    }
+    return {};
+  };
 
   return (
-    <div className="filter-container">
-      <div className="top-filters">
-        <button id="filter-1" onClick={() => onFilterChange("aroundyou")}>
+    <div className='filter-container'>
+      <div className='top-filters'>
+        <button
+          id='filter-1'
+          style={getButtonStyle('aroundyou')}
+          onClick={() => handleFilterClick('aroundyou')}
+        >
           Around You
         </button>
-        <button id="filter-2" onClick={() => onFilterChange("curbside")}>
+        <button
+          id='filter-2'
+          style={getButtonStyle('curbside')}
+          onClick={() => handleFilterClick('curbside')}
+        >
           Curbside
         </button>
-        <button id="filter-3" onClick={() => onFilterChange("delivery")}>
+        <button
+          id='filter-3'
+          style={getButtonStyle('delivery')}
+          onClick={() => handleFilterClick('delivery')}
+        >
           Delivery
         </button>
       </div>
-      <div className="bottom-filters">
+      <div className='bottom-filters'>
         {authContext.loggedIn && (
-          <button id="filter-4" onClick={() => onFilterChange("favorites")}>
+          <button
+            id='filter-4'
+            style={getButtonStyle('favorites')}
+            onClick={() => handleFilterClick('favorites')}
+          >
             Favorites
           </button>
         )}
-        <button id="filter-5" onClick={() => onFilterChange("bestrated")}>
+        <button
+          id='filter-5'
+          style={getButtonStyle('bestrated')}
+          onClick={() => handleFilterClick('bestrated')}
+        >
           Best Rated
         </button>
-        <button id="filter-6" onClick={() => onFilterChange("coffeeme")}>
+        <button
+          id='filter-6'
+          style={getButtonStyle('coffeeme')}
+          onClick={() => handleFilterClick('coffeeme')}
+        >
           CoffeeMe
         </button>
       </div>

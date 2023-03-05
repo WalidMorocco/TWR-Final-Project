@@ -88,6 +88,7 @@ export const StoreDetails = () => {
             precision={0.5}
             icon={<FreeBreakfastIcon fontSize="inherit" />}
             emptyIcon={<FreeBreakfastOutlinedIcon fontSize="inherit" />}
+            readOnly
             sx={{
               "& .MuiRating-iconFilled": {
                 color: "#685618",
@@ -218,7 +219,9 @@ export const StoreDetails = () => {
           </Box>
         </Drawer>
       </>
+      {authContext.loggedIn && (
       <button id="reviews-btn2" onClick={() => handleSwitchModal('review')}>Leave Review</button>
+      )}
       {currentModal === 'review' && (
         <Reviews handleSwitchModal={handleSwitchModal} />
       )}

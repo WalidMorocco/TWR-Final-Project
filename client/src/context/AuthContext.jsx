@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext } from 'react';
 
 export const AuthContext = createContext({
   user: null,
@@ -9,27 +9,26 @@ export const AuthContext = createContext({
 });
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [token, setToken] = useState(localStorage.getItem('token'));
 
   useEffect(() => {
     if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     } else {
-      localStorage.removeItem("user");
+      localStorage.removeItem('user');
     }
   }, [user]);
 
   useEffect(() => {
     if (token) {
-      localStorage.setItem("token", token);
+      localStorage.setItem('token', token);
     } else {
-      localStorage.removeItem("token");
+      localStorage.removeItem('token');
     }
   }, [token]);
 
   const onLogin = (newUser, token) => {
-    console.log(newUser);
     setToken(token);
     setUser(newUser);
   };
@@ -39,6 +38,21 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
+  // const updatePicture = () => {
+  //   //Call uploadimage
+
+  //   const updatedUser = {
+  //     picture: {
+  //       /**/
+  //     },
+  //   };
+  //   setUser(...updatedUser);
+  // };
+
   return (
     <AuthContext.Provider
       value={{
@@ -47,6 +61,8 @@ export const AuthProvider = ({ children }) => {
         loggedIn: token ? true : false,
         onLogin,
         onLogout,
+        //updatePicture,
+        updateUser,
       }}
     >
       {children}

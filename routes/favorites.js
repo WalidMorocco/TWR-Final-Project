@@ -20,7 +20,6 @@ router.get("/getfavorites", async function (req, res) {
 });
 
 router.post("/favorite", async function (req, res) {
-  console.log(req.user);
   let favorite = await Favorite.findOne({ storeId: req.body.storeId })
     .exec()
     .catch((err) => {
@@ -62,21 +61,17 @@ router.post("/unfavorite", function (req, res) {
   })
     .exec()
     .then((favorite) => {
-      console.log(favorite);
       if (favorite) {
         const index = favorite.users.indexOf(req.user);
         favorite.users.splice(index, 1);
 
-        console.log("After splice");
         if (!favorite.users.length) {
-          console.log("delete one");
           Favorite.deleteOne({ _id: favorite._id }).then((result) => {
             res.status(200).send({
               _id: result._id,
             });
           });
         } else {
-          console.log("else");
           favorite.save().then((result) => {
             res.status(200).send();
           });
@@ -91,7 +86,6 @@ router.post("/unfavorite", function (req, res) {
 });
 
 router.get("/isfavorite", async function (req, res) {
-  console.log(req);
   const result = await Favorite.findOne({
     storeId: req.query.storeId,
     users: req.user,

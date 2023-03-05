@@ -16,10 +16,10 @@ export const FavoriteButton = ({ store }) => {
   const unfavorite = usePost("user/unfavorite");
 
   useEffect(() => {
-    if (!loading) {
-      setIsFavorite(data.isFavorite);
+    if (data) {
+      setIsFavorite(data.isFavorite ?? false);
     }
-  }, [loading]);
+  }, [loading, store]);
 
   return (
     <Checkbox

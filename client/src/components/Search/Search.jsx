@@ -96,7 +96,6 @@ export const Search = ({ locationSettings }) => {
             placeholder: "Search",
             onChange: setValue,
           }}
-          apiKey="AIzaSyBkpSZDQLvioiTKdeakMG3CQTnh5c2U0Rk"
         />
         <div className="results-container">
           <div className="title-result">
@@ -157,7 +156,6 @@ export const Search = ({ locationSettings }) => {
           placeholder: "Search...",
           onChange: setValue,
         }}
-        apiKey="AIzaSyBkpSZDQLvioiTKdeakMG3CQTnh5c2U0Rk"
         minLengthAutocomplete = "6"
       />
     </div>

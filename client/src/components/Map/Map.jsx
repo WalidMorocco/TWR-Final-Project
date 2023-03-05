@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  LoadScript,
   GoogleMap,
   Circle,
   Marker,
@@ -10,8 +9,6 @@ import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 import { Grid } from "@mui/material";
-
-const libs = ["places"];
 
 const Map = ({
   location,
@@ -54,13 +51,8 @@ const Map = ({
     }
   }
 
-  console.log(process.env);
-
   return (
-    <LoadScript
-      googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
-      libraries={libs}
-    >
+    <>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -114,7 +106,7 @@ const Map = ({
           <MyLocationIcon />
         </IconButton>
       </Stack>
-    </LoadScript>
+    </>
   );
 };
 

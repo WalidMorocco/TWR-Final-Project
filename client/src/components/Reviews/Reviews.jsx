@@ -1,7 +1,6 @@
 import "./styles.css";
 import dunkin from "../../images/dunks.jpeg"
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import Rating from "@mui/material/Rating";
 import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 import FreeBreakfastOutlinedIcon from "@mui/icons-material/FreeBreakfastOutlined";
