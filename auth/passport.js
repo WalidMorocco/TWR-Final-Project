@@ -23,7 +23,6 @@ export default function (passport) {
           return done(null, false, { message: "Incorrect email or password" });
         }
 
-        console.log(`Passport found ${user}`);
         return done(null, user);
       }
     )

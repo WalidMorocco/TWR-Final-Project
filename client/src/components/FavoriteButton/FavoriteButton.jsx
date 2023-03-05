@@ -17,7 +17,6 @@ export const FavoriteButton = ({ store }) => {
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       setIsFavorite(data.isFavorite ?? false);
     }
   }, [loading, store]);

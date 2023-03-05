@@ -33,7 +33,6 @@ const filterDelivery = async (sourceList) => {
 const filterFavorites = async (userId, location) => {
   const allFavorites = await getUserFavorites(userId, location);
 
-  console.log(allFavorites);
   return filterAroundYou(allFavorites);
 };
 

@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { uploadImage, multerUpload } from "../services/aws/bucket.js";
 var router = express.Router();
+
 const secret = process.env.USER_AUTH_SECRET;
 
 // Load user model
@@ -110,9 +111,6 @@ router.post(
       if (error) {
         res.status(500).send({ err: error });
       }
-
-      // If not then below code will be executed
-      console.log(data);
 
       if (data) {
         // saving the information in the database.

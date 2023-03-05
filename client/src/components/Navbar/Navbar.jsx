@@ -1,20 +1,22 @@
-import './styles.css';
-import { useNavigate } from 'react-router-dom';
-import coffeeIcon from '../../images/coffeeIcon.png';
-import { useState } from 'react';
-import { SignIn } from '../SignIn/SignIn';
-import { SignUp } from '../SignUp/SignUp';
-import LocationModal from '../Location/LocationModal';
-import { EditProfile } from '../EditProfile/EditProfile';
+import "./styles.css";
+import { useNavigate } from "react-router-dom";
+import coffeeIcon from "../../images/coffeeIcon.png";
 import Profile from '@mui/icons-material/AccountCircle';
 import Location from '@mui/icons-material/LocationOnSharp';
+import { useState } from "react";
+import { SignIn } from "../SignIn/SignIn";
+import { SignUp } from "../SignUp/SignUp";
+import { EditProfile } from '../EditProfile/EditProfile';
+import LocationModal from "../Location/LocationModal";
+import { width } from "@mui/system";
+// import useLocation from "../../hooks/useLocation";
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const [currentModal, setCurrentModal] = useState('');
+  const [currentModal, setCurrentModal] = useState("");
 
   const navigateToAbout = () => {
-    navigate('/AboutUs');
+    navigate("/AboutUs");
   };
 
   const handleSwitchModal = (modalName) => {
@@ -24,23 +26,16 @@ export const Navbar = () => {
   return (
     <>
       <nav>
-        <div className='nav-section'>
-          <button
-            className='nav-button'
-            onClick={navigateToAbout}
-          >
-            <img
-              id='logo-icon'
-              src={coffeeIcon}
-              alt='logo'
-            />
+        <div className="nav-section">
+          <button className="nav-button" onClick={navigateToAbout}>
+            <img id="logo-icon" src={coffeeIcon} alt="logo" />
           </button>
         </div>
 
-        <div className='nav-section'>
+        <div className="nav-section">
           <button
-            className='nav-button'
-            onClick={() => handleSwitchModal('location')}
+            className="nav-button"
+            onClick={() => handleSwitchModal("location")}
           >
             <Location
               fontSize='large'
@@ -49,10 +44,10 @@ export const Navbar = () => {
           </button>
         </div>
 
-        <div className='nav-section'>
+        <div className="nav-section">
           <button
-            className='nav-button'
-            onClick={() => handleSwitchModal('signIn')}
+            className="nav-button"
+            onClick={() => handleSwitchModal("signIn")}
           >
             <Profile
               fontSize='large'
@@ -61,13 +56,13 @@ export const Navbar = () => {
           </button>
         </div>
       </nav>
-      {currentModal === 'location' && (
+      {currentModal === "location" && (
         <LocationModal handleSwitchModal={handleSwitchModal} />
       )}
-      {currentModal === 'signIn' && (
+      {currentModal === "signIn" && (
         <SignIn handleSwitchModal={handleSwitchModal} />
       )}
-      {currentModal === 'signUp' && (
+      {currentModal === "signUp" && (
         <SignUp handleSwitchModal={handleSwitchModal} />
       )}
       {currentModal === 'editProfile' && (
