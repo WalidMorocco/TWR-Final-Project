@@ -39,16 +39,20 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  const updatePicture = () => {
-    //Call uploadimage
-
-    const updatedUser = {
-      picture: {
-        /**/
-      },
-    };
-    setUser(...updatedUser);
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
   };
+
+  // const updatePicture = () => {
+  //   //Call uploadimage
+
+  //   const updatedUser = {
+  //     picture: {
+  //       /**/
+  //     },
+  //   };
+  //   setUser(...updatedUser);
+  // };
 
   return (
     <AuthContext.Provider
@@ -59,7 +63,7 @@ export const AuthProvider = ({ children }) => {
         onLogin,
         onLogout,
         //updatePicture,
-        //updateUsername,
+        updateUser,
       }}
     >
       {children}

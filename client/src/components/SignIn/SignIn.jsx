@@ -35,7 +35,6 @@ export const SignIn = (props) => {
     if (!loading && responseData?.token) {
       authContext.onLogin(responseData.user, responseData.token);
       console.log('Logged in successfully!');
-      console.log('test:', responseData.user);
     }
   }, [loading]);
 
@@ -54,9 +53,15 @@ export const SignIn = (props) => {
             <div className='submit-button-group'>
               <button
                 id='submit'
+                onClick={() => props.handleSwitchModal('editProfile')}
+              >
+                Edit
+              </button>
+              <button
+                id='submit'
                 onClick={handleLogout}
               >
-                Log out
+                Sign out
               </button>
             </div>
           </div>

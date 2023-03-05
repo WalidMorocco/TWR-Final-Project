@@ -26,7 +26,7 @@ router.post("/login", (req, res, next) => {
       const token = jwt.sign({ userId: user.id }, secret);
       res.json({
         token,
-        user: { username: user.username, email:user.email, picture: user.picture },
+        user: { id: user.id, username: user.username, email:user.email, picture: user.picture },
       });
     });
   })(req, res, next);
@@ -51,6 +51,7 @@ router.post("/register", async function (req, res) {
     username: req.body.username,
     email: req.body.email,
     password: hashedPassword,
+    picture: 'https://twr-coffee-me.s3.amazonaws.com/images/default-avatar.jpg', //Default picture
   });
   newUser.save(function (err) {
     if (err) {
@@ -61,37 +62,44 @@ router.post("/register", async function (req, res) {
   });
 });
 
-router.put("/user/username", passport.authenticate("jwt", { session: false }), async function (req, res) {
-  try {
-    const user = await User.findById(req.user.id);
-    const existingUser = await User.findOne({ username: req.body.username });
-    if (existingUser) {
-      return res.status(400).json({ success: false, message: "Username already in use" });
-    }
-    user.username = req.body.username;
-    await user.save();
-    res.json({ success: true, message: "Username updated" });
-  } catch (err) {
-    console.log(err);
-    res.json({ success: false, message: "Error updating username" });
+router.put("/users/:id", async function (req, res) {
+  const id = req.params.id;
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+  const user = await User.findById(id);
+
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "User not found",
+    });
   }
+
+  // Check if username already exists
+  const existingUser = await User.findOne({ username: req.body.username });
+
+  if (existingUser && existingUser._id.toString() !== user._id.toString()) {
+    return res.status(400).json({
+      success: false,
+      message: "Username already in use",
+    });
+  }
+
+  // Update the user's information
+  user.username = req.body.username;
+  user.password = hashedPassword;
+
+  // Save the updated user
+  user.save(function (err) {
+    if (err) {
+      console.log(err);
+      return res.json({ success: false, message: "Update failed" });
+    }
+    res.json({ success: true, message: "Update successful" });
+  });
 });
 
-router.put("/user/password", passport.authenticate("jwt", { session: false }), async function (req, res) {
-  try {
-    const user = await User.findById(req.user.id);
-    const isMatch = await bcrypt.compare(req.body.currentPassword, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ success: false, message: "Invalid current password" });
-    }
-    user.password = await bcrypt.hash(req.body.newPassword, 10);
-    await user.save();
-    res.json({ success: true, message: "Password updated" });
-  } catch (err) {
-    console.log(err);
-    res.json({ success: false, message: "Error updating password" });
-  }
-});
+
 
 router.post(
   "user/uploadimage",

@@ -13,8 +13,9 @@
     }
 
     .image {
-        max-width: 100%;
-        height: auto;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
         border-radius: 50%;
     }
 
@@ -37,6 +38,6 @@
 
     .label {
         font-weight: bold;
-        margin-bottom: 5px;
+        margin-top: 10%;
     }
 }
