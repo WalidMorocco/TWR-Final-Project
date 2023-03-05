@@ -5,6 +5,7 @@ import ImageSlider from "../ImageSlider/ImageSlider";
 import CheckIcon from "@mui/icons-material/Check";
 import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 import FreeBreakfastOutlinedIcon from "@mui/icons-material/FreeBreakfastOutlined";
+import RateReviewIcon from "@mui/icons-material/RateReview";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Rating from "@mui/material/Rating";
@@ -14,8 +15,8 @@ import { LocationContext } from "../../context/LocationContext";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
-import { Drawer, Typography, IconButton } from '@mui/material';
-import { useState } from 'react';
+import { Drawer, Typography, IconButton } from "@mui/material";
+import { useState } from "react";
 import { Reviews } from "../Reviews/Reviews";
 
 const mapsBaseURL = "https://www.google.com/maps/dir/";
@@ -36,9 +37,9 @@ export const StoreDetails = () => {
 
   const authContext = useContext(AuthContext);
   const locationContext = useContext(LocationContext);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const [currentModal, setCurrentModal] = useState('');
+  const [currentModal, setCurrentModal] = useState("");
   const handleSwitchModal = (modalName) => {
     setCurrentModal(modalName);
   };
@@ -51,8 +52,6 @@ export const StoreDetails = () => {
     return <Loading />;
   }
 
-  // console.log("DATA" + JSON.stringify(data));
-  // console.log(data.reviews);
   return (
     <div className="storeDetails-container">
       <div className="slider-image">
@@ -136,96 +135,70 @@ export const StoreDetails = () => {
       </div>
 
       <>
-      <IconButton 
-        size='large' 
-        edge='start' 
-        color='inherit' 
-        aria-label='logo' 
-        onClick={()=> setIsDrawerOpen(true)}
-      >
-        <div className="review-btn-container">
-          <button id="reviews-btn">Reviews</button>
-        </div>
-      </IconButton>
-        <Drawer 
-          anchor='bottom' 
-          open={isDrawerOpen} 
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="logo"
+          onClick={() => setIsDrawerOpen(true)}
+        >
+          <div className="review-btn-container">
+            <button id="reviews-btn" disabled={!data?.reviews?.length}>
+              {data?.reviews?.length} Reviews
+            </button>
+          </div>
+        </IconButton>
+        <Drawer
+          anchor="bottom"
+          open={isDrawerOpen}
           onClose={() => setIsDrawerOpen(false)}
-          >
-            <div className="review-title-container">
-              <h1 id="top-title">Reviews</h1>
-            </div>
-          <Box p={2} 
+        >
+          <div className="review-title-container">
+            <h1 id="top-title">Reviews</h1>
+          </div>
+          <Box
+            p={2}
             bgcolor="#D9BBA9"
             overflow="auto"
-            height='400px' 
-            width='358px' 
-            textAlign='center' 
-            role='presentation'
+            height="400px"
+            width="358px"
+            textAlign="center"
+            role="presentation"
           >
-            <Typography variant='h6' component='div'>
-              {/* {data.reviews} */}
-              {/* PUT REVIEWS HERE */}
-              <div className="review-container-slider">
-                <div className="title-container">
-                  <h1 id="review-name">{data.reviews[0].user.username}</h1>
-                  <h3 id="review-rating">{data.reviews[0].rating}</h3>
-                </div>
-                <div className="text-container">
-                  <p id="review-text">{data.reviews[0].text}</p>
-                </div>
-              </div>
-
-              <div className="review-container-slider">
-                <div className="title-container">
-                  <h1 id="review-name">{data.reviews[1].user.username}</h1>
-                  <h3 id="review-rating">{data.reviews[1].rating}</h3>
-                </div>
-                <div className="text-container">
-                  <p id="review-text">{data.reviews[1].text}</p>
-                </div>
-              </div>
-
-              <div className="review-container-slider">
-                <div className="title-container">
-                  <h1 id="review-name">{data.reviews[2].user.username}</h1>
-                  <h3 id="review-rating">{data.reviews[2].rating}</h3>
-                </div>
-                <div className="text-container">
-                  <p id="review-text">{data.reviews[2].text}</p>
-                </div>
-              </div>
-
-              <div className="review-container-slider">
-                <div className="title-container">
-                  <h1 id="review-name">{data.reviews[3].user.username}</h1>
-                  <h3 id="review-rating">{data.reviews[3].rating}</h3>
-                </div>
-                <div className="text-container">
-                  <p id="review-text">{data.reviews[3].text}</p>
-                </div>
-              </div>
-
-              <div className="review-container-slider">
-                <div className="title-container">
-                  <h1 id="review-name">{data.reviews[4].user.username}</h1>
-                  <h3 id="review-rating">{data.reviews[4].rating}</h3>
-                </div>
-                <div className="text-container">
-                  <p id="review-text">{data.reviews[4].text}</p>
-                </div>
-              </div>
+            <Typography variant="h6" component="div">
+              {data?.reviews?.length &&
+                data.reviews.map((review) => (
+                  <div
+                    className="review-container-slider"
+                    key={review.timestamp}
+                  >
+                    <div className="title-container">
+                      <h1 id="review-name">{review.user.username}</h1>
+                      <h3 id="review-rating">{review.rating}</h3>
+                    </div>
+                    <div className="text-container">
+                      <p id="review-text">{review.text}</p>
+                    </div>
+                  </div>
+                ))}
             </Typography>
           </Box>
         </Drawer>
       </>
       {authContext.loggedIn && (
-      <button id="reviews-btn2" onClick={() => handleSwitchModal('review')}>Leave Review</button>
+        <button id="reviews-btn2" onClick={() => handleSwitchModal("review")}>
+          <RateReviewIcon
+            sx={{
+              "& .MuiRating-iconFilled": {
+                color: "white",
+              },
+            }}
+          />
+        </button>
       )}
-      {currentModal === 'review' && (
+      {currentModal === "review" && (
         <Reviews handleSwitchModal={handleSwitchModal} />
       )}
     </div>
   );
 };
-

@@ -15,11 +15,16 @@ const useFetch = (urlSegment) => {
     const getData = async () => {
       try {
         console.log(`Fetch ${baseURL}${urlSegment}`);
-        const response = await axios.get(`${baseURL}${urlSegment}`, {
-          headers: {
-            Authorization: `Bearer ${authContext.token}`,
-          },
-        });
+        const response = await axios.get(
+          `${baseURL}${urlSegment}`,
+          authContext.token
+            ? {
+                headers: {
+                  Authorization: `Bearer ${authContext.token}`,
+                },
+              }
+            : null
+        );
         setData(response.data);
       } catch (error) {
         setError(error);
@@ -28,7 +33,7 @@ const useFetch = (urlSegment) => {
       }
     };
     getData();
-  }, [urlSegment]);
+  }, [urlSegment, authContext.token]);
 
   return { data, loading, error };
 };

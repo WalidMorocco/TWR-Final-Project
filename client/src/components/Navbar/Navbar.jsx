@@ -1,14 +1,13 @@
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import coffeeIcon from "../../images/coffeeIcon.png";
-import Profile from '@mui/icons-material/AccountCircle';
-import Location from '@mui/icons-material/LocationOnSharp';
+import Profile from "@mui/icons-material/AccountCircle";
+import Location from "@mui/icons-material/LocationOnSharp";
 import { useState } from "react";
 import { SignIn } from "../SignIn/SignIn";
 import { SignUp } from "../SignUp/SignUp";
-import { EditProfile } from '../EditProfile/EditProfile';
+import { EditProfile } from "../EditProfile/EditProfile";
 import LocationModal from "../Location/LocationModal";
-import { width } from "@mui/system";
 // import useLocation from "../../hooks/useLocation";
 
 export const Navbar = () => {
@@ -37,10 +36,7 @@ export const Navbar = () => {
             className="nav-button"
             onClick={() => handleSwitchModal("location")}
           >
-            <Location
-              fontSize='large'
-              style={{ color: 'white' }}
-            />
+            <Location fontSize="large" style={{ color: "white" }} />
           </button>
         </div>
 
@@ -49,10 +45,7 @@ export const Navbar = () => {
             className="nav-button"
             onClick={() => handleSwitchModal("signIn")}
           >
-            <Profile
-              fontSize='large'
-              style={{ color: 'white' }}
-            />
+            <Profile fontSize="large" style={{ color: "white" }} />
           </button>
         </div>
       </nav>
@@ -65,7 +58,7 @@ export const Navbar = () => {
       {currentModal === "signUp" && (
         <SignUp handleSwitchModal={handleSwitchModal} />
       )}
-      {currentModal === 'editProfile' && (
+      {currentModal === "editProfile" && (
         <EditProfile handleSwitchModal={handleSwitchModal} />
       )}
     </>
