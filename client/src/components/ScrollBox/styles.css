@@ -1,4 +1,13 @@
-.scroll-container {
-  height: 520px;
-  overflow: auto;
+@media only screen and (max-height: 760px) {
+  .scroll-container {
+    overflow: auto;
+    height: 50vh;
+  }
+}
+
+@media only screen and (min-height: 760px) {
+  .scroll-container {
+    overflow: auto;
+    height: 60vh;
+  }
 }

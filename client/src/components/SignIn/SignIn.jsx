@@ -1,20 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../context/AuthContext';
-import usePost from '../../hooks/usePost';
-import { ProfileModal } from '../ProfileModal/ProfileModal';
-import './styles.css';
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import usePost from "../../hooks/crud/usePost";
+import { ProfileModal } from "../ProfileModal/ProfileModal";
+import "./styles.css";
 
 export const SignIn = (props) => {
   const authContext = useContext(AuthContext);
 
-  const { postData, responseData, loading } = usePost('login');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { postData, responseData, loading } = usePost("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
   const handleLogout = () => {
     authContext.onLogout();
-    localStorage.removeItem('token');
   };
 
   const handleSubmit = async (e) => {
@@ -33,80 +32,65 @@ export const SignIn = (props) => {
   useEffect(() => {
     if (!loading && responseData?.token) {
       authContext.onLogin(responseData.user, responseData.token);
-      console.log('Logged in successfully!');
+      console.log("Logged in successfully!");
     }
   }, [loading]);
 
   return (
-    <div
-      className='modal'
-      onClick={() => props.handleSwitchModal('')}
-    >
-      <div
-        className='signIn-container'
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="modal" onClick={() => props.handleSwitchModal("")}>
+      <div className="signIn-container" onClick={(e) => e.stopPropagation()}>
         {authContext.loggedIn ? (
-          <div className='logged-container'>
+          <div className="logged-container">
             <ProfileModal />
-            <div className='submit-button-group'>
+            <div className="submit-button-group">
               <button
-                id='submit'
-                onClick={() => props.handleSwitchModal('editProfile')}
+                id="submit"
+                onClick={() => props.handleSwitchModal("editProfile")}
               >
                 Edit
               </button>
-              <button
-                id='submit'
-                onClick={handleLogout}
-              >
+              <button id="submit" onClick={handleLogout}>
                 Sign out
               </button>
             </div>
           </div>
         ) : (
           <>
-            <h1 id='signIn-title'>Sign In</h1>
-            <form
-              className='signIn-form'
-              onSubmit={handleSubmit}
-            >
-              <div className='label-title'>
-                <label id='email'>Email:</label>
+            <h1 id="signIn-title">Sign In</h1>
+            <form className="signIn-form" onSubmit={handleSubmit}>
+              <div className="label-title">
+                <label id="email">Email:</label>
               </div>
               <input
-                id='email-input'
-                type='email'
-                placeholder='Email'
+                id="email-input"
+                type="email"
+                placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <div className='label-title'>
-                <label id='password'>Password:</label>
+              <div className="label-title">
+                <label id="password">Password:</label>
               </div>
               <input
-                id='password-input'
-                type='password'
-                placeholder='Password'
+                id="password-input"
+                type="password"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              {error && <div id='error'>{error}</div>}
-              <div className='sign-up-now'>
+              {error && <div id="error">{error}</div>}
+              <div className="sign-up-now">
                 <button
                   onClick={(e) => {
                     e.preventDefault();
-                    props.handleSwitchModal('signUp');
+                    props.handleSwitchModal("signUp");
                   }}
                 >
                   Not a user? Sign up now!
                 </button>
               </div>
-              <div className='submit-button-group'>
-                <button
-                  type='submit'
-                  id='submit'
-                >
+              <div className="submit-button-group">
+                <button type="submit" id="submit">
                   Sign In
                 </button>
               </div>

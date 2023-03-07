@@ -1,8 +1,8 @@
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-import usePost from "../../hooks/usePost";
-import useFetch from "../../hooks/useFetch";
+import usePost from "../../hooks/crud/usePost";
+import useFetch from "../../hooks/crud/useFetch";
 import { useEffect, useState } from "react";
 
 export const FavoriteButton = ({ store }) => {

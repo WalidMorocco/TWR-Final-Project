@@ -1,23 +1,20 @@
 import "./details_styles.css";
-import useDetails from "../../hooks/useDetails";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import useDetails from "../../hooks/useDetails";
 import ImageSlider from "../ImageSlider/ImageSlider";
+import { Loading } from "../Loading/Loading";
+import { LocationContext } from "../../context/LocationContext";
+import { AuthContext } from "../../context/AuthContext";
+import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
+import { Reviews } from "../Reviews/Reviews";
+import ReviewsDrawer from "../ReviewsDrawer/ReviewsDrawer";
+import { Box, Grid, Rating } from "@mui/material";
+import { Stack } from "@mui/system";
 import CheckIcon from "@mui/icons-material/Check";
 import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 import FreeBreakfastOutlinedIcon from "@mui/icons-material/FreeBreakfastOutlined";
 import RateReviewIcon from "@mui/icons-material/RateReview";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Rating from "@mui/material/Rating";
-import { Stack } from "@mui/system";
-import { Loading } from "../Loading/Loading";
-import { LocationContext } from "../../context/LocationContext";
-import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
-import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
-import { Drawer, Typography, IconButton } from "@mui/material";
-import { useState } from "react";
-import { Reviews } from "../Reviews/Reviews";
 
 const mapsBaseURL = "https://www.google.com/maps/dir/";
 
@@ -37,7 +34,6 @@ export const StoreDetails = () => {
 
   const authContext = useContext(AuthContext);
   const locationContext = useContext(LocationContext);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const [currentModal, setCurrentModal] = useState("");
   const handleSwitchModal = (modalName) => {
@@ -134,57 +130,8 @@ export const StoreDetails = () => {
         </p>
       </div>
 
-      <>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="logo"
-          onClick={() => setIsDrawerOpen(true)}
-        >
-          <div className="review-btn-container">
-            <button id="reviews-btn" disabled={!data?.reviews?.length}>
-              {data?.reviews?.length} Reviews
-            </button>
-          </div>
-        </IconButton>
-        <Drawer
-          anchor="bottom"
-          open={isDrawerOpen}
-          onClose={() => setIsDrawerOpen(false)}
-        >
-          <div className="review-title-container">
-            <h1 id="top-title">Reviews</h1>
-          </div>
-          <Box
-            p={2}
-            bgcolor="#D9BBA9"
-            overflow="auto"
-            height="400px"
-            width="358px"
-            textAlign="center"
-            role="presentation"
-          >
-            <Typography variant="h6" component="div">
-              {data?.reviews?.length &&
-                data.reviews.map((review) => (
-                  <div
-                    className="review-container-slider"
-                    key={review.timestamp}
-                  >
-                    <div className="title-container">
-                      <h1 id="review-name">{review.user.username}</h1>
-                      <h3 id="review-rating">{review.rating}</h3>
-                    </div>
-                    <div className="text-container">
-                      <p id="review-text">{review.text}</p>
-                    </div>
-                  </div>
-                ))}
-            </Typography>
-          </Box>
-        </Drawer>
-      </>
+      <ReviewsDrawer storeId={storeId} />
+
       {authContext.loggedIn && (
         <button id="reviews-btn2" onClick={() => handleSwitchModal("review")}>
           <RateReviewIcon
