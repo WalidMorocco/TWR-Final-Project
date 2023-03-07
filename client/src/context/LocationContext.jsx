@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext } from "react";
-import useDeviceLocation from "../hooks/useDeviceLocation";
+import useDeviceLocation from "../hooks/location/useDeviceLocation";
+import useIPLocation from "../hooks/location/useIPLocation";
 
 const defaultLocation = {
   lat: "",
@@ -20,12 +21,13 @@ export const LocationContext = createContext({
 });
 
 export const LocationProvider = ({ children }) => {
+  const ipLocation = useIPLocation();
   const { location, refresh } = useDeviceLocation();
   const [locationSettings, setLocationSettings] = useState(
     JSON.parse(localStorage.getItem("locationSettings")) ?? {
       location: {
-        lat: location.coordinates.lat,
-        lng: location.coordinates.lng,
+        lat: location?.coordinates?.lat ?? ipLocation?.latitude,
+        lng: location?.coordinates?.lng ?? ipLocation?.longitude,
         address: location.address,
       },
       radius: 5,

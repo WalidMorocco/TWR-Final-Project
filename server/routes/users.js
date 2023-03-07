@@ -27,7 +27,12 @@ router.post("/login", (req, res, next) => {
       const token = jwt.sign({ userId: user.id }, secret);
       res.json({
         token,
-        user: { id: user.id, username: user.username, email:user.email, picture: user.picture },
+        user: {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          picture: user.picture,
+        },
       });
     });
   })(req, res, next);
@@ -42,7 +47,7 @@ router.post("/register", async function (req, res) {
   });
 
   if (existingUser) {
-    return res.status(400).json({
+    return res.json({
       success: false,
       message: "Username or email already in use",
     });
@@ -52,7 +57,7 @@ router.post("/register", async function (req, res) {
     username: req.body.username,
     email: req.body.email,
     password: hashedPassword,
-    picture: 'https://twr-coffee-me.s3.amazonaws.com/images/default-avatar.jpg', //Default picture
+    picture: "https://twr-coffee-me.s3.amazonaws.com/images/default-avatar.jpg", //Default picture
   });
   newUser.save(function (err) {
     if (err) {
@@ -99,8 +104,6 @@ router.put("/users/:id", async function (req, res) {
     res.json({ success: true, message: "Update successful" });
   });
 });
-
-
 
 router.post(
   "user/uploadimage",

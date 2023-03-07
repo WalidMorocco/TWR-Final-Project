@@ -27,7 +27,7 @@ export const Navbar = () => {
       <nav>
         <div className="nav-section">
           <button className="nav-button" onClick={navigateToAbout}>
-            <img id="logo-icon" src={coffeeIcon} alt="logo" />
+            <img id="logo-icon" src={coffeeIcon} alt="logo" width="40px" />
           </button>
         </div>
 

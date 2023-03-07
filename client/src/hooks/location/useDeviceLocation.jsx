@@ -22,6 +22,7 @@ const useDeviceLocation = () => {
   };
 
   const onError = (error) => {
+    console.log(error);
     setLocation({
       loaded: true,
       error,
