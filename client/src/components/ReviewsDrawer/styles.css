@@ -1,0 +1,54 @@
+.review-container-slider {
+  width: 90%;
+  margin: 0;
+  margin-left: 5%;
+  border-radius: 12px;
+  min-height: 80px;
+  max-height: 150px;
+  background-color: #745246;
+  border: none;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+.title-container {
+  width: 100%;
+  color: white;
+  margin-top: 15px;
+}
+#review-name {
+  float: left;
+  width: 100%;
+  margin: 0;
+  font-size: 16px;
+  text-align: left;
+  margin-left: 5%;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#review-time {
+  float: right;
+  width: 100%;
+  margin: 0;
+  font-size: 14px;
+  text-align: right;
+  margin-top: -15px;
+  margin-right: 5%;
+}
+#review-rating {
+  float: left;
+  width: 35%;
+  margin-top: auto;
+  font-size: 16px;
+}
+.text-container {
+  width: 96%;
+  height: 70px;
+  overflow: auto;
+  color: white;
+}
+#review-text {
+  text-align: left;
+  margin-left: 5%;
+  font-size: 15px;
+}

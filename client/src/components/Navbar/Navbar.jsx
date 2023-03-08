@@ -3,15 +3,17 @@ import { useNavigate } from "react-router-dom";
 import coffeeIcon from "../../images/coffeeIcon.png";
 import Profile from "@mui/icons-material/AccountCircle";
 import Location from "@mui/icons-material/LocationOnSharp";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { SignIn } from "../SignIn/SignIn";
 import { SignUp } from "../SignUp/SignUp";
 import { EditProfile } from "../EditProfile/EditProfile";
 import LocationModal from "../Location/LocationModal";
+import { AuthContext } from "../../context/AuthContext";
 // import useLocation from "../../hooks/useLocation";
 
 export const Navbar = () => {
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
   const [currentModal, setCurrentModal] = useState("");
 
   const navigateToAbout = () => {
@@ -45,7 +47,15 @@ export const Navbar = () => {
             className="nav-button"
             onClick={() => handleSwitchModal("signIn")}
           >
-            <Profile fontSize="large" style={{ color: "white" }} />
+            {authContext.loggedIn && authContext.user?.picture ? (
+              <img
+                className="curr-user-image"
+                src={authContext.user?.picture}
+                alt=""
+              />
+            ) : (
+              <Profile fontSize="large" style={{ color: "white" }} />
+            )}
           </button>
         </div>
       </nav>

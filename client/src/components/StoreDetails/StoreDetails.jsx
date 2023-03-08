@@ -40,6 +40,10 @@ export const StoreDetails = () => {
     setCurrentModal(modalName);
   };
 
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
+
   if (error) {
     console.log(error);
   }
@@ -144,7 +148,12 @@ export const StoreDetails = () => {
         </button>
       )}
       {currentModal === "review" && (
-        <Reviews handleSwitchModal={handleSwitchModal} />
+        <Reviews
+          storeId={storeId}
+          storeImage={data.images[0]}
+          handleSwitchModal={handleSwitchModal}
+          onSave={refreshPage}
+        />
       )}
     </div>
   );

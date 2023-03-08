@@ -118,6 +118,7 @@ export async function getStoreDetails(storeId) {
     const placeDetails = response.result;
 
     store = new Store({
+      createdAt: new Date(),
       storeId: storeId,
       name: placeDetails.name,
       description: placeDetails?.editorial_summary?.overview,
