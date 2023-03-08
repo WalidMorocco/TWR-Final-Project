@@ -1,6 +1,10 @@
 import { Schema, model } from "mongoose";
 
 const StoreSchema = new Schema({
+  createdAt: {
+    type: Date,
+    required: false,
+  },
   storeId: {
     type: String,
     unique: true,

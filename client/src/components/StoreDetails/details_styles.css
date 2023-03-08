@@ -197,49 +197,7 @@
     border: none;
     color: white;
   }
-  .review-container-slider {
-    width: 90%;
-    margin: 0;
-    margin-left: 5%;
-    border-radius: 12px;
-    height: 150px;
-    background-color: #745246;
-    border: none;
-    margin-bottom: 20px;
-  }
-  .title-container {
-    width: 100%;
-    color: white;
-    margin-top: 15px;
-  }
-  #review-name {
-    float: left;
-    width: 60%;
-    margin: 0;
-    font-size: 20px;
-    text-align: left;
-    margin-left: 5%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  #review-rating {
-    float: left;
-    width: 35%;
-    margin: 0;
-    font-size: 20px;
-  }
-  .text-container {
-    width: 96%;
-    height: 100px;
-    overflow: auto;
-    color: white;
-  }
-  #review-text {
-    text-align: left;
-    margin-left: 5%;
-    font-size: 15px;
-  }
+
   #top-title {
     font-size: 25px;
     margin: 0;

@@ -7,12 +7,14 @@ import "../models/Review.js";
 let Review = model("reviews");
 
 router.post("/addreview", function (req, res) {
+  console.log("/addreview");
+
   const newReview = new Review({
-    storeId: req.query.storeId,
+    storeId: req.body.storeId,
     user: req.user,
-    text: req.query.text,
-    rating: req.query.rating,
-    timestamp: req.query.timestamp,
+    text: req.body.text,
+    rating: req.body.rating,
+    timestamp: req.body.timestamp,
   });
 
   newReview
@@ -28,14 +30,14 @@ router.post("/addreview", function (req, res) {
 
 router.post("/updatereview", function (req, res) {
   Review.findOne({
-    storeId: req.query.storeId,
+    storeId: req.body.storeId,
     user: req.user,
   })
     .exec()
     .then(function (review) {
-      review.text = req.query.text;
-      review.rating = req.query.rating;
-      review.timestamp = req.query.timestamp;
+      review.text = req.body.text;
+      review.rating = req.body.rating;
+      review.timestamp = req.body.timestamp;
 
       review.save().then((result) => {
         res.status(200).send({
@@ -50,7 +52,7 @@ router.post("/updatereview", function (req, res) {
 
 router.post("/deletereview", function (req, res) {
   Review.deleteOne({
-    storeId: req.query.storeId,
+    storeId: req.body.storeId,
     user: req.user,
   })
     .exec()
