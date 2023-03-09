@@ -5,12 +5,13 @@ dotenv.config({ path: "./config.env" });
 
 const storage = multer.memoryStorage({
   destination: function (req, file, cb) {
+    console.log('Test file: ', file)
     cb(null, "");
   },
 });
 
 const filefilter = (req, file, cb) => {
-  if (file.mimetype === "image/jpeg" || file.mimetype === "image/jpg") {
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/jpg" || file.mimetype === "image/png") {
     cb(null, true);
   } else {
     cb(null, false);

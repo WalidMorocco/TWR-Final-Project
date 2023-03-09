@@ -68,7 +68,11 @@ router.post("/register", async function (req, res) {
   });
 });
 
-router.put("/users/:id", async function (req, res) {
+router.post("/users/:id", 
+  multerUpload.single("userImage"),
+  async function (req, res) {
+
+  console.log('test function');
   const id = req.params.id;
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
@@ -91,9 +95,35 @@ router.put("/users/:id", async function (req, res) {
     });
   }
 
-  // Update the user's information
-  user.username = req.body.username;
-  user.password = hashedPassword;
+  if (req.body.username) {
+    user.username = req.body.username;
+  } 
+
+  if (req.body.password) {
+    user.password = hashedPassword;
+  }
+
+  console.log('Test: ' ,req.file)
+
+  uploadImage(req.file, (error, data) => {
+    if (error) {
+      res.status(500).send({ err: error });
+    }if (user) {
+      user.picture = data.Location;
+      user
+        .save()
+        .then((result) => {
+          res.status(200).send({
+            _id: result._id,
+            username: result.username,
+            picture: data.Location,
+          });
+        })
+        .catch((err) => {
+          res.send({ message: err });
+        });
+    }
+  });
 
   // Save the updated user
   user.save(function (err) {
@@ -105,40 +135,40 @@ router.put("/users/:id", async function (req, res) {
   });
 });
 
-router.post(
-  "user/uploadimage",
-  passport.authenticate("jwt", { session: false }),
-  multerUpload.single("userImage"),
-  (req, res) => {
-    uploadImage(req.file, (error, data) => {
-      if (error) {
-        res.status(500).send({ err: error });
-      }
+// router.post(
+//   "user/uploadimage",
+//   passport.authenticate("jwt", { session: false }),
+//   multerUpload.single("userImage"),
+//   (req, res) => {
+//     uploadImage(req.file, (error, data) => {
+//       if (error) {
+//         res.status(500).send({ err: error });
+//       }
 
-      if (data) {
-        // saving the information in the database.
-        User.findById(req.user)
-          .exec()
-          .then(function (user) {
-            if (user) {
-              user.picture = data.Location;
-              user
-                .save()
-                .then((result) => {
-                  res.status(200).send({
-                    _id: result._id,
-                    username: result.username,
-                    picture: data.Location,
-                  });
-                })
-                .catch((err) => {
-                  res.send({ message: err });
-                });
-            }
-          });
-      }
-    });
-  }
-);
+//       if (data) {
+//         // saving the information in the database.
+//         User.findById(req.user)
+//           .exec()
+//           .then(function (user) {
+//             if (user) {
+//               user.picture = data.Location;
+//               user
+//                 .save()
+//                 .then((result) => {
+//                   res.status(200).send({
+//                     _id: result._id,
+//                     username: result.username,
+//                     picture: data.Location,
+//                   });
+//                 })
+//                 .catch((err) => {
+//                   res.send({ message: err });
+//                 });
+//             }
+//           });
+//       }
+//     });
+//   }
+// );
 
 export default router;
