@@ -4,18 +4,18 @@ const defaultLocation = {
   loaded: false,
   coordinates: { lat: "", lng: "" },
   address: "",
+  error: null,
 };
 
 const useDeviceLocation = () => {
   const [location, setLocation] = useState(defaultLocation);
 
-  const onSuccess = (location) => {
-    console.log(location);
+  const onSuccess = (lat, lng) => {
     setLocation({
       loaded: true,
       coordinates: {
-        lat: location.coords.latitude,
-        lng: location.coords.longitude,
+        lat,
+        lng,
       },
       address: "",
     });
@@ -28,15 +28,45 @@ const useDeviceLocation = () => {
       error,
     });
   };
+
+  const ipLocationFallback = () => {
+    const fetchData = async () => {
+      let success = false;
+
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+
+        if (data) {
+          console.log("Using IP location");
+          onSuccess(data.latitude, data.longitude);
+          success = true;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+      if (!success) {
+        onError({
+          code: 0,
+          message: "Location not supported.",
+        });
+      }
+    };
+    fetchData();
+  };
+
   const updateLocation = () => {
     console.log("getDeviceLocation called");
     if (!("geolocation" in navigator)) {
-      onError({
-        code: 0,
-        message: "Location not supported.",
-      });
+      ipLocationFallback();
     }
-    navigator.geolocation.getCurrentPosition((pos) => onSuccess(pos), onError);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => onSuccess(pos?.coords?.latitude, pos?.coords?.longitude),
+      (_error) => {
+        ipLocationFallback();
+      }
+    );
   };
 
   const refresh = () => {
