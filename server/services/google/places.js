@@ -37,6 +37,7 @@ export async function getPlaceDetails(placeId) {
       "delivery%2C" +
       "curbside_pickup%2C" +
       "rating%2C" +
+      "user_ratings_total%2C" +
       "current_opening_hours/weekday_text%2C" +
       "photos%2C" +
       "reviews"
@@ -45,6 +46,13 @@ export async function getPlaceDetails(placeId) {
 
 export async function getPlaceReviews(placeId) {
   return await getPlaces("details", `place_id=${placeId}&fields=reviews`);
+}
+
+export async function getPlaceRating(placeId) {
+  return await getPlaces(
+    "details",
+    `place_id=${placeId}&fields=rating%2Cuser_ratings_total`
+  );
 }
 
 export function getPlacePhoto(photoReference) {

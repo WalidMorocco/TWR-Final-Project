@@ -1,3 +1,9 @@
 .slick-track img {
   margin: auto;
 }
+
+.default-store-img {
+  display: block;
+  margin: auto;
+  height: 200px;
+}

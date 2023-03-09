@@ -1,6 +1,5 @@
 import "./styles.css";
 import PropTypes from "prop-types";
-import defaultStoreIcon from "../../images/coffeeIcon.png";
 import { Photo } from "../Photo/Photo";
 import { useNavigate } from "react-router-dom";
 
@@ -30,8 +29,8 @@ export const Card = ({ storeId, name, distance, photoRef }) => {
         ) : (
           <img
             className="store-image thumbnail"
-            src={defaultStoreIcon}
-            alt="Store Img"
+            src="https://twr-coffee-me.s3.amazonaws.com/images/default-store.jpg"
+            alt=""
           />
         )}
         <div className="card-contents">

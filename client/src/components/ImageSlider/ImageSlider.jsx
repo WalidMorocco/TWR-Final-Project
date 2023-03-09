@@ -1,5 +1,4 @@
 import "./styles.css";
-import defaultStoreImg from "../../images/coffeeIcon.png";
 import { Photo } from "../Photo/Photo";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -16,23 +15,23 @@ const ImageSlider = ({ images }) => {
 
   return (
     <>
-      <Slider {...settings}>
-        {images?.length > 0 ? (
-          images.map((image, i) => {
+      {images?.length > 0 ? (
+        <Slider {...settings}>
+          {images.map((image, i) => {
             return (
               <div key={i}>
                 <Photo photoRef={image} size="full" />
               </div>
             );
-          })
-        ) : (
-          <img
-            className="store-image full"
-            src={defaultStoreImg}
-            alt="Store Img"
-          />
-        )}
-      </Slider>
+          })}
+        </Slider>
+      ) : (
+        <img
+          className="default-store-img"
+          src="https://twr-coffee-me.s3.amazonaws.com/images/default-store.jpg"
+          alt=""
+        />
+      )}
     </>
   );
 };
