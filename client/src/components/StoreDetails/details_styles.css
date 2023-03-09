@@ -39,7 +39,7 @@
     float: left;
     width: 100%;
   }
-  
+
   #check-image {
     width: 25px;
     float: left;
@@ -53,7 +53,7 @@
     margin-left: 10%;
     margin-top: 15px;
   }
-  
+
   #drive-thru {
     font-size: 16px;
     margin-left: 5px;
@@ -70,10 +70,9 @@
     width: 90%;
     float: left;
     margin-bottom: 10%;
-    margin-top: 10%;
+    margin-top: 1%;
     margin-left: 5%;
     border-radius: 12px;
-
   }
 
   .day {
@@ -83,7 +82,7 @@
     padding-top: 5px;
     margin-left: 5%;
   }
-   
+
   .details-container {
     margin: 0;
     padding: 0;
@@ -96,7 +95,7 @@
     height: auto;
     margin-bottom: 20%;
   }
-  
+
   #details-text {
     margin: 0;
     padding: 0;
@@ -106,7 +105,7 @@
     padding-top: 7px;
     padding-bottom: 7px;
     color: white;
-  } 
+  }
 
   .button-container {
     float: left;
@@ -143,7 +142,7 @@
   #reviews-btn:disabled {
     background-color: #6d635f;
   }
-  
+
   #reviews-btn2 {
     position: fixed;
     bottom: 9vh;
@@ -172,5 +171,4 @@
     text-align: center;
     color: white;
   }
-  
 }

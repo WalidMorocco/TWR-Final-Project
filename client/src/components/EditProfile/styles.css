@@ -1,72 +1,76 @@
 @media only screen and (max-width: 600px) {
-    .modal {
-        background-color: rgba(0, 0, 0, 0.4);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
+  .modal {
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-    .edit-container {
-        background-color: rgb(217, 187, 169);
-        border-radius: 10px;
-        padding: 10%;
-        text-align: center;
-        width: 70%;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
-    }
+  .edit-container {
+    background-color: rgb(217, 187, 169);
+    border-radius: 10px;
+    padding: 10%;
+    text-align: center;
+    width: 70%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  }
 
-    .edit-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .label-title {
-        margin: 10px 0;
-        text-align: left;
-        width: 100%;
-    }
+  .label-title {
+    margin: 10px 0;
+    text-align: left;
+    width: 100%;
+  }
 
-    input[type="username"],
-    input[type="email"],
-    input[type="password"] {
-        border: none;
-        border-radius: 5px;
-        margin: 5px 0;
-        padding: 10px;
-        width: 80%;
-    }
+  input[type="username"],
+  input[type="email"],
+  input[type="password"] {
+    border: none;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 10px;
+    width: 80%;
+  }
 
-    #error {
-        color: red;
-        margin: 5px 0;
-        text-align: left;
-        width: 100%;
-    }
+  #error {
+    color: red;
+    margin: 5px 0;
+    text-align: left;
+    width: 100%;
+  }
 
-    .sign-up-now {
-        margin: 10px 0;
-        text-align: left;
-        width: 100%;
-    }
+  .sign-up-now {
+    margin: 10px 0;
+    text-align: left;
+    width: 100%;
+  }
 
-    .submit-button-group {
-        margin-top: 20px;
-        width: 100%;
-    }
+  .submit-button-group {
+    margin-top: 20px;
+    width: 100%;
+  }
 
-    .submit-button-group button {
-        background-color: #745246;
-        font-size: 20px;
-        color: white;
-        padding: 5%;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+  .submit-button-group button {
+    background-color: #745246;
+    font-size: 20px;
+    color: white;
+    padding: 5%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .submit-button-group button:disabled {
+    background-color: #6d635f;
+  }
 }
