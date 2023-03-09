@@ -7,8 +7,10 @@
   max-height: 150px;
   background-color: #745246;
   border: none;
+  margin-top: 20px;
   margin-bottom: 20px;
-  padding-bottom: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .title-container {
   width: 100%;
