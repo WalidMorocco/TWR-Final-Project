@@ -15,7 +15,7 @@ export const StoreRating = ({ storeId }) => {
     >
       <Rating
         name="customized-color"
-        value={data?.rating ?? 0}
+        value={Number(data?.rating ?? 0)}
         getLabelText={(value) => `${value} Cup${value !== 1 ? "s" : ""}`}
         precision={0.5}
         icon={<FreeBreakfastIcon fontSize="inherit" />}
