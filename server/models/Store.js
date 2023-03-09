@@ -47,6 +47,10 @@ const StoreSchema = new Schema({
     type: Number,
     required: false,
   },
+  ratingsCount: {
+    type: Number,
+    required: false,
+  },
   views: {
     type: Number,
     required: false,

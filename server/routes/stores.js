@@ -6,6 +6,7 @@ import {
   getStoreDetails,
   getStoreReviews,
   getStorePhoto,
+  getStoreRating,
 } from "../services/dataManager.js";
 import { applyFilter } from "../utils/filters.js";
 
@@ -49,6 +50,12 @@ router.get("/storephoto", function (req, res) {
   const photoURL = getStorePhoto(req.query.photoRef);
 
   res.send({ photoURL });
+});
+
+router.get("/storerating", async function (req, res) {
+  const storeRating = await getStoreRating(req.query.storeId);
+
+  res.json(storeRating);
 });
 
 export default router;

@@ -5,6 +5,7 @@ import {
   getPlacePhoto,
   getPlaceDetails,
   getPlaceReviews,
+  getPlaceRating,
 } from "../services/google/places.js";
 
 import "../models/Store.js";
@@ -130,7 +131,8 @@ export async function getStoreDetails(storeId) {
       },
       delivery: placeDetails.delivery ?? false,
       curbsidePickup: placeDetails.curbside_pickup ?? false,
-      rating: placeDetails.rating,
+      rating: placeDetails.rating ?? 0,
+      ratingsCount: placeDetails.user_ratings_total ?? 0,
       openingHours: placeDetails.current_opening_hours?.weekday_text,
       images: placeDetails.photos?.map((p) => p.photo_reference),
       reviews: placeDetails.reviews?.map((r) => ({
@@ -187,6 +189,60 @@ export async function getStoreReviews(storeId) {
   reviews.push(...coffeeMeReviews);
 
   return reviews.sort((r1, r2) => (r1.timestamp > r2.timestamp ? -1 : 1));
+}
+
+export async function getStoreRating(storeId) {
+  const cachedStore = await getCachedStore(storeId);
+
+  let googleRating;
+  let googleRatingCount;
+  if (cachedStore) {
+    googleRating = cachedStore.rating;
+    googleRatingCount = cachedStore.ratingsCount;
+  } else {
+    const response = await getPlaceRating(storeId);
+    console.log(`Rating fetched`);
+
+    const placeRating = response.result;
+    googleRating = placeRating.rating ?? 0;
+    googleRatingCount = placeRating.user_ratings_total ?? 0;
+  }
+
+  const coffeeMeRatings = await Review.aggregate([
+    {
+      $match: { storeId: storeId },
+    },
+    {
+      $group: {
+        _id: "$storeId",
+        ratingSum: {
+          $sum: "$rating",
+        },
+        ratingsCount: { $sum: 1 },
+      },
+    },
+  ])
+    .exec()
+    .catch((err) => {
+      console.error(err);
+    });
+
+  const coffeeMeRatingSum = coffeeMeRatings[0]?.ratingSum ?? 0;
+  const coffeeMeRatingCount = coffeeMeRatings[0]?.ratingsCount ?? 0;
+  console.log(`CoffeeMe RatingSum: ` + coffeeMeRatingSum);
+  console.log(`CoffeeMe Count: ` + coffeeMeRatingCount);
+
+  const finalRatingSum = googleRating * googleRatingCount + coffeeMeRatingSum;
+  const finalRatingCount = googleRatingCount + coffeeMeRatingCount;
+  console.log(`Google RatingSum: ` + googleRating);
+  console.log(`Google Count: ` + googleRatingCount);
+
+  const finalRating =
+    finalRatingCount > 1
+      ? (finalRatingSum / finalRatingCount).toFixed(1)
+      : finalRatingSum;
+
+  return { rating: finalRating, ratingCount: finalRatingCount };
 }
 
 export function getStorePhoto(photoReference) {
