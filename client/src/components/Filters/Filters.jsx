@@ -22,6 +22,8 @@ export const Filters = ({ defaultFilter, onFilterChange }) => {
   useEffect(() => {
     if (sessionStorage.getItem('lastSetFilter')) {
       onFilterChange(sessionStorage.getItem('lastSetFilter'));
+    } else {
+      setCurrentFilter('aroundyou');
     }
   }, [onFilterChange]);
 

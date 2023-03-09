@@ -1,8 +1,8 @@
-import "./styles.css";
-import { Drawer, Typography, Box, Grid, Stack, Avatar } from "@mui/material";
-import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
-import { useState } from "react";
-import useReviews from "../../hooks/useReviews";
+import './styles.css';
+import { Drawer, Typography, Box, Grid, Stack, Avatar } from '@mui/material';
+import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast';
+import { useState } from 'react';
+import useReviews from '../../hooks/useReviews';
 
 export const ReviewsDrawer = ({ storeId }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -40,9 +40,9 @@ export const ReviewsDrawer = ({ storeId }) => {
 
   return (
     <>
-      <div className="review-btn-container">
+      <div className='review-btn-container'>
         <button
-          id="reviews-btn"
+          id='reviews-btn'
           onClick={() => setIsDrawerOpen(true)}
           disabled={!data?.length}
         >
@@ -50,53 +50,72 @@ export const ReviewsDrawer = ({ storeId }) => {
         </button>
       </div>
       <Drawer
-        anchor="bottom"
+        anchor='bottom'
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
       >
         <div
-          className="review-title-container"
+          className='review-title-container'
           onClick={() => setIsDrawerOpen(false)}
         >
-          <h1 id="top-title">Reviews</h1>
+          <h1 id='top-title'>Reviews</h1>
         </div>
         <Box
           p={2}
-          bgcolor="#D9BBA9"
-          overflow="auto"
-          height="400px"
-          width="358px"
-          textAlign="center"
-          role="presentation"
+          bgcolor='#D9BBA9'
+          overflow='auto'
+          height='400px'
+          width='358px'
+          textAlign='center'
+          role='presentation'
         >
-          <Typography variant="h6" component="div">
+          <Typography
+            variant='h6'
+            component='div'
+          >
             {data?.length &&
               data.map((review) => (
-                <div className="review-container-slider" key={review.timestamp}>
-                  <div className="title-container">
-                    <Grid container sx={{ ml: "5px" }}>
-                      <Grid item xs={2}>
+                <div
+                  className='review-container-slider'
+                  key={review.timestamp}
+                >
+                  <div className='title-container'>
+                    <Grid
+                      container
+                      sx={{ ml: '5px' }}
+                    >
+                      <Grid
+                        item
+                        xs={2}
+                      >
                         <Avatar
                           alt={review.user.username}
                           src={review.user.picture}
-                          sx={{ width: 35, height: 35, ml: "15px" }}
+                          sx={{ width: 35, height: 35, ml: '15px' }}
                         />
                       </Grid>
-                      <Grid item xs={7}>
-                        <h1 id="review-name">{review.user.username}</h1>
+                      <Grid
+                        item
+                        xs={7}
+                      >
+                        <h1 id='review-name'>{review.user.username}</h1>
                       </Grid>
-                      <Stack direction="row" spacing={1} xs={3}>
-                        <p id="review-rating">{review.rating}</p>
+                      <Stack
+                        direction='row'
+                        spacing={1}
+                        xs={3}
+                      >
+                        <p id='review-rating'>{review.rating}</p>
                         <FreeBreakfastIcon />
                       </Stack>
                     </Grid>
-                    <p id="review-time">
+                    <p id='review-time'>
                       {toRelativeTimeText(review.timestamp)}
                     </p>
                   </div>
                   {review.text && (
-                    <div className="text-container">
-                      <p id="review-text">{review.text}</p>
+                    <div className='text-container'>
+                      <p id='review-text'>{review.text}</p>
                     </div>
                   )}
                 </div>
