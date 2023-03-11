@@ -8,20 +8,20 @@ export const Search = () => {
   const [selection, setSelection] = useState(null);
 
   return (
-    <div className="search-container">
-      <GooglePlacesAutocomplete
-        autocompletionRequest={{
-          types: ["cafe"],
-        }}
-        selectProps={{
-          value: selection,
-          placeholder: "Search...",
-          onChange: setSelection,
-        }}
-        minLengthAutocomplete="6"
-      />
-      {selection && <SearchResult storeId={selection.value?.place_id} />}
-    </div>
+      <div className="search-container">
+        <GooglePlacesAutocomplete
+          autocompletionRequest={{
+            types: ["cafe"],
+          }}
+          selectProps={{
+            value: selection,
+            placeholder: "Search...",
+            onChange: setSelection,
+          }}
+        />
+        {selection && <SearchResult storeId={selection.value?.place_id} />}
+      </div>
   );
 };
+
 export default Search;

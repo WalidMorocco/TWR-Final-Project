@@ -4,6 +4,7 @@ import { StoresList } from "../components/StoresList";
 import { ScrollBox } from "../components/ScrollBox/ScrollBox";
 import { useContext, useState } from "react";
 import { LocationContext } from "../context/LocationContext";
+import { TopLocation } from "../components/TopLocation/TopLocation";
 
 export const HomePage = () => {
   const { settings, loading } = useContext(LocationContext);
@@ -15,6 +16,7 @@ export const HomePage = () => {
 
   return (
     <>
+      <TopLocation/>
       <Filters filter={filter} onFilterChange={onFilterChange} />
       {!loading && <Search />}
       <ScrollBox>
