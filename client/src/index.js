@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import "./index.css";
@@ -6,9 +5,6 @@ import App from "./App";
 import HomePage from "./pages/HomePage";
 import reportWebVitals from "./reportWebVitals";
 import AboutUs from "./pages/AboutUs/AboutUs";
-import SignUp from "./pages/SignUpPage";
-import SignIn from "./pages/SignInPage";
-import ProfileSettings from "./pages/ProfileSettingsPage";
 import StoreDetails from "./pages/StoreDetailsPage";
 import { LocationProvider } from "./context/LocationContext";
 import { AuthProvider } from "./context/AuthContext";
@@ -25,11 +21,8 @@ root.render(
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
             <Route path="/AboutUs" element={<AboutUs />} />
-            <Route path="/SignUp" element={<SignUp />} />
-            <Route path="/SignIn" element={<SignIn />} />
-            <Route path="/ProfileSettings" element={<ProfileSettings />} />
             <Route path="/StoreDetails/:storeId" element={<StoreDetails />} />
-            <Route path="*" element={<p>Route not found</p>} />
+            <Route path="*" element={<HomePage />} />
           </Route>
         </Routes>
       </BrowserRouter>
