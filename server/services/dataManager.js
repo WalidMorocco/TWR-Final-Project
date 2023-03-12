@@ -52,17 +52,6 @@ const getCachedStore = async (storeId) => {
   return store;
 };
 
-const getFavoriteStore = async (storeId, userId) => {
-  const result = await Favorite.findOne({ storeId: storeId, users: userId })
-    .exec()
-    .catch((err) => {
-      console.error(err);
-    });
-
-  const store = JSON.parse(JSON.stringify(result));
-  return store;
-};
-
 export async function getNearbyStores(lat, lng, radius, nextPageToken) {
   const cachedSearch = await getCachedNearbySearch(
     lat,
@@ -120,15 +109,19 @@ export async function getNearbyStores(lat, lng, radius, nextPageToken) {
   };
 }
 
-export async function getStoreDetails(storeId) {
-  const cachedStore = await getCachedStore(storeId);
+export async function getStoreDetails(storeId, cached = true, fields = null) {
+  let cachedStore;
+  if (cached) {
+    cachedStore = await getCachedStore(storeId);
+  }
 
   let store;
   if (cachedStore) {
+    console.log("Details from cache");
     store = cachedStore;
   } else {
-    const response = await getPlaceDetails(storeId);
-    console.log(`Details fetched`);
+    const response = await getPlaceDetails(storeId, fields);
+    console.log(`Details from google`);
 
     const placeDetails = response.result;
 
@@ -140,14 +133,15 @@ export async function getStoreDetails(storeId) {
       phone: placeDetails.formatted_phone_number,
       location: {
         address: placeDetails.vicinity,
-        lat: placeDetails.geometry.location.lat,
-        lng: placeDetails.geometry.location.lng,
+        lat: placeDetails.geometry?.location?.lat,
+        lng: placeDetails.geometry?.location?.lng,
       },
       delivery: placeDetails.delivery ?? false,
       curbsidePickup: placeDetails.curbside_pickup ?? false,
       rating: placeDetails.rating ?? 0,
       ratingsCount: placeDetails.user_ratings_total ?? 0,
       openingHours: placeDetails.current_opening_hours?.weekday_text,
+      openNow: placeDetails.current_opening_hours?.open_now,
       images: placeDetails.photos?.map((p) => p.photo_reference),
       reviews: placeDetails.reviews?.map((r) => ({
         user: {
@@ -160,9 +154,12 @@ export async function getStoreDetails(storeId) {
       })),
     });
 
-    store.save().catch(function (err) {
-      console.log(err);
-    });
+    if (cached) {
+      console.log("Caching Details");
+      store.save().catch(function (err) {
+        console.log(err);
+      });
+    }
   }
 
   return store;

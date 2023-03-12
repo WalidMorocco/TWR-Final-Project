@@ -1,0 +1,22 @@
+@media only screen and (max-width: 600px) {
+  #no-store {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 10%;
+  }
+
+  .loading-container {
+    width: 80%;
+    margin-left: 2.3%;
+    margin-top: 20px;
+  }
+  .loading-stores {
+    width: 100%;
+    margin-left: 10%;
+    border-radius: 12px;
+    height: 90px;
+    text-align: center;
+    align-items: center;
+  }
+}

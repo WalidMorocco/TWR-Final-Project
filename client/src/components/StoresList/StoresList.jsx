@@ -1,6 +1,7 @@
-import { Card } from "./Card/Card";
-import useNearby from "../hooks/useNearby";
-import { Loading } from "./Loading/Loading";
+import "./styles.css";
+import { Card } from "../Card/Card";
+import useNearby from "../../hooks/useNearby";
+import { Loading } from "../Loading/Loading";
 
 export const StoresList = ({ locationSettings, filter }) => {
   const { data, loading, error } = useNearby(
@@ -15,12 +16,18 @@ export const StoresList = ({ locationSettings, filter }) => {
   }
 
   if (loading) {
-    return <Loading />;
+    return (
+      <div className="loading-container">
+        <div className="loading-stores">
+          <Loading />
+        </div>
+      </div>
+    );
   }
 
   return (
     <>
-      {data?.length &&
+      {data?.length ? (
         data.map((store) => (
           <div key={store.storeId}>
             <Card
@@ -32,7 +39,14 @@ export const StoresList = ({ locationSettings, filter }) => {
               details={{ rating: store.rating }}
             />
           </div>
-        ))}
+        ))
+      ) : (
+        <div className="card-container">
+          <div className="card">
+            <p id="no-store">No Stores Found</p>
+          </div>
+        </div>
+      )}
     </>
   );
 };

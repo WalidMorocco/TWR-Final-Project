@@ -31,6 +31,10 @@ const StoreSchema = new Schema({
     type: [String],
     required: false,
   },
+  openNow: {
+    type: Boolean,
+    required: false,
+  },
   phone: {
     type: String,
     required: false,
