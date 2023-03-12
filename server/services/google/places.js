@@ -22,7 +22,7 @@ export async function getNearbyPlaces(lat, lng, radius, nextPageToken) {
     "nearbysearch",
     nextPageToken
       ? `pagetoken=${nextPageToken}`
-      : `location=${lat},${lng}&type=cafe&rankby=distance`
+      : `location=${lat},${lng}&radius=${radius}&type=cafe`
   );
 }
 

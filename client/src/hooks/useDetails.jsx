@@ -7,6 +7,7 @@ const useDetails = (storeId) => {
     request = `user/${request}`;
   }
 
+  console.log(`Fetch ${request}`);
   return useFetch(request);
 };
 

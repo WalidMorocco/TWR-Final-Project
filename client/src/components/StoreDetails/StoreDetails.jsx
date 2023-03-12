@@ -72,7 +72,7 @@ export const StoreDetails = () => {
         </a>
       </div>
       <div className="rate">
-        <StoreRating storeId={storeId} />
+        <StoreRating storeId={storeId} size="full" theme="dark" />
       </div>
       <Grid container sx={{ ml: "5%" }}>
         {data.delivery && (

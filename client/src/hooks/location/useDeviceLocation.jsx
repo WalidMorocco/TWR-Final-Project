@@ -62,8 +62,11 @@ const useDeviceLocation = () => {
       ipLocationFallback();
     }
     navigator.geolocation.getCurrentPosition(
-      (pos) => onSuccess(pos?.coords?.latitude, pos?.coords?.longitude),
-      (_error) => {
+      (pos) => {
+        onSuccess(pos?.coords?.latitude, pos?.coords?.longitude);
+      },
+      (error) => {
+        console.log(error);
         ipLocationFallback();
       }
     );

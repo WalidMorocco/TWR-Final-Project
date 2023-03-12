@@ -28,6 +28,8 @@ export const StoresList = ({ locationSettings, filter }) => {
               name={store.name}
               distance={store.distance}
               photoRef={store.images ? store.images[0] : null}
+              filter={filter}
+              details={{ rating: store.rating }}
             />
           </div>
         ))}

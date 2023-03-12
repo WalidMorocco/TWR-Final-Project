@@ -20,13 +20,17 @@ const Favorite = model("favorites");
 import "../models/Review.js";
 const Review = model("reviews");
 
+import "../models/Rating.js";
+const Rating = model("ratings");
+
 import "../models/User.js";
 const User = model("users");
 
-const getCachedNearbySearch = async (lat, lng, radius) => {
+const getCachedNearbySearch = async (lat, lng, radius, pageToken) => {
   const result = await Search.findOne({
     location: { lat: lat, lng: lng },
     radius: radius,
+    pageToken: pageToken,
   })
     .exec()
     .catch((err) => {
@@ -59,14 +63,19 @@ const getFavoriteStore = async (storeId, userId) => {
   return store;
 };
 
-export async function getNearbyStores(lat, lng, radius) {
-  const cachedSearch = await getCachedNearbySearch(lat, lng, radius);
+export async function getNearbyStores(lat, lng, radius, nextPageToken) {
+  const cachedSearch = await getCachedNearbySearch(
+    lat,
+    lng,
+    radius,
+    nextPageToken
+  );
 
   let rawStores;
   if (cachedSearch) {
     rawStores = JSON.parse(cachedSearch.results);
   } else {
-    rawStores = await getNearbyPlaces(lat, lng, radius);
+    rawStores = await getNearbyPlaces(lat, lng, radius, nextPageToken);
     console.log(`Stores fetched`);
 
     if (rawStores?.status?.toUpperCase() === "OK") {
@@ -77,6 +86,7 @@ export async function getNearbyStores(lat, lng, radius) {
           lng: lng,
         },
         radius: radius,
+        pageToken: nextPageToken,
         results: JSON.stringify(rawStores),
       });
 
@@ -94,7 +104,8 @@ export async function getNearbyStores(lat, lng, radius) {
           lat: s.geometry.location.lat,
           lng: s.geometry.location.lng,
         },
-        rating: s.rating,
+        rating: s.rating ?? 0,
+        ratingsCount: s.user_ratings_total ?? 0,
         images: s.photos?.map((p) => p.photo_reference),
         distance: computeDistanceBetween(
           new LatLng(lat, lng),
@@ -103,7 +114,10 @@ export async function getNearbyStores(lat, lng, radius) {
       })
   );
 
-  return stores.filter((s) => s.distance <= radius);
+  return {
+    stores,
+    nextPageToken: rawStores?.next_page_token,
+  };
 }
 
 export async function getStoreDetails(storeId) {
@@ -191,6 +205,35 @@ export async function getStoreReviews(storeId) {
   return reviews.sort((r1, r2) => (r1.timestamp > r2.timestamp ? -1 : 1));
 }
 
+export async function getAverageRating(
+  storeId,
+  googleRating,
+  googleRatingCount
+) {
+  const coffeeMeRating = await Rating.findOne({ storeId: storeId })
+    .exec()
+    .catch((err) => {
+      console.error(err);
+    });
+
+  if (!coffeeMeRating) {
+    return { rating: googleRating, ratingCount: googleRatingCount };
+  }
+
+  const coffeeMeRatingSum = coffeeMeRating.ratingSum ?? 0;
+  const coffeeMeRatingCount = coffeeMeRating.ratingCount ?? 0;
+
+  const finalRatingSum = googleRating * googleRatingCount + coffeeMeRatingSum;
+  const finalRatingCount = googleRatingCount + coffeeMeRatingCount;
+
+  const finalRating =
+    finalRatingCount > 1
+      ? (finalRatingSum / finalRatingCount).toFixed(1)
+      : finalRatingSum;
+
+  return { rating: Number(finalRating), ratingCount: Number(finalRatingCount) };
+}
+
 export async function getStoreRating(storeId) {
   const cachedStore = await getCachedStore(storeId);
 
@@ -204,45 +247,11 @@ export async function getStoreRating(storeId) {
     console.log(`Rating fetched`);
 
     const placeRating = response.result;
-    googleRating = placeRating.rating ?? 0;
-    googleRatingCount = placeRating.user_ratings_total ?? 0;
+    googleRating = placeRating?.rating ?? 0;
+    googleRatingCount = placeRating?.user_ratings_total ?? 0;
   }
 
-  const coffeeMeRatings = await Review.aggregate([
-    {
-      $match: { storeId: storeId },
-    },
-    {
-      $group: {
-        _id: "$storeId",
-        ratingSum: {
-          $sum: "$rating",
-        },
-        ratingsCount: { $sum: 1 },
-      },
-    },
-  ])
-    .exec()
-    .catch((err) => {
-      console.error(err);
-    });
-
-  const coffeeMeRatingSum = coffeeMeRatings[0]?.ratingSum ?? 0;
-  const coffeeMeRatingCount = coffeeMeRatings[0]?.ratingsCount ?? 0;
-  console.log(`CoffeeMe RatingSum: ` + coffeeMeRatingSum);
-  console.log(`CoffeeMe Count: ` + coffeeMeRatingCount);
-
-  const finalRatingSum = googleRating * googleRatingCount + coffeeMeRatingSum;
-  const finalRatingCount = googleRatingCount + coffeeMeRatingCount;
-  console.log(`Google RatingSum: ` + googleRating);
-  console.log(`Google Count: ` + googleRatingCount);
-
-  const finalRating =
-    finalRatingCount > 1
-      ? (finalRatingSum / finalRatingCount).toFixed(1)
-      : finalRatingSum;
-
-  return { rating: finalRating, ratingCount: finalRatingCount };
+  return getAverageRating(storeId, googleRating, googleRatingCount);
 }
 
 export function getStorePhoto(photoReference) {

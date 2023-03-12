@@ -14,7 +14,7 @@ const useFetch = (urlSegment) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        console.log(`Fetch ${baseURL}${urlSegment}`);
+        setLoading(true);
         const response = await axios.get(
           `${baseURL}${urlSegment}`,
           authContext.token

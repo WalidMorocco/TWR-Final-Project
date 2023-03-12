@@ -7,6 +7,7 @@ const useNearby = (lat, lng, radius, filter) => {
     request = `user/${request}`;
   }
 
+  console.log(`Fetch ${request}`);
   return useFetch(request);
 };
 

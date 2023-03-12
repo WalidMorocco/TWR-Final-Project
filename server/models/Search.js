@@ -13,6 +13,10 @@ const SearchSchema = new Schema({
     type: Number,
     required: true,
   },
+  pageToken: {
+    type: String,
+    required: false,
+  },
   results: {
     type: String,
     required: true,
