@@ -7,10 +7,10 @@ import "./styles.css";
 export const SignIn = (props) => {
   const authContext = useContext(AuthContext);
 
-  const { postData, responseData, loading } = usePost("login");
+  const { postData, responseData, loading, error } = usePost("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleLogout = () => {
     authContext.onLogout();
@@ -24,7 +24,7 @@ export const SignIn = (props) => {
         password,
       });
     } catch (err) {
-      setError(err.response.data.error);
+      setErrorMessage(err.response.data.error);
       console.log(error);
     }
   };
@@ -34,7 +34,11 @@ export const SignIn = (props) => {
       authContext.onLogin(responseData.user, responseData.token);
       console.log("Logged in successfully!");
     }
-  }, [loading]);
+
+    if (error) {
+      setErrorMessage(error?.response?.data?.error);
+    }
+  }, [responseData, error]);
 
   return (
     <div className="modal" onClick={() => props.handleSwitchModal("")}>
@@ -78,7 +82,7 @@ export const SignIn = (props) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              {error && <div id="error">{error}</div>}
+              {errorMessage && <div id="error">{errorMessage}</div>}
               <div className="sign-up-now">
                 <button
                   onClick={(e) => {
