@@ -1,8 +1,8 @@
 import "./styles.css";
-import { Drawer, Typography, Box, Grid, Stack, Avatar } from "@mui/material";
-import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
+import { Drawer, Typography, Box, Grid, Avatar } from "@mui/material";
 import { useState } from "react";
 import useReviews from "../../hooks/useReviews";
+import { CupsRating } from "../Rating/CupsRating";
 
 export const ReviewsDrawer = ({ storeId }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -84,10 +84,13 @@ export const ReviewsDrawer = ({ storeId }) => {
                       <Grid item xs={7}>
                         <h1 id="review-name">{review.user.username}</h1>
                       </Grid>
-                      <Stack direction="row" spacing={1} xs={3}>
-                        <p id="review-rating">{review.rating}</p>
-                        <FreeBreakfastIcon />
-                      </Stack>
+                      <Grid item xs={2} sx={{ ml: 1 }}>
+                        <CupsRating
+                          rating={review.rating}
+                          size="compact"
+                          theme="light"
+                        />
+                      </Grid>
                     </Grid>
                     <p id="review-time">
                       {toRelativeTimeText(review.timestamp)}

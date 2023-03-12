@@ -6,6 +6,9 @@ const router = Router();
 import "../models/Review.js";
 let Review = model("reviews");
 
+// Load rating model
+let Rating = model("ratings");
+
 router.post("/addreview", function (req, res) {
   console.log("/addreview");
 
@@ -13,14 +16,39 @@ router.post("/addreview", function (req, res) {
     storeId: req.body.storeId,
     user: req.user,
     text: req.body.text,
-    rating: req.body.rating,
+    rating: Number(req.body.rating),
     timestamp: req.body.timestamp,
   });
 
   newReview
     .save()
-    .then(function (review) {
+    .then(async function (review) {
       res.json(review);
+
+      const currRating = await Rating.findOne({
+        storeId: req.body.storeId,
+      })
+        .exec()
+        .catch((err) => {
+          console.error(err);
+        });
+
+      if (currRating) {
+        currRating.ratingSum += Number(req.body.rating);
+        currRating.ratingCount += 1;
+        currRating.save().catch(function (err) {
+          console.log(err);
+        });
+      } else {
+        const newRating = new Rating({
+          storeId: req.body.storeId,
+          ratingSum: Number(req.body.rating),
+          ratingCount: 1,
+        });
+        newRating.save().catch(function (err) {
+          console.log(err);
+        });
+      }
     })
     .catch(function (err) {
       console.log(err);

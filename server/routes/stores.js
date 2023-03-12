@@ -13,11 +13,22 @@ import { applyFilter } from "../utils/filters.js";
 router.get("/nearbystores/:filter", async function (req, res) {
   console.log(`/nearbystores/${req.params.filter}`);
 
-  const stores = await getNearbyStores(
-    req.query.lat,
-    req.query.lng,
-    req.query.radius
-  );
+  let stores = [];
+  let nextPageToken = req.query.nextPageToken;
+  do {
+    let nearbySearchResult = await getNearbyStores(
+      req.query.lat,
+      req.query.lng,
+      req.query.radius,
+      nextPageToken
+    );
+
+    nextPageToken = nearbySearchResult?.nextPageToken;
+
+    if (nearbySearchResult?.stores?.length) {
+      stores = stores.concat(nearbySearchResult.stores);
+    }
+  } while (nextPageToken);
 
   const filteredStores = await applyFilter(
     stores,
@@ -26,7 +37,7 @@ router.get("/nearbystores/:filter", async function (req, res) {
     { lat: req.query.lat, lng: req.query.lng, radius: req.query.radius }
   );
 
-  res.json(filteredStores);
+  res.json(filteredStores.filter((s) => s.distance <= req.query.radius));
 });
 
 router.get("/storedetails", async function (req, res) {

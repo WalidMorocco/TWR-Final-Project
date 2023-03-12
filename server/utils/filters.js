@@ -1,4 +1,8 @@
-import { getStoreDetails, getUserFavorites } from "../services/dataManager.js";
+import {
+  getStoreDetails,
+  getUserFavorites,
+  getAverageRating,
+} from "../services/dataManager.js";
 
 const filterAroundYou = (sourceList) => {
   if (sourceList?.length) {
@@ -36,9 +40,25 @@ const filterFavorites = async (userId, location) => {
   return filterAroundYou(allFavorites);
 };
 
-const filterBestRated = (sourceList) => {
-  // Will need clarification.
-  return sourceList.sort((s1, s2) => (s1.rating > s2.rating ? -1 : 1));
+const filterBestRated = async (sourceList) => {
+  const ratings = await Promise.all(
+    sourceList.map(async (s) => {
+      const avgRating = await getAverageRating(
+        s.storeId,
+        s.rating,
+        s.ratingsCount
+      );
+      s.rating = avgRating.rating;
+      s.ratingsCount = avgRating.ratingCount;
+      return s.rating;
+    })
+  );
+
+  let maxRating = Math.max.apply(null, ratings);
+
+  const ratingThreshold = maxRating - 0.5;
+  const bestRated = sourceList.filter((s) => s.rating > ratingThreshold);
+  return filterAroundYou(bestRated);
 };
 
 const filterCoffeeMe = (sourceList) => {
@@ -50,13 +70,13 @@ export async function applyFilter(sourceList, filter, userId, location) {
     case "aroundyou":
       return filterAroundYou(sourceList);
     case "curbside":
-      return filterCurbsidePickup(sourceList);
+      return await filterCurbsidePickup(sourceList);
     case "delivery":
       return await filterDelivery(sourceList);
     case "favorites":
-      return filterFavorites(userId, location);
+      return await filterFavorites(userId, location);
     case "bestrated":
-      return filterBestRated(sourceList);
+      return await filterBestRated(sourceList);
     case "coffeeme":
       return filterCoffeeMe(sourceList);
     default:
