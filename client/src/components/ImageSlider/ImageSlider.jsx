@@ -1,8 +1,8 @@
 import "./styles.css";
-import { Photo } from "../Photo/Photo";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Photo } from "../Photo/Photo";
+import Slider from "react-slick";
 
 const ImageSlider = ({ images }) => {
   const settings = {
@@ -28,7 +28,7 @@ const ImageSlider = ({ images }) => {
       ) : (
         <img
           className="default-store-img"
-          src="https://twr-coffee-me.s3.amazonaws.com/images/default-store.jpg"
+          src={`https://${process.env.REACT_APP_AWS_BUCKET_NAME}.s3.amazonaws.com/images/system/default-store.jpg`}
           alt=""
         />
       )}

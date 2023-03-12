@@ -76,13 +76,13 @@ export const ReviewsDrawer = ({ storeId }) => {
                     <Grid container sx={{ ml: "5px" }}>
                       <Grid item xs={2}>
                         <Avatar
-                          alt={review.user.username}
-                          src={review.user.picture}
+                          alt={review.user?.username ?? "Unknown User"}
+                          src={review.user?.picture}
                           sx={{ width: 35, height: 35, ml: "15px" }}
                         />
                       </Grid>
                       <Grid item xs={7}>
-                        <h1 id="review-name">{review.user.username}</h1>
+                        <h1 id="review-name">{review.user?.username}</h1>
                       </Grid>
                       <Grid item xs={2} sx={{ ml: 1 }}>
                         <CupsRating
