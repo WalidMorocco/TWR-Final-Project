@@ -18,7 +18,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <TopLocation/>
+      <TopLocation locationSettings={settings} />
       <Filters filter={filter} onFilterChange={onFilterChange} />
       {!loading && <Search />}
       <ScrollBox>
