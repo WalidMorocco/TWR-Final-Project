@@ -29,6 +29,7 @@ const usePost = (urlSegment) => {
       );
       setResponseData(response.data);
     } catch (error) {
+      console.log(error);
       setError(error);
     } finally {
       setLoading(false);

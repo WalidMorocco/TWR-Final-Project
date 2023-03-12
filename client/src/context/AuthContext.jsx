@@ -6,6 +6,7 @@ export const AuthContext = createContext({
   loggedIn: false,
   onLogin: (_user, _token) => {},
   onLogout: () => {},
+  updateUser: (_updatedUser) => {},
 });
 
 export const AuthProvider = ({ children }) => {
@@ -39,19 +40,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateUser = (updatedUser) => {
-    setUser(updatedUser);
+    setUser({
+      ...user,
+      ...updatedUser,
+    });
   };
-
-  // const updatePicture = () => {
-  //   //Call uploadimage
-
-  //   const updatedUser = {
-  //     picture: {
-  //       /**/
-  //     },
-  //   };
-  //   setUser(...updatedUser);
-  // };
 
   return (
     <AuthContext.Provider
@@ -61,7 +54,6 @@ export const AuthProvider = ({ children }) => {
         loggedIn: token ? true : false,
         onLogin,
         onLogout,
-        //updatePicture,
         updateUser,
       }}
     >

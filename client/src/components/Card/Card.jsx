@@ -38,7 +38,7 @@ export const Card = ({
         ) : (
           <img
             className="store-image thumbnail"
-            src="https://twr-coffee-me.s3.amazonaws.com/images/default-store.jpg"
+            src={`https://${process.env.REACT_APP_AWS_BUCKET_NAME}.s3.amazonaws.com/images/system/default-store.jpg`}
             alt=""
           />
         )}

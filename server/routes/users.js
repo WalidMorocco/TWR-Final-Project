@@ -28,7 +28,6 @@ router.post("/login", (req, res, next) => {
       res.json({
         token,
         user: {
-          id: user.id,
           username: user.username,
           email: user.email,
           picture: user.picture,
@@ -43,7 +42,10 @@ router.post("/register", async function (req, res) {
 
   // Check if the username or email already exists in the database
   const existingUser = await User.findOne({
-    $or: [{ username: req.body.username }, { email: req.body.email }],
+    $or: [
+      { username_lower: req.body.username.toLowerCase() },
+      { email: req.body.email.toLowerCase() },
+    ],
   });
 
   if (existingUser) {
@@ -55,9 +57,10 @@ router.post("/register", async function (req, res) {
 
   const newUser = new User({
     username: req.body.username,
-    email: req.body.email,
+    username_lower: req.body.username.toLowerCase(),
+    email: req.body.email.toLowerCase(),
     password: hashedPassword,
-    picture: "https://twr-coffee-me.s3.amazonaws.com/images/default-avatar.jpg", //Default picture
+    picture: `https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/images/system/default-avatar.jpg`, //Default picture
   });
   newUser.save(function (err) {
     if (err) {
@@ -68,107 +71,94 @@ router.post("/register", async function (req, res) {
   });
 });
 
-router.post("/users/:id", 
-  multerUpload.single("userImage"),
+router.post(
+  "/user/update",
+  passport.authenticate("jwt", { session: false }),
+  multerUpload.single("picture"),
   async function (req, res) {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-  console.log('test function');
-  const id = req.params.id;
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const user = await User.findById(req.user);
 
-  const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
 
-  if (!user) {
-    return res.status(404).json({
-      success: false,
-      message: "User not found",
-    });
-  }
+    if (
+      req.body.username &&
+      req.body.username.toLowerCase() !== user.username_lower
+    ) {
+      // Check if username already exists
+      const existingUser = await User.findOne({
+        username_lower: req.body.username.toLowerCase(),
+      });
 
-  // Check if username already exists
-  const existingUser = await User.findOne({ username: req.body.username });
-
-  if (existingUser && existingUser._id.toString() !== user._id.toString()) {
-    return res.status(400).json({
-      success: false,
-      message: "Username already in use",
-    });
-  }
-
-  if (req.body.username) {
-    user.username = req.body.username;
-  } 
-
-  if (req.body.password) {
-    user.password = hashedPassword;
-  }
-
-  console.log('Test: ' ,req.file)
-
-  uploadImage(req.file, (error, data) => {
-    if (error) {
-      res.status(500).send({ err: error });
-    }if (user) {
-      user.picture = data.Location;
-      user
-        .save()
-        .then((result) => {
-          res.status(200).send({
-            _id: result._id,
-            username: result.username,
-            picture: data.Location,
-          });
-        })
-        .catch((err) => {
-          res.send({ message: err });
+      if (existingUser && existingUser._id.toString() !== user._id.toString()) {
+        return res.json({
+          success: false,
+          message: "Username already in use",
         });
+      }
+
+      user.username = req.body.username;
+      user.username_lower = req.body.username.toLowerCase();
     }
-  });
 
-  // Save the updated user
-  user.save(function (err) {
-    if (err) {
-      console.log(err);
-      return res.json({ success: false, message: "Update failed" });
+    if (req.body.password) {
+      user.password = hashedPassword;
     }
-    res.json({ success: true, message: "Update successful" });
-  });
-});
 
-// router.post(
-//   "user/uploadimage",
-//   passport.authenticate("jwt", { session: false }),
-//   multerUpload.single("userImage"),
-//   (req, res) => {
-//     uploadImage(req.file, (error, data) => {
-//       if (error) {
-//         res.status(500).send({ err: error });
-//       }
+    if (req.file) {
+      var n = user.picture.lastIndexOf("/");
+      var previousImage = user.picture.substring(n + 1);
+      uploadImage(
+        req.file,
+        "users/",
+        `${req.user}_${new Date().getTime()}`,
+        previousImage,
+        (error, data) => {
+          if (error) {
+            res.status(500).send({ err: error });
+          }
 
-//       if (data) {
-//         // saving the information in the database.
-//         User.findById(req.user)
-//           .exec()
-//           .then(function (user) {
-//             if (user) {
-//               user.picture = data.Location;
-//               user
-//                 .save()
-//                 .then((result) => {
-//                   res.status(200).send({
-//                     _id: result._id,
-//                     username: result.username,
-//                     picture: data.Location,
-//                   });
-//                 })
-//                 .catch((err) => {
-//                   res.send({ message: err });
-//                 });
-//             }
-//           });
-//       }
-//     });
-//   }
-// );
+          user.picture = data.Location;
+
+          // Save the updated user
+          user.save(function (err) {
+            if (err) {
+              console.log(err);
+              return res.json({ success: false, message: "Update failed" });
+            }
+
+            res.json({
+              success: true,
+              username: user.username,
+              picture: user.picture,
+              message: "Update successful",
+            });
+          });
+        }
+      );
+    } else {
+      // Save the updated user
+      user.save(function (err) {
+        if (err) {
+          console.log(err);
+          return res.json({ success: false, message: "Update failed" });
+        }
+
+        res.json({
+          success: true,
+          username: user.username,
+          picture: user.picture,
+          message: "Update successful",
+        });
+      });
+    }
+  }
+);
 
 export default router;

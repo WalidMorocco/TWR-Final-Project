@@ -1,125 +1,110 @@
-import React, { useRef, useState } from 'react';
-import axios from 'axios';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
-import './styles.css';
+import "./styles.css";
+import { useEffect, useRef, useState, useContext } from "react";
+import { CircularProgress } from "@mui/material";
+import { AuthContext } from "../../context/AuthContext";
+import usePost from "../../hooks/crud/usePost";
 
 export const EditProfile = (props) => {
   const { user, updateUser } = useContext(AuthContext);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const userImage = useRef();
-  const [errorMessage, setErrorMessage] = useState('');
+  const { postData, responseData, loading, error } = usePost("user/update");
 
-  console.log(username);
-  console.log(password);
+  const [username, setUsername] = useState(user.username);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const fileInput = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match');
+      setErrorMessage("Passwords do not match");
       return;
     }
 
     try {
-      let userData = {};
-      if (password && username) {
-        // If both password and username fields have been updated
-        userData = {
-          username: username,
-          password: password,
-        };
-      } else if (password) {
-        // If only the password field has been updated
-        userData = {
-          password: password,
-        };
-      } else if (username) {
-        // If only the username field has been updated
-        userData = {
-          username: username,
-        };
-      }
-      console.log('Test client image: ', userImage.current.files[0]);
-      const response = await axios.put(
-        `${process.env.REACT_APP_BASE_URL}users/${user.id}`,
+      let form = new FormData();
 
-        {
-          username: username,
-          password: password,
-          userImage: userImage.current.files[0],
-        }
-      );
-
-      if (response.data.success) {
-        // Update user info in context
-        // updateUser(response.data.user);
+      if (fileInput.current.files.length) {
+        let file = fileInput.current.files[0];
+        form.append("picture", file);
       }
+
+      form.append("username", username);
+      form.append("password", password);
+
+      await postData(form);
     } catch (error) {
-      setErrorMessage(error.response.data.message);
+      console.log(error);
+      setErrorMessage("Failed to update user details");
     }
-
-    console.log(username);
-    console.log(password);
   };
 
+  useEffect(() => {
+    if (!loading && responseData) {
+      if (responseData.success) {
+        updateUser({
+          username: responseData.username,
+          picture: responseData.picture,
+        });
+        props.handleSwitchModal("signIn");
+      } else {
+        setErrorMessage(responseData?.message);
+      }
+    } else if (error) {
+      setErrorMessage("Failed to update user details");
+    }
+  }, [responseData, error]);
+
   return (
-    <div
-      className='modal'
-      onClick={() => props.handleSwitchModal('')}
-    >
-      <div
-        className='edit-container'
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="modal" onClick={() => props.handleSwitchModal("")}>
+      <div className="edit-container" onClick={(e) => e.stopPropagation()}>
         <h2>Edit Profile</h2>
-        <form
-          className='edit-form'
-          // onSubmit={handleSubmit}
-          action={`${process.env.REACT_APP_BASE_URL}users/${user.id}`}
-          method='post'
-          enctype='multipart/form-data'
-        >
-          <label className='label-title'>
+        <form className="edit-form" onSubmit={handleSubmit}>
+          <label className="label-title">
             Username
             <input
-              type='username'
-              name='username'
+              type="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
-          <label className='label-title'>
+          <label className="label-title">
             New Password
             <input
-              type='password'
-              name='password'
+              type="password"
+              minLength="6"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          {/* <label className='label-title'>
+          <label className="label-title">
             Confirm Password
             <input
-              type='password'
-              name=''
+              type="password"
+              minLength="6"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-          </label> */}
-          <label className='label-title'>
+          </label>
+          <label className="label-title">
             Profile Picture
             <input
-              type='file'
-              name='userImage'
-              accept='image/*'
+              type="file"
+              ref={fileInput}
+              accept="image/jpg,image/jpeg,image/png,image/gif"
             />
           </label>
-          {errorMessage && <p id='error'>{errorMessage}</p>}
-          <div className='submit-button-group'>
-            <button type='submit'>Save Changes</button>
+          {errorMessage && <p id="error">{errorMessage}</p>}
+          <div className="submit-button-group">
+            <button type="submit" disabled={loading}>
+              {loading ? (
+                <CircularProgress size={20} sx={{ color: "white" }} />
+              ) : (
+                "Save Changes"
+              )}
+            </button>
           </div>
         </form>
       </div>

@@ -13,7 +13,7 @@ export default function (passport) {
         passwordField: "password",
       },
       async (email, password, done) => {
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email: email.toLowerCase() });
         if (!user) {
           return done(null, false, { message: "Incorrect email or password" });
         }
