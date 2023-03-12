@@ -5,7 +5,6 @@ dotenv.config({ path: "./config.env" });
 
 const storage = multer.memoryStorage({
   destination: function (req, file, cb) {
-    console.log("Test file: ", file);
     cb(null, "");
   },
 });

@@ -12,26 +12,34 @@ const filterAroundYou = (sourceList) => {
   }
 };
 
-const filterStoreDetail = async (sourceList, detailPredicate) => {
+const filterStoreDetail = async (
+  sourceList,
+  detailPredicate,
+  cached = true,
+  detail = null
+) => {
   const asyncFilter = async (arr, predicate) => {
     const results = await Promise.all(arr.map(predicate));
     return arr.filter((_v, index) => results[index]);
   };
 
   const result = await asyncFilter(sourceList, async (s) => {
-    const details = await getStoreDetails(s.storeId);
+    const details = await getStoreDetails(s.storeId, cached, detail);
     return detailPredicate(details);
   });
 
   return filterAroundYou(result);
 };
 
-const filterCurbsidePickup = (sourceList) => {
-  return filterStoreDetail(sourceList, (details) => details?.curbsidePickup);
+const filterCurbsidePickup = async (sourceList) => {
+  return await filterStoreDetail(
+    sourceList,
+    (details) => details?.curbsidePickup
+  );
 };
 
 const filterDelivery = async (sourceList) => {
-  return filterStoreDetail(sourceList, (details) => details?.delivery);
+  return await filterStoreDetail(sourceList, (details) => details?.delivery);
 };
 
 const filterFavorites = async (userId, location) => {
@@ -61,8 +69,13 @@ const filterBestRated = async (sourceList) => {
   return filterAroundYou(bestRated);
 };
 
-const filterCoffeeMe = (sourceList) => {
-  return sourceList?.filter((store) => store.local);
+const filterOpenNow = async (sourceList) => {
+  return filterStoreDetail(
+    sourceList,
+    (details) => details?.openNow,
+    false,
+    "current_opening_hours/open_now"
+  );
 };
 
 export async function applyFilter(sourceList, filter, userId, location) {
@@ -77,8 +90,8 @@ export async function applyFilter(sourceList, filter, userId, location) {
       return await filterFavorites(userId, location);
     case "bestrated":
       return await filterBestRated(sourceList);
-    case "coffeeme":
-      return filterCoffeeMe(sourceList);
+    case "opennow":
+      return await filterOpenNow(sourceList);
     default:
       return sourceList;
   }

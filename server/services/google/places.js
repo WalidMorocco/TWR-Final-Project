@@ -26,21 +26,23 @@ export async function getNearbyPlaces(lat, lng, radius, nextPageToken) {
   );
 }
 
-export async function getPlaceDetails(placeId) {
+export async function getPlaceDetails(placeId, fields) {
   return await getPlaces(
     "details",
-    `place_id=${placeId}&fields=name%2C` +
-      "editorial_summary/overview%2C" +
-      "formatted_phone_number%2C" +
-      "vicinity%2C" +
-      "geometry/location%2C" +
-      "delivery%2C" +
-      "curbside_pickup%2C" +
-      "rating%2C" +
-      "user_ratings_total%2C" +
-      "current_opening_hours/weekday_text%2C" +
-      "photos%2C" +
-      "reviews"
+    `place_id=${placeId}&fields=` +
+      (fields ??
+        "name%2C" +
+          "editorial_summary/overview%2C" +
+          "formatted_phone_number%2C" +
+          "vicinity%2C" +
+          "geometry/location%2C" +
+          "delivery%2C" +
+          "curbside_pickup%2C" +
+          "rating%2C" +
+          "user_ratings_total%2C" +
+          "current_opening_hours/weekday_text%2C" +
+          "photos%2C" +
+          "reviews")
   );
 }
 

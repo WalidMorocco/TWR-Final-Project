@@ -28,30 +28,37 @@ export const Filters = ({ filter, onFilterChange }) => {
       <div className="top-filters">
         <button
           id="filter-1"
+          style={getButtonStyle("opennow")}
+          onClick={() => handleFilterClick("opennow")}
+        >
+          Open Now
+        </button>
+        <button
+          id="filter-2"
           style={getButtonStyle("aroundyou")}
           onClick={() => handleFilterClick("aroundyou")}
         >
           Around You
         </button>
         <button
-          id="filter-2"
+          id="filter-3"
+          style={getButtonStyle("bestrated")}
+          onClick={() => handleFilterClick("bestrated")}
+        >
+          Best Rated
+        </button>
+      </div>
+      <div className="bottom-filters">
+        <button
+          id="filter-4"
           style={getButtonStyle("curbside")}
           onClick={() => handleFilterClick("curbside")}
         >
           Curbside
         </button>
-        <button
-          id="filter-3"
-          style={getButtonStyle("delivery")}
-          onClick={() => handleFilterClick("delivery")}
-        >
-          Delivery
-        </button>
-      </div>
-      <div className="bottom-filters">
         {authContext.loggedIn && (
           <button
-            id="filter-4"
+            id="filter-5"
             style={getButtonStyle("favorites")}
             onClick={() => handleFilterClick("favorites")}
           >
@@ -59,18 +66,11 @@ export const Filters = ({ filter, onFilterChange }) => {
           </button>
         )}
         <button
-          id="filter-5"
-          style={getButtonStyle("bestrated")}
-          onClick={() => handleFilterClick("bestrated")}
-        >
-          Best Rated
-        </button>
-        <button
           id="filter-6"
-          style={getButtonStyle("coffeeme")}
-          onClick={() => handleFilterClick("coffeeme")}
+          style={getButtonStyle("delivery")}
+          onClick={() => handleFilterClick("delivery")}
         >
-          CoffeeMe
+          Delivery
         </button>
       </div>
     </div>

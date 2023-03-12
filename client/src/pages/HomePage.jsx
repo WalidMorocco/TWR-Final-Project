@@ -1,6 +1,6 @@
 import { Filters } from "../components/Filters/Filters";
 import { Search } from "../components/Search/Search";
-import { StoresList } from "../components/StoresList";
+import { StoresList } from "../components/StoresList/StoresList";
 import { ScrollBox } from "../components/ScrollBox/ScrollBox";
 import { useContext, useState } from "react";
 import { LocationContext } from "../context/LocationContext";
