@@ -1,4 +1,4 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (orientation: portrait) {
   .filter-container {
     width: 100;
   }
@@ -39,6 +39,62 @@
   #filter-6 {
     margin-left: 2.5%;
   }
+  .active {
+    background-color: #d9bba9;
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  .filter-container {
+    width: 100;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+  .top-filters {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .bottom-filters {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  #filter-1,
+  #filter-2,
+  #filter-3,
+  #filter-4,
+  #filter-5,
+  #filter-6 {
+    width: 25%;
+    height: 30px;
+    border-radius: 12px;
+    border: none;
+    background-color: #745246;
+    color: white;
+  }
+
+  #filter-2 {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  #filter-4 {
+    margin-right: 2.5%;
+  }
+
+  #filter-5 {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
+
+  #filter-6 {
+    margin-left: 2.5%;
+  }
+
   .active {
     background-color: #d9bba9;
   }
