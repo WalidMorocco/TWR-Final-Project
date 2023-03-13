@@ -135,7 +135,7 @@ export const StoreDetails = () => {
           {data.description ? data.description : 'No description available'}
         </p>
       </div>
-      <div className='review-container'>
+      <div className='review-box'>
         <ReviewsDrawer storeId={storeId} />
         {authContext.loggedIn && (
           <button
