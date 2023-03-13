@@ -71,9 +71,7 @@ export const Reviews = (props) => {
             </Box>
           </div>
         </div>
-        <div className='lower-container'>
-          <h2 id='lower-review'>Review</h2>
-        </div>
+
         <div className='leave-review-container'>
           <textarea
             id='review-box'
