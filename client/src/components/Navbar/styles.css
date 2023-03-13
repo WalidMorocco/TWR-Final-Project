@@ -1,4 +1,4 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (orientation: portrait) {
   :root {
     --background-color: #745246;
   }
@@ -7,11 +7,11 @@
     background-color: var(--background-color);
     display: flex;
     width: 100%;
-    height: 7vh;
+    height: 7%;
   }
 
   nav > .nav-section {
-    padding: 1rem;
+    padding: 2%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,7 +20,48 @@
   }
 
   .nav-button {
-    background-color: #745246;
+    background-color: var(--background-color);
+    border: none;
+  }
+  
+  #footer-logo-section {
+    display: none;
+  }
+
+  .curr-user-image {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    border-color: white;
+    border-style: solid;
+    border-width: thin;
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  :root {
+    --background-color: #745246;
+  }
+
+  nav {
+    background-color: var(--background-color);
+    display: flex;
+    width: 100%;
+    height: 7%;
+  }
+
+  nav>.nav-section {
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: calc((100% / 4));
+    gap: 3rem;
+  }
+
+  .nav-button {
+    background-color: var(--background-color);
     border: none;
   }
 

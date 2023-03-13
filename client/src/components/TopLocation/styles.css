@@ -1,12 +1,7 @@
-@media only screen and (max-width: 600px) {
-
-    .topLocation-container{
-        width:80%;
-        margin-left: 10%;
-        /* border: 2px solid red; */
-    }
-    #top-location{
-        text-align: center;
-    }
-
+.topLocation-container{
+    width:80%;
+    margin-left: 10%;
+}
+#top-location{
+    text-align: center;
 }

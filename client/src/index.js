@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 import reportWebVitals from "./reportWebVitals";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import StoreDetails from "./pages/StoreDetailsPage";

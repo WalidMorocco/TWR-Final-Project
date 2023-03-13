@@ -1,12 +1,14 @@
-.aboutUs-container{
-    height: 100vh;
-}
-#title{
-    text-align: center;
-    color: #745246;
-    
-}
-@media only screen and (max-height: 700px) {
+
+@media only screen and (orientation: portrait) {
+    .aboutUs-container {
+        height: 100vh;
+    }
+
+    #title {
+        text-align: center;
+        color: #745246;
+
+    }
     .text-box-container{
         width: 80%;
         height: 53vh;
@@ -16,91 +18,103 @@
         padding-top: 15px;
         border-radius: 12px;
         overflow: auto;
-        /* border: 2px solid red; */
     }
-}
-@media only screen and (min-height: 800px) and (max-height:900px) {
-    .text-box-container{
-        width: 80%;
-        height: 62vh;
-        margin:0;
-        margin-left: 10%;
-        background-color: #745246;
-        padding-top: 15px;
+
+    #text-box {
+        width: 90%;
+        color: white;
+        margin: 0;
+        margin-left: 4%;
         border-radius: 12px;
-        overflow: auto;
-        /* border: 2px solid yellow; */
+        text-align: left;
+        font-size: 18px;
+        letter-spacing: 2px;
+        line-height: 1.5;
     }
-}
-@media only screen and (min-height: 740px) {
-    .text-box-container{
+
+    .button-group {
         width: 80%;
-        height: 55vh;
-        margin:0;
         margin-left: 10%;
-        background-color: #745246;
-        padding-top: 15px;
-        border-radius: 12px;
-        overflow: auto;
-        /* border: 2px solid green; */
+        margin-top: -10px;
     }
-}
-@media only screen and (min-height: 840px) {
-    .text-box-container{
-        width: 80%;
-        height: 59vh;
-        margin:0;
-        margin-left: 10%;
-        background-color: #745246;
-        padding-top: 15px;
+
+    #ryan-button,
+    #tal-button,
+    #walid-button {
+        width: 30%;
         border-radius: 12px;
-        overflow: auto;
-        /* border: 2px solid blue; */
-    }
-}
-@media only screen and (min-height: 895px) {
-    .text-box-container{
-        width: 80%;
-        height: 60vh;
-        margin:0;
-        margin-left: 10%;
+        height: 10vh;
+        border: none;
         background-color: #745246;
-        padding-top: 15px;
-        border-radius: 12px;
-        overflow: auto;
-        /* border: 2px solid pink; */
+        color: white;
+        font-size: 20px;
+        margin-top: 10%;
+
     }
-}
-#text-box{
-    width: 90%;
-    color: white;
-    margin:0;
-    margin-left:4%;
-    border-radius: 12px;
-    text-align: left;
-    font-size: 18px;
-    letter-spacing: 2px;
-    line-height: 1.5;
+
+    #tal-button {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 }
 
-.button-group{
-    width: 80%;
-    margin-left: 10%;
-    margin-top: -10px;
-}
-#ryan-button,#tal-button,#walid-button{
-    width:30%;
-    border-radius: 12px;
-    height: 10vh;
-    border:none;
-    background-color: #745246;
-    color: white;
-    font-size: 20px;
-    margin-top: 10%;
 
-}
+@media only screen and (orientation: landscape) {
+    .aboutUs-container {
+        height: 100vh;
+    }
 
-#tal-button{
-    margin-left: 5%;
-    margin-right: 5%;
+    #title {
+        text-align: center;
+        color: #745246;
+
+    }
+
+    .text-box-container {
+        width: 80%;
+        height: 53vh;
+        margin: 0;
+        margin-left: 10%;
+        background-color: #745246;
+        padding-top: 15px;
+        border-radius: 12px;
+        overflow: auto;
+    }
+
+    #text-box {
+        width: 90%;
+        color: white;
+        margin: 0;
+        margin-left: 4%;
+        border-radius: 12px;
+        text-align: left;
+        font-size: 18px;
+        letter-spacing: 2px;
+        line-height: 1.5;
+    }
+
+    .button-group {
+        width: 80%;
+        margin-left: 10%;
+        margin-top: -10px;
+    }
+
+    #ryan-button,
+    #tal-button,
+    #walid-button {
+        width: 30%;
+        border-radius: 12px;
+        height: 10vh;
+        border: none;
+        background-color: #745246;
+        color: white;
+        font-size: 20px;
+        margin-top: 5%;
+
+    }
+
+    #tal-button {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 }

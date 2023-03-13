@@ -1,8 +1,10 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (orientation: portrait) {
   .storeDetails-container {
     height: 80vh;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
+
 
   .slider-image {
     padding-top: 5%;
@@ -30,9 +32,27 @@
 
   .address-container {
     width: 90%;
-    margin-bottom: 5%;
-    text-align: center;
+    margin-bottom: 3%;
+    margin-left: 7%;
     word-wrap: break-word;
+  }
+
+  .phone {
+    margin-left: 7%;
+    margin-bottom: 5%;
+  }
+
+  #btnCall {
+    border: none;
+    background-color: transparent;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .rate {
+    margin-left: 10%;
+    margin-bottom: 5%;
   }
 
   .drive-thru-container {
@@ -125,9 +145,10 @@
     color: white;
     height: 50px;
   }
+  
   #reviews-btn {
     position: fixed;
-    bottom: 9vh;
+    bottom: 6vh;
     left: 15px;
     width: 42%;
     margin-left: 25%;
@@ -145,8 +166,202 @@
 
   #reviews-btn2 {
     position: fixed;
-    bottom: 9vh;
+    bottom: 6vh;
     left: 200px;
+    width: 40px;
+    margin-left: 25%;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 18px;
+    background-color: #745246;
+    border: none;
+    color: white;
+  }
+
+  #top-title {
+    font-size: 25px;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+
+  .review-title-container {
+    margin: 0;
+    width: 100%;
+    background-color: #745246;
+    text-align: center;
+    color: white;
+  }
+}
+
+
+@media only screen and (orientation: landscape) {
+  .storeDetails-container {
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .slider-image {
+    padding-top: 5%;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 5%;
+  }
+
+  .store-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .details-title {
+    width: 70%;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+  }
+
+  .fav-btn {
+    margin-left: 5%;
+  }
+
+  .address-container {
+    width: 90%;
+    margin-left: 7%;
+    word-wrap: break-word;
+  }
+
+  .phone {
+    margin-left: 7%;
+    margin-bottom: 5%;
+  }
+
+  #btnCall {
+    border: none;
+    background-color: transparent;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .rate {
+    margin-left: 7%;
+    margin-bottom: 5%;
+  }
+
+  .drive-thru-container {
+    float: left;
+    width: 100%;
+  }
+
+  #check-image {
+    width: 25px;
+    float: left;
+    margin-left: 10%;
+    margin-top: 15px;
+  }
+
+  #check-image-2 {
+    width: 25px;
+    float: left;
+    margin-left: 10%;
+    margin-top: 15px;
+  }
+
+  #drive-thru {
+    font-size: 16px;
+    margin-left: 5px;
+    float: left;
+  }
+
+  #curbside {
+    font-size: 16px;
+    margin-left: 5px;
+    float: left;
+  }
+
+  .time-container {
+    width: 90%;
+    float: left;
+    margin-bottom: 10%;
+    margin-top: 1%;
+    margin-left: 5%;
+    border-radius: 12px;
+  }
+
+  .day {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    padding-top: 5px;
+    margin-left: 5%;
+  }
+
+  .details-container {
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    margin-left: 5%;
+    float: left;
+    margin-top: 3px;
+    background-color: #745246;
+    border-radius: 12px;
+    height: auto;
+    margin-bottom: 20%;
+  }
+
+  #details-text {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    width: 90%;
+    margin-left: 5%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    color: white;
+  }
+
+  .button-container {
+    float: left;
+    text-align: center;
+    width: 100%;
+    margin-top: 25px;
+    position: fixed;
+    bottom: 45px;
+  }
+
+  #reviews {
+    width: 50%;
+    font-size: 18px;
+    border-radius: 12px;
+    background-color: #745246;
+    border: none;
+    color: white;
+    height: 50px;
+  }
+
+  #reviews-btn {
+    position: fixed;
+    bottom: 6vh;
+    left: 0px;
+    width: 42%;
+    margin-left: 25%;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 18px;
+    background-color: #745246;
+    border: none;
+    color: white;
+  }
+
+  #reviews-btn:disabled {
+    background-color: #6d635f;
+  }
+
+  #reviews-btn2 {
+    position: fixed;
+    bottom: 6vh;
+    left: 50%;
     width: 40px;
     margin-left: 25%;
     height: 40px;

@@ -1,4 +1,4 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (orientation: portrait) {
     .modal {
         background-color: rgba(0, 0, 0, 0.4);
         display: flex;
@@ -9,6 +9,7 @@
         left: 0;
         width: 100%;
         height: 100%;
+        z-index: 9999;
     }
 
     .signIn-container {
@@ -18,6 +19,153 @@
         text-align: center;
         width: 70%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    }
+
+    .close-box {
+        width: 100%;
+        text-align: right;
+        float: right;
+        display: contents;
+    }
+
+    .wrap-button {
+        width: auto;
+        text-align: right;
+        float: right;
+    }
+
+    .close-button {
+        background-color: transparent;
+        border: none;
+        color: inherit;
+        font-size: 200%;
+        font-family: inherit;
+        text-align: inherit;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .logged-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #signIn-title {
+        font-size: 24px;
+        margin: 0 0 5%;
+    }
+
+    .signIn-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .label-title {
+        margin: 10px 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        border: none;
+        border-radius: 5px;
+        margin: 5px 0;
+        padding: 10px;
+        width: 100%;
+    }
+
+    #error {
+        color: red;
+        margin: 5px 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    .sign-up-now {
+        margin: 10px 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    .sign-up-now button {
+        font-size: 14px;
+        background-color: transparent;
+        border: none;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .submit-button-group {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .submit-button-group button {
+        background-color: #745246;
+        font-size: 20px;
+        color: white;
+        padding: 5%;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .modal {
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+    }
+
+    .signIn-container {
+        background-color: rgb(217, 187, 169);
+        border-radius: 10px;
+        padding: 3%;
+        text-align: center;
+        width: 20%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    }
+
+    .close-box {
+        width: 100%;
+        text-align: right;
+        float: right;
+        display: contents;
+    }
+
+    .wrap-button {
+        width: auto;
+        text-align: right;
+        float: right;
+    }
+
+    .close-button {
+        background-color: transparent;
+        border: none;
+        color: inherit;
+        font-size: 200%;
+        font-family: inherit;
+        text-align: inherit;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        outline: none;
     }
 
     .logged-container {

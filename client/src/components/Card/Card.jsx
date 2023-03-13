@@ -1,9 +1,9 @@
-import "./styles.css";
-import PropTypes from "prop-types";
-import { Photo } from "../Photo/Photo";
-import { useNavigate } from "react-router-dom";
-import { Grid } from "@mui/material";
-import { CupsRating } from "../Rating/CupsRating";
+import './styles.css';
+import PropTypes from 'prop-types';
+import { Photo } from '../Photo/Photo';
+import { useNavigate } from 'react-router-dom';
+import { Grid } from '@mui/material';
+import { CupsRating } from '../Rating/CupsRating';
 
 export const Card = ({
   storeId,
@@ -31,31 +31,48 @@ export const Card = ({
   };
 
   return (
-    <div className="card-container">
-      <div className="card">
+    <div className='card-container'>
+      <div
+        className='card'
+        onClick={navigateToDetails}
+      >
         {photoRef ? (
-          <Photo photoRef={photoRef} size="thumbnail" />
+          <Photo
+            photoRef={photoRef}
+            size='thumbnail'
+          />
         ) : (
           <img
-            className="store-image thumbnail"
+            className='store-image thumbnail'
             src={`https://${process.env.REACT_APP_AWS_BUCKET_NAME}.s3.amazonaws.com/images/system/default-store.jpg`}
-            alt=""
+            alt=''
           />
         )}
-        <div className="card-contents">
-          <h1 id="store-name">{name}</h1>
-          <h2 id="store-miles">{formatDistance(distance)}</h2>
+        <div className='card-contents'>
+          <h1 id='store-name'>{name}</h1>
+          <h2 id='store-miles'>{formatDistance(distance)}</h2>
           <Grid container>
-            <Grid item xs={9}>
-              <button id="store-details" onClick={navigateToDetails}>
+            <Grid
+              item
+              xs={9}
+            >
+              <button
+                id='store-details'
+                onClick={navigateToDetails}
+              >
                 Details
               </button>
             </Grid>
-            {filter === "bestrated" && (
-              <Grid item xs={3} sx={{ mt: "5px" }} justifyContent="start">
+            {filter === 'bestrated' && (
+              <Grid
+                item
+                xs={3}
+                sx={{ mt: '5px' }}
+                justifyContent='start'
+              >
                 <CupsRating
-                  size="compact"
-                  theme="light"
+                  size='compact'
+                  theme='light'
                   rating={details?.rating}
                 />
               </Grid>

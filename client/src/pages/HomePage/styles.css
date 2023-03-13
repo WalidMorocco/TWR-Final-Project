@@ -1,0 +1,7 @@
+@media only screen and (orientation: portrait) {
+    .home-container {
+        height: 100%;
+        padding-bottom: 10%;
+    }
+}
+
