@@ -33,7 +33,8 @@ import "./styles.css";
   
     const call = () => {
       console.log(data.phone);
-      window.location.href = 'tel://' + data.phone;
+      window.location.href = 'tel:' + data.phone;
+      // window.location.href = 'tel://' + data.phone;
     }
     
     const locationContext = useContext(LocationContext);
