@@ -5,7 +5,6 @@
     overflow-x: hidden;
   }
 
-
   .slider-image {
     padding-top: 5%;
     width: 100%;
@@ -33,7 +32,7 @@
   .address-container {
     width: 90%;
     margin-bottom: 3%;
-    margin-left: 7%;
+    margin-left: 8%;
     word-wrap: break-word;
   }
 
@@ -51,8 +50,9 @@
   }
 
   .rate {
-    margin-left: 10%;
+    margin-left: 8%;
     margin-bottom: 5%;
+    float: left;
   }
 
   .drive-thru-container {
@@ -145,7 +145,7 @@
     color: white;
     height: 50px;
   }
-  
+
   #reviews-btn {
     position: fixed;
     bottom: 6vh;
@@ -194,7 +194,6 @@
   }
 }
 
-
 @media only screen and (orientation: landscape) {
   .storeDetails-container {
     height: 80vh;
@@ -227,7 +226,7 @@
 
   .address-container {
     width: 90%;
-    margin-left: 7%;
+    margin-left: 8%;
     word-wrap: break-word;
   }
 
@@ -245,7 +244,7 @@
   }
 
   .rate {
-    margin-left: 7%;
+    margin-left: 8%;
     margin-bottom: 5%;
   }
 
